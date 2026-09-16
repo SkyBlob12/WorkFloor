@@ -102,7 +102,7 @@
       {
         "heading": "1. Responsable du traitement",
         "paragraphs": [
-          "[À COMPLÉTER : prénom et nom], entrepreneur individuel (EI), [À COMPLÉTER : adresse professionnelle], SIRET [À COMPLÉTER], éditeur de l’application {{appName}}. Contact pour toute question relative à vos données : {{contactEmail}}."
+          "Clément Andrieu, entrepreneur individuel (EI), 8 rue de la Cibade, 12850 Sainte-Radegonde, SIRET 100 141 480 00010, éditeur de l’application {{appName}}. Contact pour toute question relative à vos données : {{contactEmail}}."
         ]
       },
       {
@@ -196,16 +196,16 @@
       {
         "heading": "Éditeur",
         "paragraphs": [
-          "[À COMPLÉTER : prénom et nom], entrepreneur individuel (EI)",
-          "Adresse : [À COMPLÉTER : adresse professionnelle ou de domiciliation]",
+          "Clément Andrieu, entrepreneur individuel (EI)",
+          "Adresse : 8 rue de la Cibade, 12850 Sainte-Radegonde, France",
           "Téléphone : [À COMPLÉTER]",
-          "SIRET : [À COMPLÉTER]. TVA non applicable, article 293 B du CGI [À VÉRIFIER : uniquement en franchise en base de TVA].",
+          "SIRET : 100 141 480 00010 (SIREN 100 141 480). TVA non applicable, article 293 B du CGI.",
           "Email : {{contactEmail}}"
         ]
       },
       {
         "heading": "Directeur de la publication",
-        "paragraphs": ["[À COMPLÉTER : prénom et nom], en qualité d’éditeur."]
+        "paragraphs": ["Clément Andrieu, en qualité d’éditeur."]
       },
       {
         "heading": "Hébergement",

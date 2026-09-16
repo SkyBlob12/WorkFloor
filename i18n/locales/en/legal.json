@@ -102,7 +102,7 @@
       {
         "heading": "1. Data controller",
         "paragraphs": [
-          "[TO COMPLETE: first and last name], sole trader (entrepreneur individuel, EI), [TO COMPLETE: business address], SIRET [TO COMPLETE], publisher of the {{appName}} app. Contact for any question about your data: {{contactEmail}}."
+          "Clément Andrieu, sole trader (entrepreneur individuel, EI), 8 rue de la Cibade, 12850 Sainte-Radegonde, France, SIRET 100 141 480 00010, publisher of the {{appName}} app. Contact for any question about your data: {{contactEmail}}."
         ]
       },
       {
@@ -196,16 +196,16 @@
       {
         "heading": "Publisher",
         "paragraphs": [
-          "[TO COMPLETE: first and last name], sole trader (entrepreneur individuel, EI)",
-          "Address: [TO COMPLETE: business or registered address]",
+          "Clément Andrieu, sole trader (entrepreneur individuel, EI)",
+          "Address: 8 rue de la Cibade, 12850 Sainte-Radegonde, France",
           "Phone: [TO COMPLETE]",
-          "SIRET: [TO COMPLETE]. VAT not applicable, article 293 B of the French General Tax Code [TO CHECK: only under the VAT franchise scheme].",
+          "SIRET: 100 141 480 00010 (SIREN 100 141 480). VAT not applicable, article 293 B of the French General Tax Code.",
           "Email: {{contactEmail}}"
         ]
       },
       {
         "heading": "Publication director",
-        "paragraphs": ["[TO COMPLETE: first and last name], as publisher."]
+        "paragraphs": ["Clément Andrieu, as publisher."]
       },
       {
         "heading": "Hosting",
