@@ -28,7 +28,7 @@
       {
         "heading": "2. Publisher",
         "paragraphs": [
-          "The Service is published by a sole trader named in the legal notice, available from the “Account” screen of the app."
+          "The Service is published by an individual who can be reached at {{contactEmail}} (see the legal notice, available from the “Account” screen of the app)."
         ]
       },
       {
@@ -102,7 +102,7 @@
       {
         "heading": "1. Data controller",
         "paragraphs": [
-          "Clément Andrieu, sole trader (entrepreneur individuel, EI), 8 rue de la Cibade, 12850 Sainte-Radegonde, France, SIRET 100 141 480 00010, publisher of the {{appName}} app. Contact for any question about your data: {{contactEmail}}."
+          "The data controller is the publisher of the {{appName}} app, an individual. Contact for any question about your data: {{contactEmail}}."
         ]
       },
       {
@@ -196,16 +196,13 @@
       {
         "heading": "Publisher",
         "paragraphs": [
-          "Clément Andrieu, sole trader (entrepreneur individuel, EI)",
-          "Address: 8 rue de la Cibade, 12850 Sainte-Radegonde, France",
-          "Phone: [TO COMPLETE]",
-          "SIRET: 100 141 480 00010 (SIREN 100 141 480). VAT not applicable, article 293 B of the French General Tax Code.",
+          "{{appName}} is published by an individual. In accordance with article 6-III-2 of the French law on confidence in the digital economy, their identification details have been provided to the hosting provider. [TO BE VALIDATED BY THE LAWYER: anonymity is only possible if publishing is not a professional activity.]",
           "Email: {{contactEmail}}"
         ]
       },
       {
         "heading": "Publication director",
-        "paragraphs": ["Clément Andrieu, as publisher."]
+        "paragraphs": ["The publisher, who can be reached at {{contactEmail}}."]
       },
       {
         "heading": "Hosting",

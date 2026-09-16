@@ -65,10 +65,12 @@ Les pages sont **générées depuis les mêmes traductions que l'app** (`i18n/lo
 
 ## 6. Juridique (bloquant pour les stores)
 
-Les textes de `i18n/locales/fr/legal.json` et `i18n/locales/en/legal.json` sont rédigés pour une app mobile éditée par un **entrepreneur individuel (micro-entrepreneur)**, données hébergées à Paris (`eu-west-3`). À faire :
+Les textes de `i18n/locales/fr/legal.json` et `i18n/locales/en/legal.json` sont rédigés pour une app mobile dont l'éditeur **n'est pas identifié publiquement** pour l'instant (choix personnel, en attendant l'avis du juriste), données hébergées à Paris (`eu-west-3`). À faire :
 
-- [x] Identité de l'éditeur renseignée depuis l'avis de situation SIRENE : Clément Andrieu (EI), 8 rue de la Cibade, 12850 Sainte-Radegonde, SIRET 100 141 480 00010, franchise en base de TVA (art. 293 B du CGI).
-- [ ] Restent `[À COMPLÉTER]` / `[TO COMPLETE]` : **téléphone** (obligatoire pour un professionnel, LCEN art. 6-III) et date de mise en ligne. Ces coordonnées seront publiques (pages web, App Store) ; une domiciliation reste possible pour ne pas afficher l'adresse personnelle, à changer alors dans les deux `legal.json`.
+- [ ] **Identification de l'éditeur, première question au juriste** : les textes présentent l'éditeur comme une personne physique anonyme (LCEN art. 6-III-2 : identité communiquée à l'hébergeur seulement). Ce n'est possible que si l'édition de WorkFloor n'est **pas une activité professionnelle** ; or l'éditeur est micro-entrepreneur en programmation. Si le juriste conclut à une activité professionnelle : nom, adresse (ou domiciliation), téléphone et SIRET deviennent obligatoires dans les mentions légales, et le statut de commerçant doit être déclaré chez Apple. Le RGPD demande aussi l'« identité » du responsable du traitement (art. 13) : lui demander si l'email seul suffit.
+- [ ] Si l'anonymat est retenu : s'assurer que l'hébergeur (Supabase) dispose bien de ton identité (compte, facturation), et déclarer « non-commerçant » dans App Store Connect.
+- [ ] Remplir la date de mise en ligne (`updatedAt` dans les deux `legal.json`).
+- ⚠️ Ne jamais écrire d'information personnelle (adresse, SIRET, téléphone) dans ce dépôt : il est **public**, historique compris.
 - [ ] Faire valider par le juriste (les deux langues), en particulier :
   - **Conservation LCEN** (`[À VALIDER PAR LE JURISTE]`, politique de confidentialité section 5) : le décret n° 2021-1362 impose de garder un an les données d'identification des auteurs, alors que l'app efface tout immédiatement à la suppression du compte, et que l'IP n'est gardée que hachée (inexploitable par un juge) 30 jours. Selon sa réponse, Claude écrira la migration (table séparée, purge à un an) avec pré-vol et rollback.
   - **DSA** : exposé des motifs à l'auteur d'un avis retiré (aujourd'hui sur demande par email), contestation, point de contact unique. En micro-entreprise, l'éditeur est exempté de la plupart des obligations propres aux plateformes en ligne.

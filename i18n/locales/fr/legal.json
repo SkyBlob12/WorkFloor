@@ -28,7 +28,7 @@
       {
         "heading": "2. Éditeur",
         "paragraphs": [
-          "Le Service est édité par un entrepreneur individuel désigné dans les mentions légales, accessibles depuis l’écran « Compte » de l’application."
+          "Le Service est édité par une personne physique, joignable à {{contactEmail}} (voir les mentions légales, accessibles depuis l’écran « Compte » de l’application)."
         ]
       },
       {
@@ -102,7 +102,7 @@
       {
         "heading": "1. Responsable du traitement",
         "paragraphs": [
-          "Clément Andrieu, entrepreneur individuel (EI), 8 rue de la Cibade, 12850 Sainte-Radegonde, SIRET 100 141 480 00010, éditeur de l’application {{appName}}. Contact pour toute question relative à vos données : {{contactEmail}}."
+          "Le responsable du traitement est l’éditeur de l’application {{appName}}, personne physique. Contact pour toute question relative à vos données : {{contactEmail}}."
         ]
       },
       {
@@ -196,16 +196,13 @@
       {
         "heading": "Éditeur",
         "paragraphs": [
-          "Clément Andrieu, entrepreneur individuel (EI)",
-          "Adresse : 8 rue de la Cibade, 12850 Sainte-Radegonde, France",
-          "Téléphone : [À COMPLÉTER]",
-          "SIRET : 100 141 480 00010 (SIREN 100 141 480). TVA non applicable, article 293 B du CGI.",
+          "{{appName}} est édité par une personne physique. Conformément à l’article 6-III-2 de la loi pour la confiance dans l’économie numérique, ses éléments d’identification ont été communiqués à l’hébergeur. [À VALIDER PAR LE JURISTE : anonymat possible seulement si l’édition n’est pas une activité professionnelle.]",
           "Email : {{contactEmail}}"
         ]
       },
       {
         "heading": "Directeur de la publication",
-        "paragraphs": ["Clément Andrieu, en qualité d’éditeur."]
+        "paragraphs": ["L’éditeur, joignable à {{contactEmail}}."]
       },
       {
         "heading": "Hébergement",
