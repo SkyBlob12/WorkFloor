@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "description": "Avis anonymes de salariés sur les entreprises françaises : ambiance, salaires, management, avantages.",
+    "pageTitle": "{{title}} | WorkFloor"
+  },
+  "action": {
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "retry": "Réessayer",
+    "continue": "Continuer",
+    "undo": "Annuler",
+    "signIn": "Se connecter",
+    "backHome": "Retour à l’accueil",
+    "clearSearch": "Effacer la recherche"
+  },
+  "nav": {
+    "companies": "Entreprises",
+    "addCompany": "Ajouter une entreprise",
+    "addShort": "Ajouter",
+    "account": "Compte",
+    "myAccount": "Mon compte",
+    "signIn": "Se connecter",
+    "homeLink": "{{name}}, accueil",
+    "mainNavigation": "Navigation principale"
+  },
+  "screenTitle": {
+    "review": "Votre avis",
+    "signIn": "Connexion",
+    "report": "Signaler un avis",
+    "resetPassword": "Nouveau mot de passe",
+    "notFound": "Page introuvable"
+  },
+  "error": {
+    "title": "Une erreur est survenue",
+    "boundaryMessage": "L’incident a été signalé. Vous pouvez réessayer.",
+    "notFoundTitle": "Cette page n’existe pas.",
+    "notFoundMessage": "Le lien est peut-être incorrect, ou la fiche a été retirée."
+  },
+  "serviceError": {
+    "UNKNOWN": "Une erreur est survenue. Réessayez.",
+    "NETWORK": "Impossible de joindre le serveur. Vérifiez votre connexion.",
+    "SERVER_ERROR": "Erreur serveur. Réessayez dans un instant.",
+    "INVALID_INPUT": "Certaines informations sont invalides.",
+    "NOT_AUTHENTICATED": "Connectez-vous pour continuer.",
+    "CAPTCHA_FAILED": "La vérification anti-robot a échoué. Réessayez.",
+    "RATE_LIMITED_REVIEWS": "Trop de publications en peu de temps. Réessayez demain.",
+    "RATE_LIMITED_COMPANIES": "Trop d’entreprises ajoutées aujourd’hui. Réessayez demain.",
+    "PERSONAL_DATA": "Retirez les adresses email et numéros de téléphone : un avis ne doit contenir aucune donnée personnelle.",
+    "BANNED_TERM": "Votre avis contient des termes injurieux. Reformulez-le en restant factuel sur l’entreprise.",
+    "CONTENT_POLICY": "Votre avis enfreint nos règles de contenu (menaces, haine, violence). Reformulez-le.",
+    "ALREADY_REVIEWED": "Vous avez déjà publié un avis sur cette entreprise. Vous pouvez le modifier.",
+    "COMPANY_NOT_FOUND": "Entreprise introuvable.",
+    "REVIEW_NOT_FOUND": "Avis introuvable.",
+    "REVIEW_LOCKED": "Cet avis a été retiré par la modération et ne peut plus être modifié.",
+    "INVALID_SIREN": "Le SIREN doit contenir 9 chiffres.",
+    "SIRENE_NOT_FOUND": "Aucune entreprise trouvée pour ce SIREN.",
+    "SIRENE_UNAVAILABLE": "Le répertoire SIRENE ne répond pas. Réessayez plus tard.",
+    "SIRENE_RATE_LIMITED": "Trop de recherches, patientez quelques secondes.",
+    "SOLE_PROPRIETOR": "Les entreprises individuelles ne peuvent pas être ajoutées : elles correspondent à une personne physique.",
+    "SEARCH_FAILED": "La recherche a échoué.",
+    "LOAD_FAILED": "Impossible de charger ces informations.",
+    "DELETE_FAILED": "La suppression a échoué.",
+    "VOTE_FAILED": "Votre vote n’a pas été pris en compte.",
+    "REPORT_FAILED": "Le signalement a échoué. Réessayez.",
+    "ALREADY_REPORTED": "Vous avez déjà signalé cet avis.",
+    "BLOCK_FAILED": "Impossible de masquer cet auteur.",
+    "UNBLOCK_FAILED": "Impossible de réafficher les auteurs masqués.",
+    "ACCOUNT_DELETE_FAILED": "La suppression du compte a échoué. Réessayez ou contactez-nous.",
+    "AUTH_INVALID_CREDENTIALS": "Email ou mot de passe incorrect.",
+    "AUTH_EMAIL_NOT_CONFIRMED": "Confirmez d’abord votre adresse email (lien reçu par mail).",
+    "AUTH_USER_ALREADY_EXISTS": "Un compte existe déjà avec cet email.",
+    "AUTH_WEAK_PASSWORD": "Mot de passe trop faible.",
+    "AUTH_RATE_LIMITED": "Trop de tentatives. Patientez quelques minutes.",
+    "AUTH_EMAIL_RATE_LIMITED": "Trop d’emails envoyés. Patientez quelques minutes.",
+    "AUTH_CAPTCHA_FAILED": "La vérification anti-robot a échoué. Réessayez.",
+    "AUTH_FAILED": "La connexion a échoué. Réessayez."
+  },
+  "setup": {
+    "title": "Supabase n’est pas configuré",
+    "message": "Copiez .env.example en .env, renseignez l’URL et la clé du projet puis relancez « npx expo start » (voir SETUP.md)."
+  },
+  "rating": {
+    "notRated": "Pas encore noté",
+    "value": "Note {{value}} sur 5",
+    "step": "{{label}} : {{value}} sur 5"
+  },
+  "captcha": {
+    "label": "Vérification anti-robot"
+  },
+  "form": {
+    "counter": "{{current}} / {{max}}"
+  },
+  "loading": "Chargement",
+  "notifications": {
+    "defaultChannel": "Général"
+  }
+}

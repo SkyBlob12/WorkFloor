@@ -1,0 +1,175 @@
+{
+  "employmentStatus": {
+    "current": "Current employee",
+    "former": "Former employee"
+  },
+  "contractType": {
+    "cdi": "Permanent",
+    "cdd": "Fixed-term",
+    "interim": "Temp",
+    "internship": "Internship",
+    "apprenticeship": "Apprenticeship",
+    "freelance": "Freelance",
+    "other": "Other"
+  },
+  "salaryPeriod": {
+    "year": "gross / year",
+    "month": "gross / month",
+    "hour": "gross / hour"
+  },
+  "criterion": {
+    "culture": "Culture",
+    "salary": "Salary",
+    "benefits": "Benefits",
+    "management": "Management",
+    "work_life": "Work-life balance"
+  },
+  "status": {
+    "published": "Published",
+    "pending": "Under review",
+    "hidden": "Hidden by moderators",
+    "removed": "Removed"
+  },
+  "card": {
+    "dateEdited": "{{month}} · edited",
+    "mine": "Your review",
+    "pros": "Pros",
+    "cons": "Cons",
+    "benefits": "Benefits",
+    "recommends": "Recommends",
+    "notRecommends": "Doesn’t recommend",
+    "salary": "€{{amount}} {{period}}",
+    "criterionValue": "{{value}}/5",
+    "helpful": "Helpful",
+    "helpfulCount_one": "Helpful · {{count}}",
+    "helpfulCount_other": "Helpful · {{count}}",
+    "helpfulA11y_one": "Helpful, {{count}} vote",
+    "helpfulA11y_other": "Helpful, {{count}} votes",
+    "helpfulSummary_zero": "No one has voted on this review yet",
+    "helpfulSummary_one": "{{count}} person found this review helpful",
+    "helpfulSummary_other": "{{count}} people found this review helpful",
+    "moreMine": "Manage my review",
+    "moreOther": "Report or hide this review"
+  },
+  "actions": {
+    "sheetTitleMine": "Your review",
+    "sheetTitleOther": "Something wrong with this review?",
+    "edit": "Edit my review",
+    "delete": "Delete my review",
+    "report": "Report this review",
+    "blockAuthor": "Hide reviews from this author"
+  },
+  "undo": {
+    "deleted": "Review deleted",
+    "authorHidden": "Reviews from this author hidden"
+  },
+  "form": {
+    "titleNew": "Write a review",
+    "titleEdit": "Edit my review",
+    "charterTitle": "Talk about the company, not about people",
+    "charterMessage": "No names, no accusations against anyone, no confidential information. Describe your experience and facts.",
+    "overall": "Overall rating",
+    "recommendQuestion": "Would you recommend this company to a friend?",
+    "recommendLabel": "Recommendation",
+    "yes": "Yes",
+    "no": "No",
+    "position": "Your position",
+    "statusLabel": "Status",
+    "contractLabel": "Contract type",
+    "jobTitle": "Job title (optional)",
+    "jobTitleHint": "Keep it generic if your exact title could identify you.",
+    "content": "Your review",
+    "title": "Title",
+    "titlePlaceholder": "Sum up your experience in one sentence",
+    "pros": "Pros",
+    "prosPlaceholder": "What works well: team, projects, organisation…",
+    "cons": "Cons",
+    "consPlaceholder": "What could change, sticking to facts",
+    "benefits": "Benefits (optional)",
+    "benefitsPlaceholder": "Remote work, meal vouchers, health insurance, bonuses…",
+    "criteria": "Detailed ratings",
+    "criteriaHint": "Optional. Tap a star again to clear the rating.",
+    "salary": "Salary",
+    "salaryHint": "Optional. Shown without any link to your identity.",
+    "salaryAmount": "Gross amount (€)",
+    "salaryPlaceholder": "e.g. 42000",
+    "salaryPeriodLabel": "Period",
+    "submitNew": "Publish my review",
+    "submitEdit": "Save changes",
+    "fixErrors": "Some fields need fixing.",
+    "captchaPending": "The bot check isn’t finished yet. Wait a moment, then try again.",
+    "termsNotice": "By publishing, you accept the <link>content rules</link>. You can edit or delete your review at any time.",
+    "authTitle": "Sign in to write a review",
+    "authMessage": "An account limits fake reviews. Your identity is never shown."
+  },
+  "formError": {
+    "required": "Required field",
+    "tooShort_one": "At least {{count}} character",
+    "tooShort_other": "At least {{count}} characters",
+    "tooLong_one": "At most {{count}} character",
+    "tooLong_other": "At most {{count}} characters",
+    "ratingRequired": "Give an overall rating",
+    "salaryInvalid": "Invalid amount",
+    "salaryPeriodRequired": "Choose the period",
+    "personalData": "Remove emails and phone numbers"
+  },
+  "submitted": {
+    "publishedTitleNew": "Thanks, your review is live",
+    "publishedTitleEdit": "Review updated",
+    "publishedMessage": "It’s now visible on the company page, with nothing that could identify you.",
+    "pendingTitle": "Review under moderation",
+    "pendingMessage": "Some parts need checking before publication. You can follow its status from your account.",
+    "back": "Back to the company"
+  },
+  "report": {
+    "title": "Report a review",
+    "intro": "Your report is confidential: the author won’t know who sent it.",
+    "reasonsLabel": "Reason for reporting",
+    "details": "Details (optional)",
+    "detailsPlaceholder": "What’s wrong with this review?",
+    "submit": "Send report",
+    "reasonRequired": "Choose a reason.",
+    "detailsRequired": "Describe the problem.",
+    "legalNotice": "Legal takedown request (LCEN, DSA) or a company’s right of reply: write to {{email}}.",
+    "authTitle": "Sign in to report",
+    "authMessage": "An account is required to prevent abusive reports.",
+    "doneTitle": "Report sent",
+    "doneMessage": "Thank you. Reports are reviewed and clearly unlawful content is removed.",
+    "blockToo": "Also hide reviews from this author",
+    "blocked": "Reviews from this author are now hidden for you."
+  },
+  "reportReason": {
+    "defamation": {
+      "label": "Defamation",
+      "hint": "Names a person and accuses them of unproven facts"
+    },
+    "personal_data": {
+      "label": "Personal data",
+      "hint": "Name, email, phone or a detail that identifies someone"
+    },
+    "harassment": {
+      "label": "Harassment or insults",
+      "hint": "Abusive or threatening language"
+    },
+    "hate": {
+      "label": "Hateful content",
+      "hint": "Discrimination, racism, sexism…"
+    },
+    "spam": {
+      "label": "Spam or fake review",
+      "hint": "Advertising, review written by the company or a competitor"
+    },
+    "off_topic": {
+      "label": "Off topic",
+      "hint": "Not about the work experience"
+    },
+    "illegal": {
+      "label": "Unlawful content",
+      "hint": "Other clearly illegal content"
+    },
+    "other": {
+      "label": "Other",
+      "hint": "Please give details"
+    }
+  }
+}

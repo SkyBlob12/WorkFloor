@@ -1,0 +1,175 @@
+{
+  "employmentStatus": {
+    "current": "Salarié actuel",
+    "former": "Ancien salarié"
+  },
+  "contractType": {
+    "cdi": "CDI",
+    "cdd": "CDD",
+    "interim": "Intérim",
+    "internship": "Stage",
+    "apprenticeship": "Alternance",
+    "freelance": "Freelance",
+    "other": "Autre"
+  },
+  "salaryPeriod": {
+    "year": "brut / an",
+    "month": "brut / mois",
+    "hour": "brut / heure"
+  },
+  "criterion": {
+    "culture": "Ambiance",
+    "salary": "Salaire",
+    "benefits": "Avantages",
+    "management": "Management",
+    "work_life": "Équilibre vie pro / perso"
+  },
+  "status": {
+    "published": "Publié",
+    "pending": "En relecture",
+    "hidden": "Masqué par la modération",
+    "removed": "Retiré"
+  },
+  "card": {
+    "dateEdited": "{{month}} · modifié",
+    "mine": "Votre avis",
+    "pros": "Points positifs",
+    "cons": "Points à améliorer",
+    "benefits": "Avantages",
+    "recommends": "Recommande",
+    "notRecommends": "Ne recommande pas",
+    "salary": "{{amount}} € {{period}}",
+    "criterionValue": "{{value}}/5",
+    "helpful": "Utile",
+    "helpfulCount_one": "Utile · {{count}}",
+    "helpfulCount_other": "Utile · {{count}}",
+    "helpfulA11y_one": "Utile, {{count}} vote",
+    "helpfulA11y_other": "Utile, {{count}} votes",
+    "helpfulSummary_zero": "Personne n’a encore voté pour cet avis",
+    "helpfulSummary_one": "{{count}} personne a trouvé cet avis utile",
+    "helpfulSummary_other": "{{count}} personnes ont trouvé cet avis utile",
+    "moreMine": "Gérer mon avis",
+    "moreOther": "Signaler ou masquer cet avis"
+  },
+  "actions": {
+    "sheetTitleMine": "Votre avis",
+    "sheetTitleOther": "Cet avis pose problème ?",
+    "edit": "Modifier mon avis",
+    "delete": "Supprimer mon avis",
+    "report": "Signaler cet avis",
+    "blockAuthor": "Masquer les avis de cet auteur"
+  },
+  "undo": {
+    "deleted": "Avis supprimé",
+    "authorHidden": "Avis de cet auteur masqués"
+  },
+  "form": {
+    "titleNew": "Donner mon avis",
+    "titleEdit": "Modifier mon avis",
+    "charterTitle": "Parlez de l’entreprise, pas des personnes",
+    "charterMessage": "Pas de noms, pas d’accusations visant quelqu’un, pas d’informations confidentielles. Décrivez votre expérience et des faits.",
+    "overall": "Note globale",
+    "recommendQuestion": "Recommanderiez-vous cette entreprise à un proche ?",
+    "recommendLabel": "Recommandation",
+    "yes": "Oui",
+    "no": "Non",
+    "position": "Votre poste",
+    "statusLabel": "Statut",
+    "contractLabel": "Type de contrat",
+    "jobTitle": "Intitulé du poste (optionnel)",
+    "jobTitleHint": "Restez générique si votre intitulé exact permet de vous identifier.",
+    "content": "Votre avis",
+    "title": "Titre",
+    "titlePlaceholder": "Résumez votre expérience en une phrase",
+    "pros": "Points positifs",
+    "prosPlaceholder": "Ce qui fonctionne bien : équipe, missions, organisation…",
+    "cons": "Points à améliorer",
+    "consPlaceholder": "Ce qui pourrait changer, en restant factuel",
+    "benefits": "Avantages (optionnel)",
+    "benefitsPlaceholder": "Télétravail, tickets restaurant, mutuelle, primes…",
+    "criteria": "Détail des notes",
+    "criteriaHint": "Optionnel. Touchez à nouveau une étoile pour retirer la note.",
+    "salary": "Salaire",
+    "salaryHint": "Optionnel. Affiché sans aucun lien avec votre identité.",
+    "salaryAmount": "Montant brut (€)",
+    "salaryPlaceholder": "Ex. 42000",
+    "salaryPeriodLabel": "Période",
+    "submitNew": "Publier mon avis",
+    "submitEdit": "Enregistrer les modifications",
+    "fixErrors": "Certains champs sont à corriger.",
+    "captchaPending": "La vérification anti-robot n’est pas terminée. Patientez un instant puis réessayez.",
+    "termsNotice": "En publiant, vous acceptez les <link>règles de contenu</link>. Vous pourrez modifier ou supprimer votre avis à tout moment.",
+    "authTitle": "Connectez-vous pour donner votre avis",
+    "authMessage": "Un compte limite les faux avis. Votre identité n’est jamais affichée."
+  },
+  "formError": {
+    "required": "Champ obligatoire",
+    "tooShort_one": "{{count}} caractère minimum",
+    "tooShort_other": "{{count}} caractères minimum",
+    "tooLong_one": "{{count}} caractère maximum",
+    "tooLong_other": "{{count}} caractères maximum",
+    "ratingRequired": "Donnez une note globale",
+    "salaryInvalid": "Montant invalide",
+    "salaryPeriodRequired": "Précisez la période",
+    "personalData": "Retirez les emails et numéros de téléphone"
+  },
+  "submitted": {
+    "publishedTitleNew": "Merci, votre avis est publié",
+    "publishedTitleEdit": "Avis mis à jour",
+    "publishedMessage": "Il est désormais visible sur la fiche, sans aucune information permettant de vous identifier.",
+    "pendingTitle": "Avis en cours de relecture",
+    "pendingMessage": "Certains passages doivent être vérifiés avant publication. Vous pouvez suivre son statut depuis votre compte.",
+    "back": "Retour à la fiche"
+  },
+  "report": {
+    "title": "Signaler un avis",
+    "intro": "Votre signalement est confidentiel : l’auteur ne saura pas qui l’a envoyé.",
+    "reasonsLabel": "Motif du signalement",
+    "details": "Détails (optionnel)",
+    "detailsPlaceholder": "Qu’est-ce qui pose problème dans cet avis ?",
+    "submit": "Envoyer le signalement",
+    "reasonRequired": "Choisissez un motif.",
+    "detailsRequired": "Précisez le problème.",
+    "legalNotice": "Demande de retrait au titre de la loi (LCEN, DSA) ou droit de réponse d’une entreprise : écrivez à {{email}}.",
+    "authTitle": "Connectez-vous pour signaler",
+    "authMessage": "Un compte est nécessaire pour éviter les signalements abusifs.",
+    "doneTitle": "Signalement envoyé",
+    "doneMessage": "Merci. Les signalements sont examinés et les contenus manifestement illicites sont retirés.",
+    "blockToo": "Masquer aussi les avis de cet auteur",
+    "blocked": "Les avis de cet auteur sont désormais masqués pour vous."
+  },
+  "reportReason": {
+    "defamation": {
+      "label": "Diffamation",
+      "hint": "Accuse nommément une personne de faits non prouvés"
+    },
+    "personal_data": {
+      "label": "Données personnelles",
+      "hint": "Nom, email, téléphone ou détail permettant d’identifier quelqu’un"
+    },
+    "harassment": {
+      "label": "Harcèlement ou insultes",
+      "hint": "Propos injurieux ou menaçants"
+    },
+    "hate": {
+      "label": "Contenu haineux",
+      "hint": "Discrimination, racisme, sexisme…"
+    },
+    "spam": {
+      "label": "Spam ou faux avis",
+      "hint": "Publicité, avis rédigé par l’entreprise ou un concurrent"
+    },
+    "off_topic": {
+      "label": "Hors sujet",
+      "hint": "Ne parle pas de l’expérience de travail"
+    },
+    "illegal": {
+      "label": "Contenu illicite",
+      "hint": "Autre contenu manifestement illégal"
+    },
+    "other": {
+      "label": "Autre",
+      "hint": "Précisez dans le détail"
+    }
+  }
+}

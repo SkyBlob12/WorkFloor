@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "description": "Anonymous employee reviews of French companies: culture, salaries, management, benefits.",
+    "pageTitle": "{{title}} | WorkFloor"
+  },
+  "action": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "retry": "Try again",
+    "continue": "Continue",
+    "undo": "Undo",
+    "signIn": "Sign in",
+    "backHome": "Back to home",
+    "clearSearch": "Clear search"
+  },
+  "nav": {
+    "companies": "Companies",
+    "addCompany": "Add a company",
+    "addShort": "Add",
+    "account": "Account",
+    "myAccount": "My account",
+    "signIn": "Sign in",
+    "homeLink": "{{name}}, home",
+    "mainNavigation": "Main navigation"
+  },
+  "screenTitle": {
+    "review": "Your review",
+    "signIn": "Sign in",
+    "report": "Report a review",
+    "resetPassword": "New password",
+    "notFound": "Page not found"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "boundaryMessage": "The issue has been reported. You can try again.",
+    "notFoundTitle": "This page doesn’t exist.",
+    "notFoundMessage": "The link may be wrong, or the page has been removed."
+  },
+  "serviceError": {
+    "UNKNOWN": "Something went wrong. Please try again.",
+    "NETWORK": "Can’t reach the server. Check your connection.",
+    "SERVER_ERROR": "Server error. Please try again in a moment.",
+    "INVALID_INPUT": "Some information is invalid.",
+    "NOT_AUTHENTICATED": "Sign in to continue.",
+    "CAPTCHA_FAILED": "The bot check failed. Please try again.",
+    "RATE_LIMITED_REVIEWS": "Too many posts in a short time. Try again tomorrow.",
+    "RATE_LIMITED_COMPANIES": "Too many companies added today. Try again tomorrow.",
+    "PERSONAL_DATA": "Remove email addresses and phone numbers: a review must not contain any personal data.",
+    "BANNED_TERM": "Your review contains offensive language. Rephrase it and stick to facts about the company.",
+    "CONTENT_POLICY": "Your review breaks our content rules (threats, hate, violence). Please rephrase it.",
+    "ALREADY_REVIEWED": "You’ve already reviewed this company. You can edit your review.",
+    "COMPANY_NOT_FOUND": "Company not found.",
+    "REVIEW_NOT_FOUND": "Review not found.",
+    "REVIEW_LOCKED": "This review was removed by moderators and can no longer be edited.",
+    "INVALID_SIREN": "A SIREN number has 9 digits.",
+    "SIRENE_NOT_FOUND": "No company found for this SIREN number.",
+    "SIRENE_UNAVAILABLE": "The SIRENE registry isn’t responding. Try again later.",
+    "SIRENE_RATE_LIMITED": "Too many searches, please wait a few seconds.",
+    "SOLE_PROPRIETOR": "Sole proprietorships can’t be added: they correspond to an individual person.",
+    "SEARCH_FAILED": "The search failed.",
+    "LOAD_FAILED": "Couldn’t load this information.",
+    "DELETE_FAILED": "Deletion failed.",
+    "VOTE_FAILED": "Your vote wasn’t saved.",
+    "REPORT_FAILED": "The report failed. Please try again.",
+    "ALREADY_REPORTED": "You’ve already reported this review.",
+    "BLOCK_FAILED": "Couldn’t hide this author.",
+    "UNBLOCK_FAILED": "Couldn’t show hidden authors again.",
+    "ACCOUNT_DELETE_FAILED": "Account deletion failed. Try again or contact us.",
+    "AUTH_INVALID_CREDENTIALS": "Wrong email or password.",
+    "AUTH_EMAIL_NOT_CONFIRMED": "Please confirm your email address first (link sent by email).",
+    "AUTH_USER_ALREADY_EXISTS": "An account already exists with this email.",
+    "AUTH_WEAK_PASSWORD": "Password too weak.",
+    "AUTH_RATE_LIMITED": "Too many attempts. Please wait a few minutes.",
+    "AUTH_EMAIL_RATE_LIMITED": "Too many emails sent. Please wait a few minutes.",
+    "AUTH_CAPTCHA_FAILED": "The bot check failed. Please try again.",
+    "AUTH_FAILED": "Sign-in failed. Please try again."
+  },
+  "setup": {
+    "title": "Supabase isn’t configured",
+    "message": "Copy .env.example to .env, fill in the project URL and key, then restart “npx expo start” (see SETUP.md)."
+  },
+  "rating": {
+    "notRated": "Not rated yet",
+    "value": "Rated {{value}} out of 5",
+    "step": "{{label}}: {{value}} out of 5"
+  },
+  "captcha": {
+    "label": "Bot check"
+  },
+  "form": {
+    "counter": "{{current}} / {{max}}"
+  },
+  "loading": "Loading",
+  "notifications": {
+    "defaultChannel": "General"
+  }
+}

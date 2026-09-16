@@ -1,0 +1,108 @@
+{
+  "pageTitle": "Mon compte",
+  "signedOut": {
+    "title": "Pas encore connecté",
+    "message": "La lecture est libre. Connectez-vous pour publier un avis, voter ou signaler : votre identité n’est jamais affichée.",
+    "signIn": "Se connecter",
+    "signUp": "Créer un compte"
+  },
+  "signedIn": {
+    "title": "Connecté",
+    "connectedAs": "Adresse privée : jamais affichée ni associée à vos avis."
+  },
+  "myReviews": {
+    "title": "Mes avis",
+    "empty": "Vous n’avez encore publié aucun avis.",
+    "edit": "Modifier cet avis",
+    "open": "Voir la fiche de {{name}}",
+    "unknownCompany": "Entreprise"
+  },
+  "blocked": {
+    "title": "Auteurs masqués",
+    "count_one": "Vous avez masqué les avis de {{count}} auteur.",
+    "count_other": "Vous avez masqué les avis de {{count}} auteurs.",
+    "unblockAll": "Tout réafficher"
+  },
+  "preferences": {
+    "title": "Préférences",
+    "language": "Langue",
+    "analytics": "Mesure d’audience",
+    "analyticsHint": "Statistiques de fréquentation, jamais reliées à votre compte."
+  },
+  "actions": {
+    "signOut": "Se déconnecter",
+    "delete": "Supprimer mon compte"
+  },
+  "deleteConfirm": {
+    "title": "Supprimer votre compte ?",
+    "message": "Votre compte, tous vos avis, votes et signalements seront définitivement effacés. Cette action est irréversible.",
+    "confirm": "Supprimer définitivement"
+  },
+  "devTools": {
+    "title": "Outils de développement",
+    "description": "Visible uniquement en mode développement.",
+    "onboarding": "Lancer l’onboarding"
+  },
+  "consent": {
+    "title": "Mesure d’audience",
+    "message": "Nous aimerions mesurer la fréquentation pour améliorer le service. Rien n’est relié à votre compte ni à vos avis. Vous pourrez changer d’avis depuis votre compte.",
+    "accept": "Accepter",
+    "refuse": "Refuser"
+  },
+  "auth": {
+    "welcomeTitle": "Bienvenue",
+    "welcomeMessage": "Connectez-vous pour donner votre avis. Votre identité n’est jamais affichée.",
+    "resetMessage": "Indiquez votre email : vous recevrez un lien pour choisir un nouveau mot de passe.",
+    "title": {
+      "signin": "Connexion",
+      "signup": "Créer un compte",
+      "reset": "Mot de passe oublié"
+    },
+    "provider": {
+      "apple": "Continuer avec Apple",
+      "google": "Continuer avec Google"
+    },
+    "divider": "ou avec votre email",
+    "modeLabel": "Connexion ou inscription",
+    "mode": {
+      "signin": "J’ai un compte",
+      "signup": "Je suis nouveau"
+    },
+    "email": "Email",
+    "emailPlaceholder": "vous@exemple.fr",
+    "password": "Mot de passe",
+    "passwordHint_one": "{{count}} caractère minimum",
+    "passwordHint_other": "{{count}} caractères minimum",
+    "terms": "En continuant, vous confirmez avoir {{age}} ans ou plus et acceptez les <terms>conditions d’utilisation</terms> et la <privacy>politique de confidentialité</privacy>.",
+    "submit": {
+      "signin": "Se connecter",
+      "signup": "Créer mon compte",
+      "reset": "Envoyer le lien"
+    },
+    "toReset": "Mot de passe oublié ?",
+    "toSignin": "Retour à la connexion",
+    "issue": {
+      "invalidEmail": "Adresse email invalide.",
+      "passwordTooShort_one": "Le mot de passe doit contenir au moins {{count}} caractère.",
+      "passwordTooShort_other": "Le mot de passe doit contenir au moins {{count}} caractères."
+    },
+    "notice": {
+      "resetSent": "Si un compte existe pour cette adresse, un email de réinitialisation vient d’être envoyé."
+    }
+  },
+  "reset": {
+    "title": "Nouveau mot de passe",
+    "expiredTitle": "Lien expiré ou invalide",
+    "expiredMessage": "Demandez un nouveau lien depuis l’écran de connexion.",
+    "doneTitle": "Mot de passe modifié",
+    "doneMessage": "Vous êtes connecté avec votre nouveau mot de passe.",
+    "newPassword": "Nouveau mot de passe",
+    "confirmation": "Confirmation",
+    "submit": "Enregistrer",
+    "issue": {
+      "tooShort_one": "{{count}} caractère minimum.",
+      "tooShort_other": "{{count}} caractères minimum.",
+      "mismatch": "Les deux mots de passe ne correspondent pas."
+    }
+  }
+}

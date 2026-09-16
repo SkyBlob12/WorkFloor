@@ -1,0 +1,74 @@
+{
+  "pageTitle": "Bienvenue",
+  "progress": "Étape {{current}} sur {{total}}",
+  "back": "Étape précédente",
+  "continue": "Suivant",
+  "skip": "Passer",
+  "profile": {
+    "title": "Qu’est-ce qui vous <accent>amène</accent> ?",
+    "subtitle": "On adapte WorkFloor à votre situation.",
+    "options": {
+      "jobSeeker": {
+        "title": "Je cherche un emploi",
+        "description": "Savoir où je mets les pieds avant de postuler"
+      },
+      "employee": {
+        "title": "Je suis en poste",
+        "description": "Partager mon expérience, comparer mon salaire"
+      },
+      "curious": {
+        "title": "Je suis curieux",
+        "description": "Découvrir l’envers du décor des entreprises"
+      }
+    },
+    "a11yGroup": "Votre situation"
+  },
+  "priorities": {
+    "title": "Ce qui <accent>compte</accent> pour vous",
+    "subtitle_one": "Choisissez jusqu’à {{count}} critère : il sera mis en avant sur chaque fiche.",
+    "subtitle_other": "Choisissez jusqu’à {{count}} critères : ils seront mis en avant sur chaque fiche.",
+    "counter": "{{current}} / {{max}} sélectionnés"
+  },
+  "rating": {
+    "title": {
+      "jobSeeker": "<accent>Notez</accent> votre dernier poste",
+      "employee": "<accent>Notez</accent> votre employeur",
+      "curious": "<accent>Notez</accent> une entreprise"
+    },
+    "subtitle": "Juste pour essayer : touchez une étoile, rien n’est publié.",
+    "label": "Note d’essai",
+    "feedback": {
+      "low": "Ça arrive. Votre témoignage peut éviter ça à d’autres.",
+      "mid": "Mitigé : ce sont les détails qui aident les autres.",
+      "high": "Super ! Dites aux autres ce qui fonctionne."
+    },
+    "sticker": "Essai",
+    "overall": "Note globale",
+    "target": {
+      "jobSeeker": "Mon dernier poste",
+      "employee": "Mon employeur",
+      "curious": "Une entreprise"
+    }
+  },
+  "anonymity": {
+    "title": "Votre identité reste <accent>secrète</accent>",
+    "subtitle": "Touchez le bouton pour voir ce que les lecteurs verront.",
+    "sampleAuthor": "Camille R., cheffe de projet",
+    "sampleAnonymous": "Anonyme · Chef de projet",
+    "sampleTitle": "Bonne ambiance, mais peu d’évolution",
+    "action": "Anonymiser cet avis",
+    "points": {
+      "name": "Ni nom, ni email affichés",
+      "date": "Seulement le mois de publication",
+      "company": "L’entreprise ne sait jamais qui a écrit"
+    },
+    "sticker": "Anonyme"
+  },
+  "auth": {
+    "title": "Voyez l’<accent>envers</accent> du décor",
+    "subtitle": "Créez un compte pour publier et voter, ou explorez librement.",
+    "email": "Continuer avec l’email",
+    "guest": "Continuer en invité",
+    "guestHint": "Lecture seule : un compte sera demandé pour publier."
+  }
+}

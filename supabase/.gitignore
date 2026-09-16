@@ -1,0 +1,12 @@
+# Supabase
+.branches
+.temp
+
+# Sauvegardes de données (npm run db:backup) : contiennent des données personnelles, jamais versionnées
+backups/*
+!backups/.gitkeep
+
+# dotenvx
+.env.keys
+.env.local
+.env.*.local
