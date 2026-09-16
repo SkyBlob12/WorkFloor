@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 export function CompanyWideLayout({ sidebar, children }: CompanyWideLayoutProps) {
   return (
     <View style={styles.layout}>
-      <ScrollView style={styles.sidebar} contentContainerStyle={styles.sidebarContent}>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.sidebar} contentContainerStyle={styles.sidebarContent}>
         {sidebar}
       </ScrollView>
       <View style={styles.main}>{children}</View>

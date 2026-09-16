@@ -49,7 +49,7 @@ export function OnboardingShell({ stepIndex, stepCount, stepKey, onBack, actions
         <View style={styles.top}>
           {onBack ? <IconButton icon="arrow-left" accessibilityLabel={t('back')} onPress={onBack} /> : null}
         </View>
-        <ScrollView style={styles.scroll} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.scroll} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
           <Animated.View key={stepKey} entering={FadeIn.duration(motion.stepDuration)} style={styles.step}>
             {children}
           </Animated.View>

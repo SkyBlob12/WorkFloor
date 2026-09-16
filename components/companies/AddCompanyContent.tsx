@@ -60,6 +60,7 @@ export function AddCompanyContent({ initialQuery }: AddCompanyContentProps) {
     <>
       <PageHead title={t('add.pageTitle')} />
       <FlatList
+        showsVerticalScrollIndicator={false}
         style={{ flex: 1, backgroundColor: palette.background }}
         contentContainerStyle={contentStyle}
         data={searchable ? (search.data ?? []) : []}

@@ -1,6 +1,6 @@
 {
   "updatedLabel": "Last updated: {{date}}",
-  "updatedAt": "[TO COMPLETE: launch date]",
+  "updatedAt": "16 September 2026",
   "notFound": "Document not found.",
   "site": {
     "tagline": "Anonymous employee reviews of companies: salaries, culture, management.",
@@ -60,7 +60,7 @@
         "heading": "6. Anonymity",
         "paragraphs": [
           "Your name and email address are never displayed. Reviews are published without any identifier and dated to the month.",
-          "As a hosting provider, we are legally required to retain certain data that identifies content authors and to disclose it to judicial authorities upon request (see the privacy policy). Also avoid including details in your review that could make you recognisable."
+          "As long as your account exists, judicial authorities may obtain the data we hold upon request; once it is deleted, we keep none. Avoid including details in your review that could make you recognisable."
         ]
       },
       {
@@ -84,7 +84,7 @@
       {
         "heading": "10. Account deletion",
         "paragraphs": [
-          "You can delete your account at any time from the “Account” screen, “Delete my account” button. Your reviews, votes and reports are then erased, subject to data whose retention is required by law."
+          "You can delete your account at any time from the “Account” screen, “Delete my account” button. All your data is then erased immediately and permanently (email address, reviews, votes, reports, hidden authors); no copy is kept."
         ]
       },
       {
@@ -109,7 +109,7 @@
         "heading": "2. Data collected",
         "paragraphs": [
           "Account: email address, password (stored hashed, never in plain text), creation and last sign-in dates. If you sign in with Apple or Google, we receive your email address from that provider (possibly a relay address hidden by Apple) and a technical identifier, never your password.",
-          "Contributions: reviews (ratings, texts, job title, contract type, declared salary), “helpful” votes, reports and hidden authors. Reviews are published without any identifier; the link between your account and your reviews is kept internally so you can edit them, to enforce the one-review-per-company rule and to meet our legal obligations.",
+          "Contributions: reviews (ratings, texts, job title, contract type, declared salary), “helpful” votes, reports and hidden authors. Reviews are published without any identifier; the link between your account and your reviews is kept internally so you can edit them and to enforce the one-review-per-company rule, until your account is deleted.",
           "Anti-abuse data: when you publish, your IP address is recorded in hashed (irreversible) form to limit bursts of submissions.",
           "Crash reports: when the app crashes, technical information (device model, system and app version, error trace) is sent to our diagnostics tool, without your email address.",
           "Analytics: only if you agree, we measure the screens viewed and the device type. These statistics are never linked to your account.",
@@ -122,7 +122,7 @@
         "paragraphs": [
           "Providing the Service (account, publishing, votes, reports, password reset): performance of the terms of use.",
           "Preventing spam and abuse, moderating content, securing the Service, diagnosing errors: legitimate interest.",
-          "Retaining data that identifies content authors and responding to judicial requests: legal obligation.",
+          "Responding to judicial requests concerning existing data: legal obligation.",
           "Analytics: consent, which you can withdraw at any time from the “Account” screen."
         ]
       },
@@ -132,11 +132,12 @@
           "Your data is never sold or used for advertising. It is processed by our service providers, strictly within the scope of their mission:",
           "Supabase Pte. Ltd. (Singapore): database and authentication, data hosted in France (Paris) on Amazon Web Services infrastructure.",
           "OpenAI Ireland Ltd (Ireland): automated moderation of review texts, sent without any identifier. Texts may be processed in the United States by OpenAI, L.L.C.; this transfer is covered by the European Commission’s standard contractual clauses. Texts are not used to train OpenAI’s models.",
-          "Google Ireland Ltd: sign-in with Google if you choose it, and sending password reset emails (Gmail).",
+          "Google Ireland Ltd: sign-in with Google if you choose it.",
+          "1&1 Mail & Media GmbH (GMX, Germany): sending password reset emails.",
           "Tutao GmbH (Tuta, Germany): encrypted mailbox of the contact address, which receives your requests and reports by email.",
           "GitHub, Inc. (United States): hosting of the information web pages (support and legal documents), which technically logs their visitors’ IP addresses; transfer covered by the EU-US Data Privacy Framework.",
           "Apple Distribution International Ltd: sign-in with Apple if you choose it.",
-          "Functional Software, Inc. (Sentry, United States): crash reports, transfer covered by standard contractual clauses.",
+          "Functional Software, Inc. (Sentry): crash reports, data hosted in the European Union (Germany).",
           "PostHog, Inc.: analytics, only with your consent, data hosted in the European Union.",
           "650 Industries, Inc. (Expo, United States): delivery of app updates, transfer covered by standard contractual clauses.",
           "Judicial authorities may obtain certain data upon request."
@@ -148,7 +149,7 @@
         "paragraphs": [
           "Account, reviews, votes, reports and hidden authors: until your account or the content concerned is deleted.",
           "Hashed IP addresses: 30 days.",
-          "Data identifying content authors (email address, account identifier, date and nature of each publication): one year from the deletion of the content or account, in accordance with French decree no. 2021-1362 of 20 October 2021, in a separate area accessible only to respond to a judicial request. [TO BE VALIDATED BY THE LAWYER: the app currently erases this data immediately when the account is deleted; technical compliance depends on this validation.]",
+          "Account deletion: all data linked to the account (email address, reviews, votes, reports, hidden authors, hashed IP addresses) is erased immediately and permanently. No copy or archive is kept. Only company pages remain, taken from the public SIRENE register and not linked to your account.",
           "Crash reports: 90 days at most.",
           "Requests sent by email (exercise of rights, content notices): three years from the last exchange, to evidence how they were handled."
         ]
@@ -164,7 +165,7 @@
         "id": "delete-account",
         "heading": "7. Deleting your account",
         "paragraphs": [
-          "In the app: open the “Account” tab, tap “Delete my account”, then “Delete permanently”. Deletion is immediate: your email address, reviews, votes, reports and hidden authors are erased, subject to data whose retention is required by law (section 5).",
+          "In the app: open the “Account” tab, tap “Delete my account”, then “Delete permanently”. Deletion is immediate: your email address, reviews, votes, reports and hidden authors are erased, with no copy kept.",
           "If you no longer have access to the app, write to {{contactEmail}} from your account’s email address asking for its deletion. It is carried out within 30 days and you receive a confirmation."
         ]
       },
@@ -196,7 +197,7 @@
       {
         "heading": "Publisher",
         "paragraphs": [
-          "{{appName}} is published by an individual. In accordance with article 6-III-2 of the French law on confidence in the digital economy, their identification details have been provided to the hosting provider. [TO BE VALIDATED BY THE LAWYER: anonymity is only possible if publishing is not a professional activity.]",
+          "{{appName}} is published by an individual. In accordance with article 6-III-2 of the French law on confidence in the digital economy, their identification details have been provided to the hosting provider.",
           "Email: {{contactEmail}}"
         ]
       },

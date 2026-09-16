@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { TextInput, View, type TextInputProps } from 'react-native';
 
 import { useTranslation } from 'react-i18next';
 
 import { radius, size, spacing, typography } from '@constants/theme';
 import { makeStyles } from '@hooks/makeStyles';
+import { useKeyboardReveal } from '@hooks/useKeyboardReveal';
 import { useThemeColors } from '@hooks/useThemeColors';
 
 import { Text } from './Text';
@@ -54,12 +55,15 @@ export function TextField({
   const palette = useThemeColors();
   const styles = useStyles();
   const [focused, setFocused] = useState(false);
+  const inputRef = useRef<TextInput>(null);
+  const revealField = useKeyboardReveal();
   const counter = showCounter && maxLength ? t('form.counter', { current: value.length, max: maxLength }) : null;
 
   return (
     <View style={styles.field}>
       <Text variant="label">{label}</Text>
       <TextInput
+        ref={inputRef}
         accessibilityLabel={label}
         value={value}
         onChangeText={onChangeText}
@@ -69,6 +73,7 @@ export function TextField({
         textAlignVertical={multiline ? 'top' : 'center'}
         onFocus={(event) => {
           setFocused(true);
+          if (inputRef.current) revealField?.(inputRef.current);
           onFocus?.(event);
         }}
         onBlur={(event) => {

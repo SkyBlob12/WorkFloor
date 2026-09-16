@@ -1,6 +1,6 @@
 {
   "updatedLabel": "Dernière mise à jour : {{date}}",
-  "updatedAt": "[À COMPLÉTER : date de mise en ligne]",
+  "updatedAt": "16 septembre 2026",
   "notFound": "Document introuvable.",
   "site": {
     "tagline": "Avis anonymes de salariés sur leur entreprise : salaires, ambiance, management.",
@@ -60,7 +60,7 @@
         "heading": "6. Anonymat",
         "paragraphs": [
           "Votre nom et votre adresse email ne sont jamais affichés. Les avis sont publiés sans identifiant et datés au mois près.",
-          "En tant qu’hébergeur, nous sommes légalement tenus de conserver certaines données permettant d’identifier les auteurs de contenus et de les communiquer à l’autorité judiciaire sur réquisition (voir la politique de confidentialité). Évitez par ailleurs d’inclure dans votre avis des détails qui permettraient de vous reconnaître."
+          "Tant que votre compte existe, les autorités judiciaires peuvent obtenir sur réquisition les données dont nous disposons ; après sa suppression, nous n’en conservons aucune. Évitez d’inclure dans votre avis des détails qui permettraient de vous reconnaître."
         ]
       },
       {
@@ -84,7 +84,7 @@
       {
         "heading": "10. Suppression du compte",
         "paragraphs": [
-          "Vous pouvez supprimer votre compte à tout moment depuis l’écran « Compte », bouton « Supprimer mon compte ». Vos avis, votes et signalements sont alors effacés, sous réserve des données dont la conservation est imposée par la loi."
+          "Vous pouvez supprimer votre compte à tout moment depuis l’écran « Compte », bouton « Supprimer mon compte ». Toutes vos données sont alors effacées immédiatement et définitivement (adresse email, avis, votes, signalements, auteurs masqués) ; aucune copie n’est conservée."
         ]
       },
       {
@@ -109,7 +109,7 @@
         "heading": "2. Données collectées",
         "paragraphs": [
           "Compte : adresse email, mot de passe (stocké sous forme hachée, jamais en clair), dates de création et de dernière connexion. Si vous vous connectez avec Apple ou Google, nous recevons de ce fournisseur votre adresse email (éventuellement une adresse relais masquée par Apple) et un identifiant technique, jamais votre mot de passe.",
-          "Contributions : avis (notes, textes, poste, type de contrat, salaire déclaré), votes « utile », signalements et auteurs masqués. Les avis sont publiés sans aucun identifiant ; le lien entre votre compte et vos avis est conservé en interne pour vous permettre de les modifier, pour appliquer la règle d’un avis par entreprise et pour respecter nos obligations légales.",
+          "Contributions : avis (notes, textes, poste, type de contrat, salaire déclaré), votes « utile », signalements et auteurs masqués. Les avis sont publiés sans aucun identifiant ; le lien entre votre compte et vos avis est conservé en interne pour vous permettre de les modifier et pour appliquer la règle d’un avis par entreprise, jusqu’à la suppression de votre compte.",
           "Données anti-abus : lors d’une publication, votre adresse IP est enregistrée sous forme hachée (non réversible) pour limiter les publications en rafale.",
           "Rapports d’erreurs : en cas de plantage, des informations techniques (modèle d’appareil, version du système et de l’application, trace de l’erreur) sont transmises à notre outil de diagnostic, sans votre adresse email.",
           "Mesure d’audience : uniquement si vous l’acceptez, nous mesurons les écrans consultés et le type d’appareil. Ces statistiques ne sont jamais reliées à votre compte.",
@@ -122,7 +122,7 @@
         "paragraphs": [
           "Fournir le Service (compte, publication, votes, signalements, réinitialisation du mot de passe) : exécution des conditions d’utilisation.",
           "Prévenir le spam et les abus, modérer les contenus, sécuriser le Service, diagnostiquer les erreurs : intérêt légitime.",
-          "Conserver les données d’identification des auteurs de contenus et répondre aux réquisitions judiciaires : obligation légale.",
+          "Répondre aux réquisitions judiciaires portant sur les données existantes : obligation légale.",
           "Mesure d’audience : consentement, retirable à tout moment depuis l’écran « Compte »."
         ]
       },
@@ -132,11 +132,12 @@
           "Vos données ne sont jamais vendues ni utilisées à des fins publicitaires. Elles sont traitées par nos prestataires, dans la limite de leur mission :",
           "Supabase Pte. Ltd. (Singapour) : base de données et authentification, données hébergées en France (Paris) sur l’infrastructure d’Amazon Web Services.",
           "OpenAI Ireland Ltd (Irlande) : modération automatique du texte des avis, transmis sans identifiant. Le texte peut être traité aux États-Unis par OpenAI, L.L.C. ; ce transfert est encadré par les clauses contractuelles types de la Commission européenne. Les textes ne servent pas à entraîner les modèles d’OpenAI.",
-          "Google Ireland Ltd : connexion avec Google si vous la choisissez, et envoi des emails de réinitialisation du mot de passe (Gmail).",
+          "Google Ireland Ltd : connexion avec Google si vous la choisissez.",
+          "1&1 Mail & Media GmbH (GMX, Allemagne) : envoi des emails de réinitialisation du mot de passe.",
           "Tutao GmbH (Tuta, Allemagne) : messagerie chiffrée de l’adresse de contact, qui reçoit vos demandes et signalements par email.",
           "GitHub, Inc. (États-Unis) : hébergement des pages web d’information (assistance et documents légaux), qui enregistre techniquement l’adresse IP de leurs visiteurs ; transfert encadré par le Data Privacy Framework UE-États-Unis.",
           "Apple Distribution International Ltd : connexion avec Apple si vous la choisissez.",
-          "Functional Software, Inc. (Sentry, États-Unis) : rapports d’erreurs, transfert encadré par les clauses contractuelles types.",
+          "Functional Software, Inc. (Sentry) : rapports d’erreurs, données hébergées dans l’Union européenne (Allemagne).",
           "PostHog, Inc. : mesure d’audience, uniquement avec votre accord, données hébergées dans l’Union européenne.",
           "650 Industries, Inc. (Expo, États-Unis) : distribution des mises à jour de l’application, transfert encadré par les clauses contractuelles types.",
           "Les autorités judiciaires peuvent obtenir communication de certaines données sur réquisition."
@@ -148,7 +149,7 @@
         "paragraphs": [
           "Compte, avis, votes, signalements et auteurs masqués : jusqu’à la suppression de votre compte ou du contenu concerné.",
           "Adresses IP hachées : 30 jours.",
-          "Données d’identification des auteurs de contenus (adresse email, identifiant du compte, date et nature de chaque publication) : un an à compter de la suppression du contenu ou du compte, conformément au décret n° 2021-1362 du 20 octobre 2021, dans un espace séparé accessible uniquement pour répondre à une réquisition judiciaire. [À VALIDER PAR LE JURISTE : l’application efface aujourd’hui ces données immédiatement à la suppression du compte ; la mise en conformité technique dépend de cette validation.]",
+          "Suppression du compte : toutes les données liées au compte (adresse email, avis, votes, signalements, auteurs masqués, adresses IP hachées) sont effacées immédiatement et définitivement. Aucune copie ni archive n’est conservée. Seules restent les fiches d’entreprises, issues du répertoire public SIRENE, sans lien avec votre compte.",
           "Rapports d’erreurs : 90 jours au maximum.",
           "Demandes adressées par email (exercice de droits, notifications de contenus) : trois ans à compter du dernier échange, pour justifier de leur traitement."
         ]
@@ -164,7 +165,7 @@
         "id": "delete-account",
         "heading": "7. Supprimer votre compte",
         "paragraphs": [
-          "Dans l’application : ouvrez l’onglet « Compte », touchez « Supprimer mon compte », puis « Supprimer définitivement ». La suppression est immédiate : votre adresse email, vos avis, votes, signalements et auteurs masqués sont effacés, sous réserve des données dont la conservation est imposée par la loi (section 5).",
+          "Dans l’application : ouvrez l’onglet « Compte », touchez « Supprimer mon compte », puis « Supprimer définitivement ». La suppression est immédiate : votre adresse email, vos avis, votes, signalements et auteurs masqués sont effacés, sans aucune copie conservée.",
           "Si vous n’avez plus accès à l’application, écrivez à {{contactEmail}} depuis l’adresse email de votre compte en demandant sa suppression. Elle est effectuée dans un délai de 30 jours et vous en recevez la confirmation."
         ]
       },
@@ -196,7 +197,7 @@
       {
         "heading": "Éditeur",
         "paragraphs": [
-          "{{appName}} est édité par une personne physique. Conformément à l’article 6-III-2 de la loi pour la confiance dans l’économie numérique, ses éléments d’identification ont été communiqués à l’hébergeur. [À VALIDER PAR LE JURISTE : anonymat possible seulement si l’édition n’est pas une activité professionnelle.]",
+          "{{appName}} est édité par une personne physique. Conformément à l’article 6-III-2 de la loi pour la confiance dans l’économie numérique, ses éléments d’identification ont été communiqués à l’hébergeur.",
           "Email : {{contactEmail}}"
         ]
       },

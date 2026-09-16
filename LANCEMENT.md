@@ -2,7 +2,7 @@
 
 Tout ce qui demande **tes comptes, tes décisions ou ton argent**, dans l'ordre. Le code est prêt ; les procédures techniques détaillées (commandes, écrans du dashboard) sont dans [SETUP.md](SETUP.md).
 
-> 📱 **Première version : mobile uniquement (iOS + Android), sans nom de domaine.** Le code web reste en place (utile pour développer), mais rien n'est déployé sur le web. Conséquences : les emails passent par une boîte Gmail dédiée (étape 4), et les trois pages publiques exigées par les stores sont hébergées gratuitement (étape 5).
+> 📱 **Première version : mobile uniquement (iOS + Android), sans nom de domaine.** Le code web reste en place (utile pour développer), mais rien n'est déployé sur le web. Conséquences : les emails partent par un compte GMX gratuit (étape 4), et les trois pages publiques exigées par les stores sont hébergées gratuitement (étape 5).
 
 > ⏱️ **Google** : un compte Play **créé après le 13 novembre 2023** doit faire tester l'app par 12 personnes pendant 14 jours. Le compte entreprise utilisé ici a déjà publié une app, ce test ne devrait pas être exigé : **c'est Play Console qui tranche** (*Tester et déployer → Aperçu des tests*).
 
@@ -31,19 +31,22 @@ Tout ce qui demande **tes comptes, tes décisions ou ton argent**, dans l'ordre.
 - [ ] Google Cloud : passer l'écran de consentement OAuth en **In production** avant la sortie (sinon seuls les comptes de test peuvent se connecter). Sans domaine, laisser vides les champs « domaine autorisé » et « page d'accueil » ou y mettre l'URL de la page de confidentialité (étape 5).
 - [ ] 📅 Rappel dans 6 mois : régénérer la Secret Key Apple dans Supabase (sinon la connexion Apple tombe en panne).
 
-## 4. Emails (sans domaine)
+## 4. Emails (GMX)
 
 **Pourquoi c'est bloquant** : sans serveur SMTP personnalisé, Supabase n'envoie des emails **qu'aux membres de l'équipe du projet** (et 2 par heure). Pour un vrai utilisateur, « mot de passe oublié » échoue avec « Email address not authorized ».
 
 **Deux adresses, deux rôles** :
-- [x] **Réception** : `workfloor@tutamail.com`, affichée dans l'app, les CGU et les pages publiques (`constants/app.ts` : contact, droits RGPD, contestation de modération, signalements, point de contact DSA). Penser à la relever régulièrement.
-- [ ] **Envoi** : Tuta ne propose pas de SMTP, et `tutamail.com` publie une politique DMARC stricte (`p=quarantine`) : un email « de » cette adresse envoyé par un autre service finirait en spam. Les emails de « mot de passe oublié » partent donc d'une adresse Gmail dédiée à l'envoi (ex. `workfloor.noreply@gmail.com`), avec la **validation en deux étapes** activée. Personne n'a besoin d'y écrire : le modèle d'email renvoie vers `workfloor@tutamail.com`.
+- [x] **Réception** : `workfloor@tutamail.com`, affichée dans l'app, les CGU et les pages publiques (`constants/app.ts`). Tuta ne propose pas de SMTP.
+- [ ] **Envoi** : une adresse GMX gratuite dédiée (ex. `workfloor.noreply@gmx.fr`), sans nom de domaine et sans lien avec ton identité. Pourquoi pas les autres : plus de compte Gmail possible, Brevo exige un domaine authentifié, une adresse Gmail personnelle t'identifierait.
 
-- [ ] Gmail → *Compte Google → Sécurité → Mots de passe des applications* : créer un mot de passe d'application.
-- [ ] Supabase *Authentication → Emails → SMTP Settings* : hôte `smtp.gmail.com`, port `465`, utilisateur = l'adresse Gmail, mot de passe = le mot de passe d'application, expéditeur = l'adresse Gmail, nom `WorkFloor`. Limite Gmail : environ 500 emails par jour, largement suffisant (seul « mot de passe oublié » envoie des emails).
-- [ ] *Authentication → Rate Limits* : vérifier la limite d'envoi d'emails (30 par heure par défaut une fois le SMTP branché), à ajuster si besoin.
-- [ ] *Email Templates → Reset password* : texte bilingue fr / en (Supabase n'envoie qu'une langue par modèle), avec la mention « Ne répondez pas à cet email, écrivez à workfloor@tutamail.com ».
-- [ ] Tester sur un **build** (pas Expo Go) : « Mot de passe oublié » → email → le lien ouvre l'app sur l'écran de nouveau mot de passe.
+1. [ ] Créer le compte sur https://www.gmx.fr (identité non publique ; l'adresse ne doit contenir ni ton nom ni ton code postal).
+2. [ ] Webmail GMX → *Paramètres* → *POP3 & IMAP* → cocher l'accès externe → *Enregistrer*. **Sans cette option, Supabase ne peut pas envoyer.**
+3. [ ] Supabase, page SMTP : https://supabase.com/dashboard/project/jcxragsifxcifxryoqvq/auth/smtp , activer *Enable custom SMTP* : Sender email = l'adresse GMX, Sender name = `WorkFloor`, Host = `mail.gmx.com`, Port = `587` (sinon `465`), Username = l'adresse GMX complète, Password = le mot de passe GMX.
+4. [ ] Page des limites : https://supabase.com/dashboard/project/jcxragsifxcifxryoqvq/auth/rate-limits , **baisser à 10 emails par heure** : un compte GMX gratuit est limité à environ 50 à 100 destinataires par jour et bloque 24 h en cas de rafale.
+5. [ ] *Authentication → Emails → Reset password* : texte bilingue fr / en, avec « Ne répondez pas à cet email, écrivez à workfloor@tutamail.com ».
+6. [ ] Tester sur un **build** (pas Expo Go) : « Mot de passe oublié » → email (vérifier le spam) → le lien ouvre l'app. En cas d'échec : *Logs* de Supabase (*Auth*), et le dossier *Envoyés* de GMX.
+7. [ ] Se connecter au webmail GMX de temps en temps : un compte gratuit inactif trop longtemps peut être désactivé.
+- Plus tard, si le volume augmente ou avec un domaine : passer à un service transactionnel (Brevo, Resend).
 
 ## 5. Pages publiques exigées par les stores
 
@@ -63,22 +66,17 @@ Les pages sont **générées depuis les mêmes traductions que l'app** (`i18n/lo
 - [ ] ⚠️ Tant que les `[À COMPLÉTER]` ne sont pas remplis, ils sont visibles publiquement : le script les compte et avertit. Idéalement, compléter l'identité (étape 6) avant le premier push.
 - Le dépôt est public : ne jamais y committer de secret (`.env`, `supabase/functions/.env` sont ignorés par Git).
 
-## 6. Juridique (bloquant pour les stores)
+## 6. Juridique
 
-Les textes de `i18n/locales/fr/legal.json` et `i18n/locales/en/legal.json` sont rédigés pour une app mobile dont l'éditeur **n'est pas identifié publiquement** pour l'instant (choix personnel, en attendant l'avis du juriste), données hébergées à Paris (`eu-west-3`). À faire :
+Textes de `i18n/locales/fr/legal.json` et `i18n/locales/en/legal.json` **validés par le juriste le 16 septembre 2026** : éditeur personne physique non identifié publiquement (LCEN art. 6-III-2), données hébergées à Paris (`eu-west-3`), contact `workfloor@tutamail.com`.
 
-- [ ] **Identification de l'éditeur, première question au juriste** : les textes présentent l'éditeur comme une personne physique anonyme (LCEN art. 6-III-2 : identité communiquée à l'hébergeur seulement). Ce n'est possible que si l'édition de WorkFloor n'est **pas une activité professionnelle** ; or l'éditeur est micro-entrepreneur en programmation. Si le juriste conclut à une activité professionnelle : nom, adresse (ou domiciliation), téléphone et SIRET deviennent obligatoires dans les mentions légales, et le statut de commerçant doit être déclaré chez Apple. Le RGPD demande aussi l'« identité » du responsable du traitement (art. 13) : lui demander si l'email seul suffit.
-- [ ] Si l'anonymat est retenu : s'assurer que l'hébergeur (Supabase) dispose bien de ton identité (compte, facturation), et déclarer « non-commerçant » dans App Store Connect.
-- [ ] Remplir la date de mise en ligne (`updatedAt` dans les deux `legal.json`).
-- ⚠️ Ne jamais écrire d'information personnelle (adresse, SIRET, téléphone) dans ce dépôt : il est **public**, historique compris.
-- [ ] Faire valider par le juriste (les deux langues), en particulier :
-  - **Conservation LCEN** (`[À VALIDER PAR LE JURISTE]`, politique de confidentialité section 5) : le décret n° 2021-1362 impose de garder un an les données d'identification des auteurs, alors que l'app efface tout immédiatement à la suppression du compte, et que l'IP n'est gardée que hachée (inexploitable par un juge) 30 jours. Selon sa réponse, Claude écrira la migration (table séparée, purge à un an) avec pré-vol et rollback.
-  - **DSA** : exposé des motifs à l'auteur d'un avis retiré (aujourd'hui sur demande par email), contestation, point de contact unique. En micro-entreprise, l'éditeur est exempté de la plupart des obligations propres aux plateformes en ligne.
-  - Adresse de contact chez Tuta (Tutao GmbH, Allemagne) et pages hébergées par GitHub (États-Unis) : mentionnées comme prestataires.
-  - **Médiation de la consommation** : obligatoire ou non pour un service gratuit.
-  - Sous-traitants listés (Sentry et PostHog : les retirer du texte s'ils ne sont pas activés en production).
-- [ ] **Statut de commerçant (DSA)** dans App Store Connect : obligatoire pour être distribué dans l'UE. En micro-entreprise, tu es commerçant au sens du DSA : **ton nom, ton adresse, ton téléphone et ton email sont affichés publiquement** sur la fiche App Store (d'où l'intérêt d'une domiciliation et de `workfloor@tutamail.com`). Google Play affiche aussi les coordonnées du développeur.
+- [x] Validation juridique des deux langues, date de mise à jour renseignée.
+- [x] **Suppression du compte = suppression totale, aucune conservation** (décision du 16 septembre 2026). Le code le fait déjà (cascade SQL sur toutes les tables liées au compte) et les textes le disent. À savoir : le décret n° 2021-1362 prévoit une conservation d'un an pour les hébergeurs ; ce choix s'en écarte, en connaissance de cause.
+- [ ] S'assurer que l'hébergeur (Supabase) dispose bien de ton identité (compte, facturation), comme l'annoncent les mentions légales.
+- [ ] App Store Connect : déclarer le statut **non-commerçant** (DSA), cohérent avec une édition non professionnelle.
+- [ ] Brancher Sentry (région UE) et PostHog (EU Cloud), cités comme prestataires : [SETUP.md](SETUP.md) étape 5.
 - [ ] Tenir un registre des traitements (modèle CNIL).
+- ⚠️ Ne jamais écrire d'information personnelle (adresse, SIRET, téléphone) dans ce dépôt : il est **public**, historique compris.
 
 ## 7. Visuels et textes des stores
 

@@ -53,6 +53,7 @@ export function CompanyReviewsList({
 
   return (
     <FlatList
+      showsVerticalScrollIndicator={false}
       style={{ flex: 1, backgroundColor: palette.background }}
       contentContainerStyle={contentStyle}
       data={reviews}

@@ -42,6 +42,7 @@ export default function SearchScreen() {
     <>
       <PageHead title={t('search.pageTitle')} bare />
       <FlatList
+        showsVerticalScrollIndicator={false}
         style={{ flex: 1, backgroundColor: palette.background }}
         contentContainerStyle={contentStyle}
         data={explorer.items}

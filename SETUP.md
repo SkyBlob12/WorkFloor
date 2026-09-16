@@ -134,9 +134,9 @@ Dans *Table Editor* :
 
 ---
 
-## Étape 4 : emails (Gmail, sans domaine)
+## Étape 4 : emails (GMX, sans domaine)
 
-Première version sans nom de domaine : les emails partent d'une boîte Gmail dédiée à l'envoi, les réponses et demandes arrivent sur `workfloor@tutamail.com` (Tuta n'a pas de SMTP). Procédure complète : [LANCEMENT.md](LANCEMENT.md) étape 4 (hôte `smtp.gmail.com`, port `465`, mot de passe d'application).
+Première version sans nom de domaine : les emails partent d'un compte GMX gratuit dédié, les réponses et demandes arrivent sur `workfloor@tutamail.com` (Tuta n'a pas de SMTP). Procédure complète : [LANCEMENT.md](LANCEMENT.md) étape 4 (hôte `mail.gmx.com`, port `587`, accès POP3/IMAP activé dans GMX).
 
 - [ ] Traduire le modèle d'email *Reset password* (*Authentication → Email Templates*), le seul encore utilisé. Supabase n'envoie qu'une langue par modèle : rédiger un texte bilingue fr / en.
 - Le lien de l'email ouvre l'app (`workfloor://reset-password`) : `services/account.ts` et `hooks/useRecoveryLinkSession.ts`.
@@ -144,15 +144,34 @@ Première version sans nom de domaine : les emails partent d'une boîte Gmail d�
 
 ---
 
-## Étape 5 : Sentry et PostHog (optionnels, désactivés si vides)
+## Étape 5 : Sentry et PostHog (désactivés tant que les clés sont vides)
 
-**Sentry**
-- [ ] sentry.io → projet *React Native* → DSN dans `.env` (`EXPO_PUBLIC_SENTRY_DSN`) et dans les variables EAS.
-- [ ] Source maps : dans `app.json`, remplacer `"@sentry/react-native"` par `["@sentry/react-native", { "organization": "<org>", "project": "<projet>" }]`, créer un token Sentry, `npx eas-cli env:create --name SENTRY_AUTH_TOKEN --visibility secret ...`, puis retirer `SENTRY_DISABLE_AUTO_UPLOAD` de `eas.json`.
-- [ ] npm 12 a bloqué le script d'installation de `@sentry/cli` : `npm install-scripts approve @sentry/cli` puis `npm install` (utile uniquement pour l'upload local de source maps).
+Les deux sont déjà branchés dans le code (`lib/monitoring.ts`, `lib/analytics.ts`) : il suffit de fournir les clés puis de refaire un build. Les textes juridiques annoncent un hébergement **dans l'UE** et aucune donnée personnelle : respecter les réglages ci-dessous.
 
-**PostHog**
-- [ ] eu.posthog.com → projet → clé → `EXPO_PUBLIC_POSTHOG_KEY` (`.env` + EAS). Le bandeau de consentement apparaît automatiquement dès que la clé est définie.
+**Sentry** (plantages, désactivé en développement)
+- [ ] sentry.io → créer l'organisation en choisissant la région de données **European Union** (non modifiable ensuite).
+- [ ] Créer un projet *React Native* → copier le **DSN** (*Settings → Projects → WorkFloor → Client Keys (DSN)*).
+- [ ] *Settings → Projects → WorkFloor → Security & Privacy* : activer **Prevent Storing of IP Addresses** et laisser **Data Scrubber** activé.
+- [ ] `.env` : `EXPO_PUBLIC_SENTRY_DSN=<dsn>`, puis EAS : `npx eas-cli env:create --environment preview --environment production --name EXPO_PUBLIC_SENTRY_DSN --value <dsn> --visibility plaintext`.
+- [ ] Optionnel, traces lisibles : dans `app.json`, remplacer `"@sentry/react-native"` par `["@sentry/react-native", { "organization": "<org>", "project": "<projet>" }]`, créer un token Sentry, `npx eas-cli env:create --name SENTRY_AUTH_TOKEN --visibility secret ...`, puis retirer `SENTRY_DISABLE_AUTO_UPLOAD` de `eas.json`.
+
+**PostHog** (utilisateurs actifs, écrans vus ; uniquement avec le consentement de l'utilisateur)
+- [ ] https://eu.posthog.com (EU Cloud) → créer le projet → *Settings → Project* : copier la **Project API key** (`phc_...`).
+- [ ] *Settings → Project* : activer **Discard client IP data**, et ne pas activer le *Session replay*.
+- [ ] `.env` : `EXPO_PUBLIC_POSTHOG_KEY=<clé>` (`EXPO_PUBLIC_POSTHOG_HOST` vaut déjà `https://eu.i.posthog.com`), puis EAS : `npx eas-cli env:create --environment preview --environment production --name EXPO_PUBLIC_POSTHOG_KEY --value <clé> --visibility plaintext`.
+- Le bandeau de consentement s'affiche automatiquement dès que la clé est définie : PostHog ne compte que les personnes qui acceptent. Pour des totaux exacts (comptes, avis), utiliser les requêtes SQL ci-dessous.
+
+**Statistiques exactes dans Supabase** (*SQL Editor*, lecture seule, à enregistrer comme snippets)
+```sql
+-- Comptes : total et nouveaux sur 7 jours
+select count(*) as comptes, count(*) filter (where created_at > now() - interval '7 days') as nouveaux_7j from auth.users;
+-- Avis par statut
+select status, count(*) from public.reviews group by status order by 2 desc;
+-- Avis publiés par semaine
+select date_trunc('week', created_at) as semaine, count(*) from public.reviews group by 1 order by 1 desc limit 12;
+-- Entreprises et entreprises ayant au moins un avis
+select (select count(*) from public.companies) as entreprises, (select count(distinct company_id) from public.reviews) as avec_avis;
+```
 
 ---
 
@@ -227,5 +246,5 @@ npx eas-cli submit --platform android  # nécessite une clé de compte de servic
 | Interface de modération | Via le dashboard Supabase (étape 1.5). |
 | Connexion Google native | Google passe par le navigateur système (fonctionne dans Expo Go). Le sélecteur de compte natif (`@react-native-google-signin`) demanderait un development build. |
 | Entreprises hors France | Non gérées : création uniquement via SIRENE. |
-| Emails transactionnels métier | Seuls les emails d'auth sont envoyés (SMTP Gmail). Les messages des utilisateurs arrivent sur `workfloor@tutamail.com`. |
+| Emails transactionnels métier | Seuls les emails d'auth sont envoyés (SMTP GMX). Les messages des utilisateurs arrivent sur `workfloor@tutamail.com`. |
 | Colonne `companies.sector` | Obsolète (le secteur est déduit du code NAF et traduit) ; à retirer plus tard en deux temps. |
