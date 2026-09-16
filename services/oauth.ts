@@ -6,10 +6,9 @@ import * as WebBrowser from 'expo-web-browser';
 
 import { OAUTH_CALLBACK_PATH, type AuthProvider } from '@constants/auth';
 import { supabase } from '@lib/supabase';
-import { parseAuthCallbackUrl } from '@utils/authCallback';
 import { isRecord } from '@utils/guards';
 
-import { toAuthError } from './account';
+import { restoreSessionFromUrl, toAuthError } from './account';
 import { ServiceError } from './errors';
 
 /** iPhone : feuille Apple native, jeton transmis à Supabase. `false` si l'utilisateur annule. */
@@ -41,23 +40,8 @@ async function signInWithBrowser(provider: AuthProvider): Promise<boolean> {
   const result = await WebBrowser.openAuthSessionAsync(data.url, redirectTo);
   if (result.type !== 'success') return false;
 
-  const params = parseAuthCallbackUrl(result.url);
-  if (params.error) throw new ServiceError('AUTH_FAILED');
-
-  if (params.code) {
-    const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(params.code);
-    if (exchangeError) throw toAuthError(exchangeError);
-    return true;
-  }
-  if (params.accessToken && params.refreshToken) {
-    const { error: sessionError } = await supabase.auth.setSession({
-      access_token: params.accessToken,
-      refresh_token: params.refreshToken,
-    });
-    if (sessionError) throw toAuthError(sessionError);
-    return true;
-  }
-  throw new ServiceError('AUTH_FAILED');
+  if (!(await restoreSessionFromUrl(result.url))) throw new ServiceError('AUTH_FAILED');
+  return true;
 }
 
 /** Connexion Apple ou Google sur mobile. Renvoie `false` si l'utilisateur a abandonné. */

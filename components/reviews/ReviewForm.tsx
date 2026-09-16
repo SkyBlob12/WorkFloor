@@ -40,11 +40,7 @@ export function ReviewForm({ company, initialReview }: ReviewFormProps) {
 
   const title = form.isEdit ? t('form.titleEdit') : t('form.titleNew');
   const describeError = (error: ReviewFormError) =>
-    error.type === 'validation'
-      ? t('form.fixErrors')
-      : error.type === 'captcha'
-        ? t('form.captchaPending')
-        : errorMessage(error.error);
+    error.type === 'validation' ? t('form.fixErrors') : errorMessage(error.error);
 
   return (
     <Screen width="reading">

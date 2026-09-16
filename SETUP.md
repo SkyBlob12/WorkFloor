@@ -45,36 +45,34 @@ Chaque migration a trois fichiers : `supabase/preflight/` (lecture seule), `supa
 - [ ] Si la 2ᵉ migration (`retention_cron`) échoue : *Database → Extensions* → activer **pg_cron**, puis relancer.
 - [ ] Le **Security Advisor** signalera les vues `reviews_public` et `companies_with_stats` (« security definer view ») : **c'est voulu**, c'est ce qui masque l'auteur des avis. Ne pas « corriger ».
 - [ ] Migration `20260916000000_sector_photos` (photos des secteurs de l'accueil) : pré-vol `npm run db:sector-photos:preflight` (`ok = true` partout), puis `npx supabase db push`. Table en lecture seule pour l'app, photos StockSnap CC0 modifiables dans le *Table Editor*. Son rollback ne supprime que cette table.
+- [ ] Migration `20260916000100_restrict_author_columns` (anonymat : `companies.created_by` et `user_blocks.blocked_user_id` illisibles via l'API) : pré-vol `npm run db:restrict-author-columns:preflight` (`ok = true` partout), puis `npx supabase db push`. Relancer le pré-vol ensuite : les deux dernières lignes doivent valoir `false`. Son rollback rouvre la faille.
 - En cas de besoin : `supabase/rollbacks/` annule tout (**supprime les données**, faire un export avant).
 
 ### 1.3 Authentification (dashboard → *Authentication*)
 
-L'app propose trois façons de se connecter, sans email de confirmation : **Apple**, **Google**, **email + mot de passe**.
+L'app propose trois façons de se connecter, sans email de confirmation : **Apple** (iOS uniquement), **Google**, **email + mot de passe**.
 
-- [ ] *URL Configuration* → **Site URL** : `http://localhost:8081` pour l'instant (le domaine plus tard).
-- [ ] **Redirect URLs** : ajouter `http://localhost:8081/**`, `workfloor://**` et `exp://**` (retour Google / Apple dans Expo Go).
+- [ ] *URL Configuration* → **Site URL** : `http://localhost:8081` (pas de site web publié pour l'instant).
+- [ ] **Redirect URLs** : ajouter `workfloor://**` et `exp://**` (retour Google / Apple et lien « mot de passe oublié », dans un build comme dans Expo Go), et `http://localhost:8081/**` pour le développement web.
 - [ ] *Sign In / Providers → Email* : **Confirm email désactivé** (l'inscription connecte immédiatement) ; longueur minimale du mot de passe : **8**. Si l'option reste activée, l'inscription affiche « Confirmez d'abord votre adresse email ».
-- [ ] *Attack Protection* → **Captcha** : activer avec le provider **Turnstile** et la clé secrète de l'étape 2 (en attendant : clé de test `1x0000000000000000000000000000000AA`).
-
 **Google** (gratuit, 10 min)
 - [ ] console.cloud.google.com → créer un projet → *APIs & Services → OAuth consent screen* : type **External**, nom de l'app, email de support, domaine (plus tard).
 - [ ] *Credentials → Create credentials → OAuth client ID* : type **Web application**. *Authorized redirect URIs* : `https://<ref-du-projet>.supabase.co/auth/v1/callback`.
 - [ ] Supabase *Sign In / Providers → Google* : activer, coller **Client ID** et **Client Secret**.
 - [ ] Avant la mise en ligne : publier l'écran de consentement (*Publishing status → In production*), sinon seuls les comptes de test peuvent se connecter.
 
-**Apple** (sur iPhone : feuille Apple native ; sur Android et web : page Apple dans le navigateur)
+**Apple** (bouton affiché sur iOS uniquement, feuille Apple native ; pas de bouton Apple sur Android ni sur le web)
 - [ ] developer.apple.com → *Certificates, IDs & Profiles → Identifiers* : sur l'App ID `fr.workfloor.app`, cocher **Sign in with Apple**.
-- [ ] Créer un **Services ID** (ex. `fr.workfloor.web`), activer *Sign in with Apple* → *Configure* : domaine `jcxragsifxcifxryoqvq.supabase.co`, return URL `https://jcxragsifxcifxryoqvq.supabase.co/auth/v1/callback`.
-- [ ] *Keys* → nouvelle clé avec **Sign in with Apple** → télécharger le `.p8` (une seule fois possible) et noter le Key ID et le Team ID.
-- [ ] Supabase *Sign In / Providers → Apple* : activer. **Client IDs** (séparés par des virgules) : `fr.workfloor.app,host.exp.Exponent,fr.workfloor.web` (`host.exp.Exponent` = Expo Go, pour tester la feuille native avant le premier build). **Secret Key** : générée depuis le `.p8` (outil du dashboard Supabase).
-- [ ] ⚠️ Ce secret **expire tous les 6 mois** : mettre un rappel pour le régénérer, sinon la connexion Apple par navigateur (Android, web) tombe en panne. La feuille native iPhone n'en dépend pas.
-- Tant qu'Apple n'est pas configuré, le bouton « Continuer avec Apple » affiche « La connexion a échoué ».
+- [ ] *Keys* → nouvelle clé avec **Sign in with Apple** → télécharger le `.p8` (une seule fois possible) et noter le Key ID et le Team ID. Pas besoin de créer de **Services ID** : sans bouton Apple sur Android/web, l'app n'utilise jamais le flux OAuth par navigateur, seulement le jeton natif iOS.
+- [ ] Supabase *Sign In / Providers → Apple* : activer. **Client IDs** (séparés par des virgules) : `fr.workfloor.app,host.exp.Exponent` (`host.exp.Exponent` = Expo Go, pour tester la feuille native avant le premier build). **Secret Key** : obligatoire même en flux natif seul (sinon `missing OAuth secret` au login) : générer un JWT ES256 (Team ID, Key ID, `.p8`, `sub` = `fr.workfloor.app`, `aud` = `https://appleid.apple.com`, expiration 6 mois maximum) et le coller là.
+- [ ] ⚠️ Ce secret **expire tous les 6 mois** : mettre un rappel pour le régénérer.
+- [ ] Sur le champ *Server-to-Server Notification Endpoint* (developer.apple.com, App ID Configuration) : laisser vide, aucune Edge Function ne le consomme.
+- Tant qu'Apple n'est pas configuré, le bouton « Continuer avec Apple » (visible sur iPhone/iPad seulement) affiche « La connexion a échoué ».
 
 ### 1.4 Secrets et Edge Functions
 
 - [ ] `cp supabase/functions/.env.example supabase/functions/.env` et remplir :
-  - `TURNSTILE_SECRET_KEY` (étape 2 ; la clé de test marche en attendant)
-  - `OPENAI_API_KEY` (étape 3 ; vide = pas de modération IA)
+  - `OPENAI_API_KEY` (étape 2 ; vide = pas de modération IA)
   - `IP_HASH_SALT` : une longue chaîne aléatoire (`node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`), **à ne plus jamais changer**
 - [ ] Envoyer les secrets puis déployer :
   ```bash
@@ -84,7 +82,7 @@ L'app propose trois façons de se connecter, sans email de confirmation : **Appl
 
 ✅ **Test** : relancer `npm start`, créer un compte (email, Google ou Apple), ajouter une entreprise (onglet « Ajouter »), publier un avis.
 
-> ⚠️ Plus aucun email n'est envoyé à l'inscription. Seul « Mot de passe oublié » en envoie : tant que l'étape 5 (SMTP Resend) n'est pas faite, Supabase est limité à **2 emails par heure**.
+> ⚠️ Plus aucun email n'est envoyé à l'inscription. Seul « Mot de passe oublié » en envoie : tant que l'étape 4 (SMTP) n'est pas faite, Supabase n'envoie qu'aux **membres de l'équipe du projet**, 2 emails par heure.
 
 ### 1.5 Modération au quotidien (pas d'écran admin pour l'instant)
 
@@ -104,24 +102,14 @@ Dans *Table Editor* :
 
 ---
 
-## Étape 2 : Cloudflare Turnstile (anti-bot)
-
-- [ ] dash.cloudflare.com → *Turnstile* → **Add widget** (mode *Managed*).
-- [ ] Domaines autorisés : `localhost` + ton futur domaine (étape 7).
-- [ ] **Site key** → `.env` : `EXPO_PUBLIC_TURNSTILE_SITE_KEY`
-- [ ] **Secret key** → `supabase/functions/.env` (`TURNSTILE_SECRET_KEY`) **et** Supabase *Attack Protection → Captcha*. Puis `npx supabase secrets set --env-file supabase/functions/.env`.
-- [ ] `EXPO_PUBLIC_TURNSTILE_ORIGIN` : le domaine déclaré (sur mobile, le widget tourne dans une WebView qui se présente avec cette origine).
-
----
-
-## Étape 3 : OpenAI (modération gratuite)
+## Étape 2 : OpenAI (modération gratuite)
 
 - [ ] platform.openai.com → créer une clé API → `OPENAI_API_KEY` dans `supabase/functions/.env` → `npx supabase secrets set ...`.
 - L'endpoint de modération est gratuit. Sans clé, les avis sont publiés quand même (filtres email/téléphone et mots interdits actifs).
 
 ---
 
-## Étape 4 : Expo / EAS (builds, mises à jour, web)
+## Étape 3 : Expo / EAS (builds, mises à jour, web)
 
 - [ ] Créer un compte sur expo.dev, puis :
   ```bash
@@ -146,16 +134,17 @@ Dans *Table Editor* :
 
 ---
 
-## Étape 5 : emails (Resend), après l'achat du domaine
+## Étape 4 : emails (Gmail, sans domaine)
 
-- [ ] resend.com → ajouter et **vérifier le domaine** (enregistrements DNS).
-- [ ] Créer une clé API.
-- [ ] Supabase *Authentication → Emails → SMTP Settings* : hôte `smtp.resend.com`, port `465`, utilisateur `resend`, mot de passe = clé API, expéditeur `no-reply@<domaine>`.
+Première version sans nom de domaine : les emails partent d'une boîte Gmail dédiée à l'envoi, les réponses et demandes arrivent sur `workfloor@tutamail.com` (Tuta n'a pas de SMTP). Procédure complète : [LANCEMENT.md](LANCEMENT.md) étape 4 (hôte `smtp.gmail.com`, port `465`, mot de passe d'application).
+
 - [ ] Traduire le modèle d'email *Reset password* (*Authentication → Email Templates*), le seul encore utilisé. Supabase n'envoie qu'une langue par modèle : rédiger un texte bilingue fr / en.
+- Le lien de l'email ouvre l'app (`workfloor://reset-password`) : `services/account.ts` et `hooks/useRecoveryLinkSession.ts`.
+- Plus tard, avec un domaine : passer à un service transactionnel (Resend, Brevo) avec un expéditeur `no-reply@<domaine>`.
 
 ---
 
-## Étape 6 : Sentry et PostHog (optionnels, désactivés si vides)
+## Étape 5 : Sentry et PostHog (optionnels, désactivés si vides)
 
 **Sentry**
 - [ ] sentry.io → projet *React Native* → DSN dans `.env` (`EXPO_PUBLIC_SENTRY_DSN`) et dans les variables EAS.
@@ -167,7 +156,9 @@ Dans *Table Editor* :
 
 ---
 
-## Étape 7 : domaine et site web
+## Étape 6 : domaine et site web (reporté)
+
+Première version mobile uniquement, sans domaine : cette étape ne s'applique pas pour l'instant. Les URL publiques exigées par les stores sont traitées dans [LANCEMENT.md](LANCEMENT.md) étape 5. Le jour où le web est ouvert :
 
 - [ ] Acheter le domaine (Cloudflare Registrar, OVH… environ 10 à 15 €/an).
 - [ ] Déployer sur EAS Hosting :
@@ -176,28 +167,27 @@ Dans *Table Editor* :
   ```
   puis rattacher le domaine personnalisé depuis expo.dev → *Hosting*.
   *(Alternative : Vercel, Netlify ou Cloudflare Pages avec `dist/` comme dossier de sortie ; prévoir une réécriture de `/company/*` vers `/company/[id].html`.)*
+- [ ] Remettre le job `deploy_web` dans `.eas/workflows/main.yml` (type `deploy`, `params: { prod: true }`).
 - [ ] Mettre à jour avec le vrai domaine :
-  - `.env` + EAS : `EXPO_PUBLIC_SITE_URL`, `EXPO_PUBLIC_TURNSTILE_ORIGIN`
   - Supabase *Site URL* + *Redirect URLs* (`https://<domaine>/**`)
-  - Google : domaine autorisé dans l'écran de consentement OAuth ; Apple : domaine dans le Services ID
-  - Turnstile : domaines autorisés
+  - Google : domaine autorisé dans l'écran de consentement OAuth
   - `constants/app.ts` : adresses `contact@` et `signalement@` (à créer, ex. routage email Cloudflare gratuit)
 
 ---
 
-## Étape 8 : juridique (avant toute mise en ligne publique)
+## Étape 7 : juridique (avant toute mise en ligne publique)
 
-- [ ] Compléter tous les `[À COMPLÉTER]` de `i18n/locales/fr/legal.json` **et** les `[TO COMPLETE]` de `i18n/locales/en/legal.json` (éditeur, directeur de publication, hébergeurs, région Supabase, garanties de transfert OpenAI, juridiction, date).
-- [ ] **Point à arbitrer avec un juriste** : la LCEN impose de conserver pendant un an certaines données d'identification des auteurs de contenus, alors que la suppression de compte efface tout immédiatement (cascade SQL). Options : conserver une trace minimale (email haché + date) dans une table dédiée purgée à 1 an, ou valider l'approche actuelle. Toute évolution passe par pré-vol, migration idempotente et rollback.
+- [ ] Compléter les derniers `[À COMPLÉTER]` de `i18n/locales/fr/legal.json` **et** `[TO COMPLETE]` de `i18n/locales/en/legal.json` (identité de la société éditrice, représentant légal, date), et la région Supabase (`[À VÉRIFIER]`).
+- [ ] **Point à arbitrer avec un juriste** (`[À VALIDER PAR LE JURISTE]`) : la LCEN impose de conserver pendant un an certaines données d'identification des auteurs de contenus, alors que la suppression de compte efface tout immédiatement (cascade SQL). Le texte décrit la conservation d'un an ; si elle est confirmée, il faut l'implémenter (table dédiée purgée à un an, via pré-vol, migration idempotente et rollback). Liste complète des points à valider : [LANCEMENT.md](LANCEMENT.md) étape 6.
 - [ ] Faire relire CGU + politique de confidentialité (les deux langues), tenir un registre des traitements (modèle CNIL).
 
 ---
 
-## Étape 9 : stores
+## Étape 8 : stores
 
 ### Comptes (les seuls coûts incontournables)
 - [ ] **Apple Developer Program** : 99 €/an, obligatoire pour TestFlight et l'App Store.
-- [ ] **Google Play Console** : 25 $ une fois. Les nouveaux comptes personnels doivent faire un **test fermé de 14 jours avec 12 testeurs** avant la production : à anticiper.
+- [x] **Google Play Console** : compte entreprise existant. Le test fermé de 14 jours avec 12 testeurs ne vise que les comptes créés après le 13 novembre 2023 : vérifier dans *Aperçu des tests* qu'il n'est pas exigé.
 
 ### Assets
 - [x] Visuels dans `assets/images/` générés depuis le logo WorkFloor : `icon.png` (1024×1024, sans transparence), `android-icon-foreground.png` / `-background.png` / `-monochrome.png`, `favicon.png`, `logo-mark.png` / `logo-mark-light.png`. Le splash natif n'a volontairement pas d'image (fond seul) : le logo est affiché par `LaunchSplash`, jamais au premier lancement.
@@ -207,7 +197,7 @@ Dans *Table Editor* :
 - [ ] Signalement fonctionnel sur un build réel (menu « … » → Signaler)
 - [ ] Masquage d'auteur fonctionnel (menu « … » → Masquer, avec « Annuler » pendant 3 s)
 - [ ] Suppression de compte fonctionnelle (Mon compte)
-- [ ] Pages `/legal/terms` et `/legal/privacy` en ligne sur le domaine
+- [ ] URL publiques de confidentialité, de support et de suppression de compte en ligne ([LANCEMENT.md](LANCEMENT.md) étape 5)
 - [ ] Compte de démonstration avec un avis publié, identifiants fournis dans les notes de review
 
 ### Soumission
@@ -219,11 +209,11 @@ npx eas-cli submit --platform android  # nécessite une clé de compte de servic
 
 ---
 
-## Étape 10 : CI/CD (quand le repo est sur GitHub)
+## Étape 9 : CI/CD (quand le repo est sur GitHub)
 
 - [ ] Créer le repo GitHub et pousser le code, puis relier le repo au projet sur expo.dev → *GitHub*.
 - [ ] Workflows fournis (à vérifier au premier lancement) :
-  - `.eas/workflows/main.yml` : à chaque push sur `main`, EAS Update (correctifs JS OTA) + déploiement web.
+  - `.eas/workflows/main.yml` : à chaque push sur `main`, EAS Update (correctifs JS OTA). Pas de déploiement web tant que seule la version mobile est publiée.
   - `.eas/workflows/release-stores.yml` : sur un tag `v*`, build + soumission aux deux stores.
 - [ ] Lancement manuel : `npx eas-cli workflow:run .eas/workflows/main.yml`.
 
@@ -237,5 +227,5 @@ npx eas-cli submit --platform android  # nécessite une clé de compte de servic
 | Interface de modération | Via le dashboard Supabase (étape 1.5). |
 | Connexion Google native | Google passe par le navigateur système (fonctionne dans Expo Go). Le sélecteur de compte natif (`@react-native-google-signin`) demanderait un development build. |
 | Entreprises hors France | Non gérées : création uniquement via SIRENE. |
-| Emails transactionnels métier | Seuls les emails d'auth passent par Resend (SMTP). |
+| Emails transactionnels métier | Seuls les emails d'auth sont envoyés (SMTP Gmail). Les messages des utilisateurs arrivent sur `workfloor@tutamail.com`. |
 | Colonne `companies.sector` | Obsolète (le secteur est déduit du code NAF et traduit) ; à retirer plus tard en deux temps. |

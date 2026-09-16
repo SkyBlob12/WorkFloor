@@ -1,5 +1,6 @@
-# À chaque push sur main : correctif JS OTA sur les apps installées + déploiement du site web.
+# À chaque push sur main : correctif JS OTA sur les apps installées.
 # EAS Update ne touche que les apps ayant la même runtimeVersion (= même version de l'app).
+# Pas de déploiement web : seule la version mobile est publiée pour l'instant.
 name: Main
 
 on:
@@ -13,10 +14,3 @@ jobs:
     environment: production
     params:
       channel: production
-
-  deploy_web:
-    name: Déploiement web (EAS Hosting)
-    type: deploy
-    environment: production
-    params:
-      prod: true

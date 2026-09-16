@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 import { Stack } from 'expo-router';
 import Head from 'expo-router/head';
 import { useTranslation } from 'react-i18next';
@@ -16,10 +18,12 @@ export function PageHead({ title, description, headerTitle, bare = false }: Page
   const { t } = useTranslation('common');
   return (
     <>
-      <Head>
-        <title>{bare ? title : t('meta.pageTitle', { title })}</title>
-        {description ? <meta name="description" content={description} /> : null}
-      </Head>
+      {Platform.OS === 'web' ? (
+        <Head>
+          <title>{bare ? title : t('meta.pageTitle', { title })}</title>
+          {description ? <meta name="description" content={description} /> : null}
+        </Head>
+      ) : null}
       {headerTitle !== undefined ? <Stack.Screen options={{ title: headerTitle }} /> : null}
     </>
   );

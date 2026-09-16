@@ -10,16 +10,18 @@ import { Screen } from '@components/ui/Screen';
 import { Text } from '@components/ui/Text';
 import { spacing } from '@constants/theme';
 import { useAuthInitializing, useAuthSession } from '@hooks/useAuthUser';
+import { useRecoveryLinkSession } from '@hooks/useRecoveryLinkSession';
 
 const styles = StyleSheet.create({ stack: { gap: spacing.lg } });
 
-/** Page d'arrivée du lien « mot de passe oublié » (session récupérée depuis l'URL par supabase-js). */
+/** Page d'arrivée du lien « mot de passe oublié » : deep link sur mobile, URL sur le web. */
 export default function ResetPasswordScreen() {
   const { t } = useTranslation('account');
   const session = useAuthSession();
   const initializing = useAuthInitializing();
+  const restoring = useRecoveryLinkSession();
 
-  if (initializing) return <LoadingState />;
+  if (initializing || restoring) return <LoadingState />;
 
   return (
     <Screen width="reading">

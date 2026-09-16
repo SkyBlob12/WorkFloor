@@ -42,7 +42,6 @@
     "SERVER_ERROR": "Server error. Please try again in a moment.",
     "INVALID_INPUT": "Some information is invalid.",
     "NOT_AUTHENTICATED": "Sign in to continue.",
-    "CAPTCHA_FAILED": "The bot check failed. Please try again.",
     "RATE_LIMITED_REVIEWS": "Too many posts in a short time. Try again tomorrow.",
     "RATE_LIMITED_COMPANIES": "Too many companies added today. Try again tomorrow.",
     "PERSONAL_DATA": "Remove email addresses and phone numbers: a review must not contain any personal data.",
@@ -72,7 +71,6 @@
     "AUTH_WEAK_PASSWORD": "Password too weak.",
     "AUTH_RATE_LIMITED": "Too many attempts. Please wait a few minutes.",
     "AUTH_EMAIL_RATE_LIMITED": "Too many emails sent. Please wait a few minutes.",
-    "AUTH_CAPTCHA_FAILED": "The bot check failed. Please try again.",
     "AUTH_FAILED": "Sign-in failed. Please try again."
   },
   "setup": {
@@ -83,9 +81,6 @@
     "notRated": "Not rated yet",
     "value": "Rated {{value}} out of 5",
     "step": "{{label}}: {{value}} out of 5"
-  },
-  "captcha": {
-    "label": "Bot check"
   },
   "form": {
     "counter": "{{current}} / {{max}}"

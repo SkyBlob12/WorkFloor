@@ -26,6 +26,12 @@ describe('services de modération', () => {
     mockSupabaseResult({ count: 3 });
     await expect(countBlockedAuthors()).resolves.toBe(3);
   });
+
+  it('ne demande jamais la colonne de l’auteur bloqué', async () => {
+    await countBlockedAuthors();
+    const builder = supabase.from.mock.results[0].value as { select: jest.Mock };
+    expect(builder.select).toHaveBeenCalledWith('blocker_id', { count: 'exact', head: true });
+  });
 });
 
 describe('toAuthError', () => {

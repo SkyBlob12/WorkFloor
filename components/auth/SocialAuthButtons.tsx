@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { PressableScale } from '@components/ui/PressableScale';
 import { Text } from '@components/ui/Text';
-import { AUTH_PROVIDERS, type AuthProvider } from '@constants/auth';
+import { VISIBLE_AUTH_PROVIDERS, type AuthProvider } from '@constants/auth';
 import { effects, iconSize, radius, size, spacing, type ColorName } from '@constants/theme';
 import { makeStyles } from '@hooks/makeStyles';
 import { useThemeColors } from '@hooks/useThemeColors';
@@ -50,7 +50,7 @@ export function SocialAuthButtons({ pending, onPress }: SocialAuthButtonsProps) 
   const styles = useStyles();
   return (
     <View style={styles.list}>
-      {AUTH_PROVIDERS.map((provider) => {
+      {VISIBLE_AUTH_PROVIDERS.map((provider) => {
         const config = PROVIDERS[provider];
         const label = t(`auth.provider.${provider}`);
         const busy = pending === provider;

@@ -97,7 +97,6 @@
     "submitNew": "Publier mon avis",
     "submitEdit": "Enregistrer les modifications",
     "fixErrors": "Certains champs sont à corriger.",
-    "captchaPending": "La vérification anti-robot n’est pas terminée. Patientez un instant puis réessayez.",
     "termsNotice": "En publiant, vous acceptez les <link>règles de contenu</link>. Vous pourrez modifier ou supprimer votre avis à tout moment.",
     "authTitle": "Connectez-vous pour donner votre avis",
     "authMessage": "Un compte limite les faux avis. Votre identité n’est jamais affichée."

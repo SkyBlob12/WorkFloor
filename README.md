@@ -13,7 +13,7 @@ Avis anonymes de salariés sur leur entreprise, avec une seule base de code pour
 | Langues | i18next (français de référence, anglais) |
 | Backend | Supabase : Postgres + RLS, Auth, Edge Functions (Deno) |
 | Données entreprises | API Recherche d'entreprises (répertoire SIRENE de l'INSEE) |
-| Anti-abus | Cloudflare Turnstile, rate limiting SQL, modération OpenAI + mots interdits |
+| Anti-abus | Rate limiting SQL, modération OpenAI + mots interdits |
 | Interface | @gorhom/bottom-sheet, react-native-toast-message, Reanimated |
 | Observabilité | Sentry, PostHog (opt-in) |
 | Build / distribution | EAS Build, Submit, Update, Hosting, Workflows |
@@ -66,7 +66,7 @@ store/metadata.md        Textes et réponses pour les stores
 
 - **Consultation libre, contribution avec compte.** Lecture publique via des vues qui n'exposent jamais l'auteur.
 - **Anonymat** : `user_id` n'est lisible que par son propriétaire ; les avis publics sont datés au mois.
-- **Écritures sensibles côté serveur** : un avis passe par captcha, rate limit et modération avant d'être écrit.
+- **Écritures sensibles côté serveur** : un avis passe par rate limit et modération avant d'être écrit.
 - **Un avis par personne et par entreprise**, modifiable et supprimable (avec annulation).
 - **Exigences stores UGC** : signalement, masquage d'auteur, CGU acceptées à l'inscription, suppression du compte dans l'app.
 - **Responsive** : tab bar en bas sur mobile, barre de navigation en haut et colonnes au-delà de 768 px.

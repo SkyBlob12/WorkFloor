@@ -2,73 +2,96 @@
   "updatedLabel": "Dernière mise à jour : {{date}}",
   "updatedAt": "[À COMPLÉTER : date de mise en ligne]",
   "notFound": "Document introuvable.",
+  "site": {
+    "tagline": "Avis anonymes de salariés sur leur entreprise : salaires, ambiance, management.",
+    "supportTitle": "Assistance",
+    "supportIntro": "{{appName}} est une application mobile gratuite, disponible sur iOS et Android, pour lire et publier des avis anonymes sur les entreprises.",
+    "contactHeading": "Nous contacter",
+    "contactText": "Une question, un problème de connexion, une demande concernant vos données ? Écrivez à {{contactEmail}}. Nous répondons sous quelques jours ouvrés.",
+    "passwordHeading": "Mot de passe oublié",
+    "passwordText": "Sur l’écran de connexion, choisissez « Mot de passe oublié » et saisissez votre adresse email. Ouvrez le lien reçu depuis votre téléphone : il ouvre l’application pour choisir un nouveau mot de passe.",
+    "reportHeading": "Signaler un contenu",
+    "reportText": "Dans l’application, ouvrez le menu « … » de l’avis puis choisissez « Signaler cet avis ». Vous pouvez aussi écrire à {{abuseEmail}} en précisant le nom de l’entreprise, l’avis visé et les motifs.",
+    "documentsHeading": "Documents",
+    "deleteAccountTitle": "Supprimer votre compte {{appName}}",
+    "deleteAccountIntro": "Cette page explique comment supprimer votre compte {{appName}} et les données associées, depuis l’application ou par email."
+  },
   "terms": {
     "title": "Conditions d’utilisation",
     "sections": [
       {
         "heading": "1. Objet",
         "paragraphs": [
-          "{{appName}} (le « Service ») permet de consulter et de publier des avis anonymes sur des entreprises : ambiance, rémunération, management, avantages. Le Service est accessible sur le web et via les applications iOS et Android. Les présentes conditions encadrent son utilisation ; les accepter est nécessaire pour créer un compte."
+          "{{appName}} (le « Service ») est une application mobile, disponible sur iOS et Android, qui permet de consulter et de publier des avis anonymes sur des entreprises : ambiance, rémunération, management, avantages. Les présentes conditions encadrent son utilisation ; les accepter est nécessaire pour se connecter."
         ]
       },
       {
-        "heading": "2. Accès au Service",
+        "heading": "2. Éditeur",
+        "paragraphs": [
+          "Le Service est édité par un entrepreneur individuel désigné dans les mentions légales, accessibles depuis l’écran « Compte » de l’application."
+        ]
+      },
+      {
+        "heading": "3. Accès au Service",
         "paragraphs": [
           "La consultation des fiches et des avis est libre et ne nécessite pas de compte.",
-          "Publier un avis, voter, signaler un contenu ou ajouter une entreprise nécessite un compte. Vous devez avoir au moins 16 ans, fournir une adresse email valide et ne créer qu’un seul compte. Vous êtes responsable de la confidentialité de votre mot de passe."
+          "Publier un avis, voter, signaler un contenu ou ajouter une entreprise nécessite un compte, créé avec une adresse email et un mot de passe, ou via Apple ou Google. Vous devez avoir au moins 16 ans, fournir une adresse email valide et ne créer qu’un seul compte. Vous êtes responsable de la confidentialité de vos identifiants.",
+          "Le Service est gratuit. Il ne comporte ni publicité ni achat intégré."
         ]
       },
       {
-        "heading": "3. Règles de contenu",
+        "heading": "4. Règles de contenu",
         "paragraphs": [
           "Un avis doit relater votre expérience personnelle et réelle au sein de l’entreprise concernée, en restant factuel et mesuré. Un seul avis par entreprise est autorisé par compte ; vous pouvez le modifier ou le supprimer à tout moment.",
-          "Sont interdits : les noms ou éléments permettant d’identifier une personne (collègue, manager, client) ; les accusations visant une personne ; les propos injurieux, diffamatoires, discriminatoires, haineux ou menaçants ; les données personnelles (email, téléphone, adresse) ; les informations confidentielles ou couvertes par le secret des affaires ; les faux avis (rédigés par l’entreprise, un concurrent, contre rémunération ou sans y avoir travaillé) ; la publicité ; tout contenu illicite."
+          "Sont interdits : les noms ou éléments permettant d’identifier une personne (collègue, manager, client) ; les accusations visant une personne ; les propos injurieux, diffamatoires, discriminatoires, haineux ou menaçants ; les données personnelles (email, téléphone, adresse) ; les informations confidentielles ou couvertes par le secret des affaires ; les faux avis (rédigés par l’entreprise, un concurrent, contre rémunération ou sans y avoir travaillé) ; la publicité ; tout contenu illicite.",
+          "Les salaires que vous déclarez sont publiés sans lien avec votre identité. N’indiquez pas un montant si, combiné à votre poste, il permettrait de vous reconnaître."
         ]
       },
       {
-        "heading": "4. Modération et signalement",
+        "heading": "5. Modération et signalement",
         "paragraphs": [
-          "{{appName}} agit en qualité d’hébergeur (article 6 de la loi pour la confiance dans l’économie numérique et règlement européen sur les services numériques). Les avis ne font pas l’objet d’un contrôle préalable systématique ; des filtres automatiques peuvent toutefois refuser ou mettre en relecture un contenu.",
-          "Chaque avis comporte un bouton de signalement. Toute personne peut également notifier un contenu illicite à {{abuseEmail}} en précisant l’URL de la fiche, le contenu visé et les motifs. Les contenus manifestement illicites sont retirés promptement. Un avis ayant fait l’objet de nombreux signalements peut être masqué en attendant son examen. Le statut de chaque avis est visible par son auteur depuis son compte.",
-          "En cas de manquements répétés à ces règles, le compte concerné peut être suspendu ou supprimé."
+          "{{appName}} agit en qualité d’hébergeur des avis publiés par ses utilisateurs (article 6 de la loi pour la confiance dans l’économie numérique et règlement (UE) 2022/2065 sur les services numériques). Les avis ne font pas l’objet d’un contrôle préalable systématique. Des filtres automatiques, dont un outil d’analyse de texte fourni par un prestataire, peuvent toutefois refuser un avis ou le mettre en relecture avant publication.",
+          "Chaque avis peut être signalé depuis son menu « … », option « Signaler cet avis ». Toute personne peut également notifier un contenu illicite à {{abuseEmail}} en précisant le nom de l’entreprise, le contenu visé, les motifs pour lesquels il serait illicite et ses coordonnées. Les notifications sont examinées de façon diligente et objective ; les contenus manifestement illicites sont retirés promptement. Un avis ayant fait l’objet de nombreux signalements est masqué automatiquement en attendant son examen.",
+          "Le statut de chaque avis (publié, en relecture, masqué, retiré) est visible par son auteur depuis son compte. L’auteur d’un avis retiré ou masqué peut en demander les motifs et contester la décision en écrivant à {{contactEmail}} ; la demande est réexaminée par une personne.",
+          "En cas de manquements répétés ou graves à ces règles, le compte concerné peut être suspendu ou supprimé, après examen de la situation."
         ]
       },
       {
-        "heading": "5. Anonymat",
+        "heading": "6. Anonymat",
         "paragraphs": [
           "Votre nom et votre adresse email ne sont jamais affichés. Les avis sont publiés sans identifiant et datés au mois près.",
-          "En tant qu’hébergeur, nous sommes légalement tenus de conserver certaines données permettant d’identifier les auteurs de contenus et de les communiquer à l’autorité judiciaire sur réquisition. Évitez par ailleurs d’inclure dans votre avis des détails qui permettraient de vous reconnaître."
+          "En tant qu’hébergeur, nous sommes légalement tenus de conserver certaines données permettant d’identifier les auteurs de contenus et de les communiquer à l’autorité judiciaire sur réquisition (voir la politique de confidentialité). Évitez par ailleurs d’inclure dans votre avis des détails qui permettraient de vous reconnaître."
         ]
       },
       {
-        "heading": "6. Vos contenus",
+        "heading": "7. Vos contenus",
         "paragraphs": [
-          "Vous restez titulaire des droits sur vos avis. Vous accordez au Service une licence non exclusive et gratuite pour les héberger, les reproduire et les afficher, dans le monde entier, pendant toute leur durée de publication. La suppression d’un avis met fin à cette licence."
+          "Vous restez titulaire des droits sur vos avis. Vous accordez au Service une licence non exclusive et gratuite pour les héberger, les reproduire et les afficher dans l’application, dans le monde entier, pendant toute leur durée de publication. La suppression d’un avis met fin à cette licence."
         ]
       },
       {
-        "heading": "7. Entreprises évaluées",
+        "heading": "8. Entreprises évaluées",
         "paragraphs": [
-          "Une entreprise peut signaler un avis qu’elle estime illicite ou exercer un droit de réponse en écrivant à {{abuseEmail}}. Aucun avis ne peut être retiré ou mis en avant contre rémunération."
+          "Une entreprise peut signaler un avis qu’elle estime illicite à {{abuseEmail}}, dans les conditions de l’article 5. Les fiches sont créées à partir du répertoire SIRENE de l’INSEE. Aucun avis ne peut être retiré, modifié ou mis en avant contre rémunération, et aucune entreprise ne peut demander la suppression de sa fiche au seul motif que les avis lui sont défavorables."
         ]
       },
       {
-        "heading": "8. Responsabilité",
+        "heading": "9. Responsabilité",
         "paragraphs": [
-          "Chaque auteur est seul responsable des contenus qu’il publie. Le Service est fourni en l’état ; nous nous efforçons d’en assurer la disponibilité sans pouvoir la garantir."
+          "Chaque auteur est seul responsable des contenus qu’il publie. Les avis reflètent l’opinion de leurs auteurs et non celle de l’éditeur. Le Service est fourni en l’état ; nous nous efforçons d’en assurer la disponibilité sans pouvoir la garantir."
         ]
       },
       {
-        "heading": "9. Suppression du compte",
+        "heading": "10. Suppression du compte",
         "paragraphs": [
-          "Vous pouvez supprimer votre compte à tout moment depuis l’écran « Mon compte ». Vos avis, votes et signalements sont alors effacés."
+          "Vous pouvez supprimer votre compte à tout moment depuis l’écran « Compte », bouton « Supprimer mon compte ». Vos avis, votes et signalements sont alors effacés, sous réserve des données dont la conservation est imposée par la loi."
         ]
       },
       {
-        "heading": "10. Modification et droit applicable",
+        "heading": "11. Modification et droit applicable",
         "paragraphs": [
-          "Ces conditions peuvent évoluer ; les changements importants vous seront signalés dans le Service.",
-          "Les présentes conditions sont soumises au droit français. [À COMPLÉTER : juridiction compétente]. Contact : {{contactEmail}}."
+          "Ces conditions peuvent évoluer ; les changements importants vous seront signalés dans l’application avant leur entrée en vigueur.",
+          "Les présentes conditions sont soumises au droit français. En cas de litige, contactez-nous d’abord à {{contactEmail}} pour rechercher une solution amiable. À défaut, le litige sera porté devant les tribunaux français compétents ; si vous êtes consommateur, vous pouvez saisir la juridiction de votre lieu de résidence, et les règles protectrices de votre pays de résidence restent applicables."
         ]
       }
     ]
@@ -79,56 +102,90 @@
       {
         "heading": "1. Responsable du traitement",
         "paragraphs": [
-          "[À COMPLÉTER : nom de l’éditeur, personne physique ou société]. Contact pour toute question relative à vos données : {{contactEmail}}."
+          "[À COMPLÉTER : prénom et nom], entrepreneur individuel (EI), [À COMPLÉTER : adresse professionnelle], SIRET [À COMPLÉTER], éditeur de l’application {{appName}}. Contact pour toute question relative à vos données : {{contactEmail}}."
         ]
       },
       {
         "heading": "2. Données collectées",
         "paragraphs": [
-          "Compte : adresse email, mot de passe (stocké sous forme hachée, jamais en clair), dates de création et de connexion.",
-          "Contributions : avis (notes, textes, poste, type de contrat, salaire), votes « utile », signalements et auteurs masqués. Les avis sont publiés sans aucun identifiant ; le lien entre votre compte et vos avis est conservé en interne pour vous permettre de les modifier, pour appliquer la règle d’un avis par entreprise et pour respecter nos obligations légales.",
-          "Données anti-abus : lors d’une publication, votre adresse IP est enregistrée sous forme hachée (non réversible) pour limiter les abus. Une vérification anti-robot est réalisée par Cloudflare Turnstile.",
-          "Rapports d’erreurs : en cas de plantage, des informations techniques (modèle d’appareil, version, trace de l’erreur) sont transmises à notre outil de diagnostic, sans votre email.",
-          "Mesure d’audience : uniquement si vous l’acceptez, nous mesurons les pages consultées et le type d’appareil. Ces statistiques ne sont jamais reliées à votre compte."
+          "Compte : adresse email, mot de passe (stocké sous forme hachée, jamais en clair), dates de création et de dernière connexion. Si vous vous connectez avec Apple ou Google, nous recevons de ce fournisseur votre adresse email (éventuellement une adresse relais masquée par Apple) et un identifiant technique, jamais votre mot de passe.",
+          "Contributions : avis (notes, textes, poste, type de contrat, salaire déclaré), votes « utile », signalements et auteurs masqués. Les avis sont publiés sans aucun identifiant ; le lien entre votre compte et vos avis est conservé en interne pour vous permettre de les modifier, pour appliquer la règle d’un avis par entreprise et pour respecter nos obligations légales.",
+          "Données anti-abus : lors d’une publication, votre adresse IP est enregistrée sous forme hachée (non réversible) pour limiter les publications en rafale.",
+          "Rapports d’erreurs : en cas de plantage, des informations techniques (modèle d’appareil, version du système et de l’application, trace de l’erreur) sont transmises à notre outil de diagnostic, sans votre adresse email.",
+          "Mesure d’audience : uniquement si vous l’acceptez, nous mesurons les écrans consultés et le type d’appareil. Ces statistiques ne sont jamais reliées à votre compte.",
+          "Préférences : la langue, vos réponses au questionnaire de bienvenue et vos choix d’affichage restent stockés sur votre appareil et ne nous sont pas transmis.",
+          "Nous ne collectons ni votre localisation, ni vos contacts, ni vos photos, et nous n’utilisons aucun identifiant publicitaire."
         ]
       },
       {
         "heading": "3. Finalités et bases légales",
         "paragraphs": [
-          "Fournir le Service (compte, publication, votes, signalements) : exécution des conditions d’utilisation.",
+          "Fournir le Service (compte, publication, votes, signalements, réinitialisation du mot de passe) : exécution des conditions d’utilisation.",
           "Prévenir le spam et les abus, modérer les contenus, sécuriser le Service, diagnostiquer les erreurs : intérêt légitime.",
-          "Conserver les données d’identification des auteurs de contenus : obligation légale.",
-          "Mesure d’audience : consentement, retirable à tout moment depuis votre compte."
+          "Conserver les données d’identification des auteurs de contenus et répondre aux réquisitions judiciaires : obligation légale.",
+          "Mesure d’audience : consentement, retirable à tout moment depuis l’écran « Compte »."
         ]
       },
       {
         "heading": "4. Destinataires et sous-traitants",
         "paragraphs": [
-          "Vos données ne sont jamais vendues. Elles sont traitées par nos prestataires, dans la limite de leur mission :",
-          "Supabase (base de données et authentification), hébergement en [À COMPLÉTER : région, ex. Union européenne, Francfort] ; Cloudflare (vérification anti-robot) ; OpenAI (modération automatique : le texte des avis, sans identifiant, est analysé aux États-Unis, transfert encadré par [À COMPLÉTER : Data Privacy Framework ou clauses contractuelles types]) ; Sentry (rapports d’erreurs) ; PostHog (mesure d’audience, hébergement UE) ; Resend (envoi des emails) ; Expo (mises à jour et notifications de l’application) ; [À COMPLÉTER : hébergeur du site web].",
+          "Vos données ne sont jamais vendues ni utilisées à des fins publicitaires. Elles sont traitées par nos prestataires, dans la limite de leur mission :",
+          "Supabase Pte. Ltd. (Singapour) : base de données et authentification, données hébergées en France (Paris) sur l’infrastructure d’Amazon Web Services.",
+          "OpenAI Ireland Ltd (Irlande) : modération automatique du texte des avis, transmis sans identifiant. Le texte peut être traité aux États-Unis par OpenAI, L.L.C. ; ce transfert est encadré par les clauses contractuelles types de la Commission européenne. Les textes ne servent pas à entraîner les modèles d’OpenAI.",
+          "Google Ireland Ltd : connexion avec Google si vous la choisissez, et envoi des emails de réinitialisation du mot de passe (Gmail).",
+          "Tutao GmbH (Tuta, Allemagne) : messagerie chiffrée de l’adresse de contact, qui reçoit vos demandes et signalements par email.",
+          "GitHub, Inc. (États-Unis) : hébergement des pages web d’information (assistance et documents légaux), qui enregistre techniquement l’adresse IP de leurs visiteurs ; transfert encadré par le Data Privacy Framework UE-États-Unis.",
+          "Apple Distribution International Ltd : connexion avec Apple si vous la choisissez.",
+          "Functional Software, Inc. (Sentry, États-Unis) : rapports d’erreurs, transfert encadré par les clauses contractuelles types.",
+          "PostHog, Inc. : mesure d’audience, uniquement avec votre accord, données hébergées dans l’Union européenne.",
+          "650 Industries, Inc. (Expo, États-Unis) : distribution des mises à jour de l’application, transfert encadré par les clauses contractuelles types.",
           "Les autorités judiciaires peuvent obtenir communication de certaines données sur réquisition."
         ]
       },
       {
+        "id": "retention",
         "heading": "5. Durées de conservation",
         "paragraphs": [
-          "Compte, avis et votes : jusqu’à la suppression de votre compte.",
+          "Compte, avis, votes, signalements et auteurs masqués : jusqu’à la suppression de votre compte ou du contenu concerné.",
           "Adresses IP hachées : 30 jours.",
-          "[À COMPLÉTER ET À VÉRIFIER avec un juriste : durée de conservation des données d’identification des auteurs imposée par la LCEN (décret n° 2021-1362), à concilier avec la suppression immédiate du compte.]",
-          "Rapports d’erreurs : selon la durée de rétention de notre prestataire, au maximum 90 jours."
+          "Données d’identification des auteurs de contenus (adresse email, identifiant du compte, date et nature de chaque publication) : un an à compter de la suppression du contenu ou du compte, conformément au décret n° 2021-1362 du 20 octobre 2021, dans un espace séparé accessible uniquement pour répondre à une réquisition judiciaire. [À VALIDER PAR LE JURISTE : l’application efface aujourd’hui ces données immédiatement à la suppression du compte ; la mise en conformité technique dépend de cette validation.]",
+          "Rapports d’erreurs : 90 jours au maximum.",
+          "Demandes adressées par email (exercice de droits, notifications de contenus) : trois ans à compter du dernier échange, pour justifier de leur traitement."
         ]
       },
       {
         "heading": "6. Vos droits",
         "paragraphs": [
-          "Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation, d’opposition et de portabilité. La suppression du compte est disponible directement dans l’application. Pour les autres demandes : {{contactEmail}}. Vous pouvez introduire une réclamation auprès de la CNIL (www.cnil.fr)."
+          "Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation, d’opposition et de portabilité, ainsi que du droit de définir des directives relatives au sort de vos données après votre décès. La suppression du compte est disponible directement dans l’application. Pour les autres demandes, écrivez à {{contactEmail}} depuis l’adresse email de votre compte ; nous répondons dans un délai d’un mois.",
+          "Vous pouvez introduire une réclamation auprès de la CNIL (www.cnil.fr)."
         ]
       },
       {
-        "heading": "7. Sécurité, cookies et traceurs",
+        "id": "delete-account",
+        "heading": "7. Supprimer votre compte",
+        "paragraphs": [
+          "Dans l’application : ouvrez l’onglet « Compte », touchez « Supprimer mon compte », puis « Supprimer définitivement ». La suppression est immédiate : votre adresse email, vos avis, votes, signalements et auteurs masqués sont effacés, sous réserve des données dont la conservation est imposée par la loi (section 5).",
+          "Si vous n’avez plus accès à l’application, écrivez à {{contactEmail}} depuis l’adresse email de votre compte en demandant sa suppression. Elle est effectuée dans un délai de 30 jours et vous en recevez la confirmation."
+        ]
+      },
+      {
+        "heading": "8. Sécurité et stockage sur l’appareil",
         "paragraphs": [
           "Les échanges sont chiffrés, les mots de passe hachés et l’accès aux données restreint par des règles de sécurité au niveau de la base.",
-          "Le site web stocke localement votre session de connexion (strictement nécessaire), votre langue et votre choix de consentement. La mesure d’audience fonctionne sans cookie et uniquement après votre accord."
+          "L’application stocke sur votre appareil votre session de connexion (strictement nécessaire), votre langue, vos préférences et votre choix de consentement. La mesure d’audience n’est activée qu’après votre accord et n’utilise aucun identifiant publicitaire.",
+          "Les pages web d’information n’utilisent ni cookie ni mesure d’audience."
+        ]
+      },
+      {
+        "heading": "9. Mineurs",
+        "paragraphs": [
+          "Le Service est réservé aux personnes âgées d’au moins 16 ans. Si vous apprenez qu’un mineur de moins de 16 ans a créé un compte, écrivez à {{contactEmail}} : le compte sera supprimé."
+        ]
+      },
+      {
+        "heading": "10. Modification",
+        "paragraphs": [
+          "Cette politique peut évoluer. En cas de changement important, vous en serez informé dans l’application."
         ]
       }
     ]
@@ -139,26 +196,29 @@
       {
         "heading": "Éditeur",
         "paragraphs": [
-          "[À COMPLÉTER : nom de l’éditeur, personne physique ou société]",
-          "[À COMPLÉTER : forme juridique, capital, adresse du siège, numéro SIREN/RCS, téléphone, ou, pour un particulier non professionnel, mention que les coordonnées ont été communiquées à l’hébergeur (LCEN, art. 6-III-2).]",
+          "[À COMPLÉTER : prénom et nom], entrepreneur individuel (EI)",
+          "Adresse : [À COMPLÉTER : adresse professionnelle ou de domiciliation]",
+          "Téléphone : [À COMPLÉTER]",
+          "SIRET : [À COMPLÉTER]. TVA non applicable, article 293 B du CGI [À VÉRIFIER : uniquement en franchise en base de TVA].",
           "Email : {{contactEmail}}"
         ]
       },
       {
         "heading": "Directeur de la publication",
-        "paragraphs": ["[À COMPLÉTER : nom du directeur de la publication]"]
+        "paragraphs": ["[À COMPLÉTER : prénom et nom], en qualité d’éditeur."]
       },
       {
         "heading": "Hébergement",
         "paragraphs": [
-          "Données et authentification : Supabase Inc. [À COMPLÉTER : adresse postale].",
-          "Site web : [À COMPLÉTER : EAS Hosting (650 Industries, Inc.) ou Vercel Inc., avec adresse postale]."
+          "Données et authentification : Supabase Pte. Ltd., 65 Chulia Street #38-02/03, OCBC Centre, Singapour 049513. Données stockées en France (Paris) sur l’infrastructure d’Amazon Web Services.",
+          "Pages web d’information : GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.",
+          "Les applications sont distribuées par Apple (App Store) et Google (Google Play)."
         ]
       },
       {
         "heading": "Signalement de contenus illicites",
         "paragraphs": [
-          "Utilisez le bouton « Signaler » présent sur chaque avis, ou écrivez à {{abuseEmail}}. Point de contact unique au titre du règlement sur les services numériques (DSA) pour les autorités et les utilisateurs : {{abuseEmail}} (français, anglais)."
+          "Utilisez l’option « Signaler cet avis » du menu « … » de chaque avis, ou écrivez à {{abuseEmail}}. Point de contact unique au titre du règlement sur les services numériques (DSA), pour les autorités comme pour les utilisateurs : {{abuseEmail}} (français, anglais)."
         ]
       }
     ]

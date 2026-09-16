@@ -97,7 +97,6 @@
     "submitNew": "Publish my review",
     "submitEdit": "Save changes",
     "fixErrors": "Some fields need fixing.",
-    "captchaPending": "The bot check isn’t finished yet. Wait a moment, then try again.",
     "termsNotice": "By publishing, you accept the <link>content rules</link>. You can edit or delete your review at any time.",
     "authTitle": "Sign in to write a review",
     "authMessage": "An account limits fake reviews. Your identity is never shown."

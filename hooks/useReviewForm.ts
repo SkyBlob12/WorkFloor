@@ -11,7 +11,7 @@ import type { OwnReview, ReviewDraft, ReviewStatus } from '@app-types/domain';
 
 import { useSubmitReview } from './useReviewMutations';
 
-export type ReviewFormError = { type: 'validation' } | { type: 'captcha' } | { type: 'service'; error: unknown };
+export type ReviewFormError = { type: 'validation' } | { type: 'service'; error: unknown };
 
 export interface UseReviewFormOptions {
   companyId: string;
@@ -25,8 +25,6 @@ export interface ReviewFormState {
   isEdit: boolean;
   update: <K extends keyof ReviewDraft>(key: K, value: ReviewDraft[K]) => void;
   setSalaryText: (value: string) => void;
-  captchaKey: number;
-  onCaptchaToken: (token: string | null) => void;
   submit: () => void;
   submitting: boolean;
   formError: ReviewFormError | null;
@@ -39,8 +37,6 @@ export function useReviewForm({ companyId, initialReview }: UseReviewFormOptions
     initialReview?.salary_amount ? String(initialReview.salary_amount) : '',
   );
   const [errors, setErrors] = useState<DraftErrors>({});
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-  const [captchaKey, setCaptchaKey] = useState(0);
   const [formError, setFormError] = useState<ReviewFormError | null>(null);
   const [result, setResult] = useState<ReviewStatus | null>(null);
   const mutation = useSubmitReview();
@@ -62,24 +58,15 @@ export function useReviewForm({ companyId, initialReview }: UseReviewFormOptions
       setFormError({ type: 'validation' });
       return;
     }
-    if (!captchaToken) {
-      setFormError({ type: 'captcha' });
-      return;
-    }
     setFormError(null);
     mutation.mutate(
-      { companyId, reviewId: initialReview?.id ?? null, draft: candidate, captchaToken },
+      { companyId, reviewId: initialReview?.id ?? null, draft: candidate },
       {
         onSuccess: (response) => setResult(response.status),
         onError: (error) => setFormError({ type: 'service', error }),
-        // Un jeton Turnstile ne sert qu'une fois : on remonte le widget.
-        onSettled: () => {
-          setCaptchaToken(null);
-          setCaptchaKey((key) => key + 1);
-        },
       },
     );
-  }, [draft, salaryText, captchaToken, companyId, initialReview, mutation]);
+  }, [draft, salaryText, companyId, initialReview, mutation]);
 
   return {
     draft,
@@ -88,8 +75,6 @@ export function useReviewForm({ companyId, initialReview }: UseReviewFormOptions
     isEdit: initialReview !== null,
     update,
     setSalaryText,
-    captchaKey,
-    onCaptchaToken: setCaptchaToken,
     submit,
     submitting: mutation.isPending,
     formError,

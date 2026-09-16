@@ -56,7 +56,6 @@ export interface SubmitReviewInput {
   companyId: string;
   reviewId: string | null;
   draft: ReviewDraft;
-  captchaToken: string | null;
 }
 
 export async function submitReview(input: SubmitReviewInput): Promise<{ id: string; status: ReviewStatus }> {
@@ -64,7 +63,6 @@ export async function submitReview(input: SubmitReviewInput): Promise<{ id: stri
     ...input.draft,
     company_id: input.companyId,
     review_id: input.reviewId,
-    captcha_token: input.captchaToken,
   });
 }
 

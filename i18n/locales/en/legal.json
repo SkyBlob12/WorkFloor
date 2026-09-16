@@ -2,73 +2,96 @@
   "updatedLabel": "Last updated: {{date}}",
   "updatedAt": "[TO COMPLETE: launch date]",
   "notFound": "Document not found.",
+  "site": {
+    "tagline": "Anonymous employee reviews of companies: salaries, culture, management.",
+    "supportTitle": "Support",
+    "supportIntro": "{{appName}} is a free mobile app, available on iOS and Android, to read and publish anonymous reviews of companies.",
+    "contactHeading": "Contact us",
+    "contactText": "A question, a sign-in problem, a request about your data? Write to {{contactEmail}}. We reply within a few business days.",
+    "passwordHeading": "Forgot your password",
+    "passwordText": "On the sign-in screen, choose “Forgot password” and enter your email address. Open the link you receive on your phone: it opens the app so you can choose a new password.",
+    "reportHeading": "Report content",
+    "reportText": "In the app, open the review’s “…” menu and choose “Report this review”. You can also write to {{abuseEmail}}, stating the company name, the review concerned and your reasons.",
+    "documentsHeading": "Documents",
+    "deleteAccountTitle": "Delete your {{appName}} account",
+    "deleteAccountIntro": "This page explains how to delete your {{appName}} account and its associated data, from the app or by email."
+  },
   "terms": {
     "title": "Terms of use",
     "sections": [
       {
         "heading": "1. Purpose",
         "paragraphs": [
-          "{{appName}} (the “Service”) lets you read and publish anonymous reviews of companies: culture, pay, management, benefits. The Service is available on the web and through the iOS and Android apps. These terms govern its use; accepting them is required to create an account."
+          "{{appName}} (the “Service”) is a mobile app, available on iOS and Android, that lets you read and publish anonymous reviews of companies: culture, pay, management, benefits. These terms govern its use; accepting them is required to sign in."
         ]
       },
       {
-        "heading": "2. Access to the Service",
+        "heading": "2. Publisher",
+        "paragraphs": [
+          "The Service is published by a sole trader named in the legal notice, available from the “Account” screen of the app."
+        ]
+      },
+      {
+        "heading": "3. Access to the Service",
         "paragraphs": [
           "Company pages and reviews can be read freely without an account.",
-          "Publishing a review, voting, reporting content or adding a company requires an account. You must be at least 16, provide a valid email address and create only one account. You are responsible for keeping your password confidential."
+          "Publishing a review, voting, reporting content or adding a company requires an account, created with an email address and password, or through Apple or Google. You must be at least 16, provide a valid email address and create only one account. You are responsible for keeping your credentials confidential.",
+          "The Service is free. It contains no advertising and no in-app purchases."
         ]
       },
       {
-        "heading": "3. Content rules",
+        "heading": "4. Content rules",
         "paragraphs": [
-          "A review must describe your own, genuine experience at the company concerned, and remain factual and measured. Only one review per company is allowed per account; you can edit or delete it at any time.",
-          "The following are forbidden: names or details that identify a person (colleague, manager, client); accusations against a person; abusive, defamatory, discriminatory, hateful or threatening language; personal data (email, phone, address); confidential information or trade secrets; fake reviews (written by the company, a competitor, for payment or without having worked there); advertising; any unlawful content."
+          "A review must describe your own, genuine experience at the company concerned, and remain factual and measured. Each account may post one review per company; you can edit or delete it at any time.",
+          "The following are prohibited: names or details that could identify a person (colleague, manager, client); accusations against a person; abusive, defamatory, discriminatory, hateful or threatening content; personal data (email, phone number, address); confidential information or trade secrets; fake reviews (written by the company, a competitor, in exchange for payment or without having worked there); advertising; any unlawful content.",
+          "The salaries you declare are published without any link to your identity. Do not enter an amount if, combined with your job title, it could make you recognisable."
         ]
       },
       {
-        "heading": "4. Moderation and reporting",
+        "heading": "5. Moderation and reporting",
         "paragraphs": [
-          "{{appName}} acts as a hosting provider (article 6 of the French law on confidence in the digital economy and the EU Digital Services Act). Reviews are not systematically checked before publication; automatic filters may however reject content or hold it for review.",
-          "Every review has a report button. Anyone may also notify unlawful content to {{abuseEmail}}, stating the page URL, the content concerned and the reasons. Clearly unlawful content is removed promptly. A review that receives many reports may be hidden pending review. Each author can see the status of their reviews from their account.",
-          "Repeated breaches of these rules may lead to the account being suspended or deleted."
+          "{{appName}} acts as a hosting provider for the reviews published by its users (article 6 of the French law on confidence in the digital economy and Regulation (EU) 2022/2065 on digital services). Reviews are not systematically checked before publication. However, automated filters, including a text analysis tool supplied by a service provider, may reject a review or hold it for review before publication.",
+          "Every review can be reported from its “…” menu, “Report this review” option. Anyone can also notify unlawful content to {{abuseEmail}}, stating the company name, the content concerned, the reasons why it is unlawful and their contact details. Notices are handled diligently and objectively; manifestly unlawful content is removed promptly. A review that receives many reports is hidden automatically pending review.",
+          "The status of each review (published, under review, hidden, removed) is visible to its author from their account. The author of a removed or hidden review can ask for the reasons and challenge the decision by writing to {{contactEmail}}; the request is reviewed by a person.",
+          "In case of repeated or serious breaches of these rules, the account concerned may be suspended or deleted, after the situation has been examined."
         ]
       },
       {
-        "heading": "5. Anonymity",
+        "heading": "6. Anonymity",
         "paragraphs": [
-          "Your name and email address are never shown. Reviews are published without any identifier and dated to the month.",
-          "As a hosting provider, we are legally required to keep certain data identifying content authors and to disclose it to judicial authorities upon lawful request. Also avoid including details in your review that could reveal who you are."
+          "Your name and email address are never displayed. Reviews are published without any identifier and dated to the month.",
+          "As a hosting provider, we are legally required to retain certain data that identifies content authors and to disclose it to judicial authorities upon request (see the privacy policy). Also avoid including details in your review that could make you recognisable."
         ]
       },
       {
-        "heading": "6. Your content",
+        "heading": "7. Your content",
         "paragraphs": [
-          "You keep the rights to your reviews. You grant the Service a non-exclusive, free, worldwide licence to host, reproduce and display them for as long as they are published. Deleting a review ends this licence."
+          "You keep the rights to your reviews. You grant the Service a non-exclusive, royalty-free licence to host, reproduce and display them in the app, worldwide, for as long as they are published. Deleting a review ends this licence."
         ]
       },
       {
-        "heading": "7. Reviewed companies",
+        "heading": "8. Reviewed companies",
         "paragraphs": [
-          "A company may report a review it considers unlawful or exercise a right of reply by writing to {{abuseEmail}}. No review can be removed or promoted in exchange for payment."
+          "A company can report a review it considers unlawful to {{abuseEmail}}, under the conditions of section 5. Company pages are created from the INSEE SIRENE register. No review can be removed, edited or promoted in exchange for payment, and no company can request the deletion of its page solely because its reviews are unfavourable."
         ]
       },
       {
-        "heading": "8. Liability",
+        "heading": "9. Liability",
         "paragraphs": [
-          "Each author is solely responsible for the content they publish. The Service is provided as is; we strive to keep it available but cannot guarantee it."
+          "Each author is solely responsible for the content they publish. Reviews reflect the opinion of their authors, not that of the publisher. The Service is provided as is; we strive to keep it available but cannot guarantee it."
         ]
       },
       {
-        "heading": "9. Account deletion",
+        "heading": "10. Account deletion",
         "paragraphs": [
-          "You can delete your account at any time from the “My account” screen. Your reviews, votes and reports are then erased."
+          "You can delete your account at any time from the “Account” screen, “Delete my account” button. Your reviews, votes and reports are then erased, subject to data whose retention is required by law."
         ]
       },
       {
-        "heading": "10. Changes and governing law",
+        "heading": "11. Changes and governing law",
         "paragraphs": [
-          "These terms may change; significant changes will be announced in the Service.",
-          "These terms are governed by French law. [TO COMPLETE: competent court]. Contact: {{contactEmail}}."
+          "These terms may change; significant changes will be announced in the app before they take effect.",
+          "These terms are governed by French law. In the event of a dispute, please contact us first at {{contactEmail}} to seek an amicable solution. Failing that, the dispute will be brought before the competent French courts; if you are a consumer, you may bring it before the courts of your place of residence, and the protective rules of your country of residence continue to apply."
         ]
       }
     ]
@@ -79,56 +102,90 @@
       {
         "heading": "1. Data controller",
         "paragraphs": [
-          "[TO COMPLETE: publisher name, individual or company]. Contact for any question about your data: {{contactEmail}}."
+          "[TO COMPLETE: first and last name], sole trader (entrepreneur individuel, EI), [TO COMPLETE: business address], SIRET [TO COMPLETE], publisher of the {{appName}} app. Contact for any question about your data: {{contactEmail}}."
         ]
       },
       {
-        "heading": "2. Data we collect",
+        "heading": "2. Data collected",
         "paragraphs": [
-          "Account: email address, password (stored hashed, never in plain text), creation and sign-in dates.",
-          "Contributions: reviews (ratings, texts, position, contract type, salary), “helpful” votes, reports and hidden authors. Reviews are published without any identifier; the link between your account and your reviews is kept internally so you can edit them, to enforce the one-review-per-company rule and to meet our legal obligations.",
-          "Anti-abuse data: when you publish, your IP address is recorded in hashed (irreversible) form to limit abuse. A bot check is performed by Cloudflare Turnstile.",
-          "Error reports: if the app crashes, technical information (device model, version, error trace) is sent to our diagnostics tool, without your email.",
-          "Usage analytics: only if you agree, we measure pages viewed and device type. These statistics are never linked to your account."
+          "Account: email address, password (stored hashed, never in plain text), creation and last sign-in dates. If you sign in with Apple or Google, we receive your email address from that provider (possibly a relay address hidden by Apple) and a technical identifier, never your password.",
+          "Contributions: reviews (ratings, texts, job title, contract type, declared salary), “helpful” votes, reports and hidden authors. Reviews are published without any identifier; the link between your account and your reviews is kept internally so you can edit them, to enforce the one-review-per-company rule and to meet our legal obligations.",
+          "Anti-abuse data: when you publish, your IP address is recorded in hashed (irreversible) form to limit bursts of submissions.",
+          "Crash reports: when the app crashes, technical information (device model, system and app version, error trace) is sent to our diagnostics tool, without your email address.",
+          "Analytics: only if you agree, we measure the screens viewed and the device type. These statistics are never linked to your account.",
+          "Preferences: your language, your answers to the welcome questionnaire and your display choices stay on your device and are not sent to us.",
+          "We do not collect your location, contacts or photos, and we do not use any advertising identifier."
         ]
       },
       {
         "heading": "3. Purposes and legal bases",
         "paragraphs": [
-          "Providing the Service (account, publishing, votes, reports): performance of the terms of use.",
+          "Providing the Service (account, publishing, votes, reports, password reset): performance of the terms of use.",
           "Preventing spam and abuse, moderating content, securing the Service, diagnosing errors: legitimate interest.",
-          "Keeping data identifying content authors: legal obligation.",
-          "Usage analytics: consent, which you can withdraw at any time from your account."
+          "Retaining data that identifies content authors and responding to judicial requests: legal obligation.",
+          "Analytics: consent, which you can withdraw at any time from the “Account” screen."
         ]
       },
       {
         "heading": "4. Recipients and processors",
         "paragraphs": [
-          "Your data is never sold. It is processed by our providers, strictly for their purpose:",
-          "Supabase (database and authentication), hosted in [TO COMPLETE: region, e.g. European Union, Frankfurt]; Cloudflare (bot check); OpenAI (automatic moderation: review text, without identifiers, is analysed in the United States, transfer covered by [TO COMPLETE: Data Privacy Framework or standard contractual clauses]); Sentry (error reports); PostHog (usage analytics, EU hosting); Resend (email delivery); Expo (app updates and notifications); [TO COMPLETE: website host].",
-          "Judicial authorities may obtain certain data upon lawful request."
+          "Your data is never sold or used for advertising. It is processed by our service providers, strictly within the scope of their mission:",
+          "Supabase Pte. Ltd. (Singapore): database and authentication, data hosted in France (Paris) on Amazon Web Services infrastructure.",
+          "OpenAI Ireland Ltd (Ireland): automated moderation of review texts, sent without any identifier. Texts may be processed in the United States by OpenAI, L.L.C.; this transfer is covered by the European Commission’s standard contractual clauses. Texts are not used to train OpenAI’s models.",
+          "Google Ireland Ltd: sign-in with Google if you choose it, and sending password reset emails (Gmail).",
+          "Tutao GmbH (Tuta, Germany): encrypted mailbox of the contact address, which receives your requests and reports by email.",
+          "GitHub, Inc. (United States): hosting of the information web pages (support and legal documents), which technically logs their visitors’ IP addresses; transfer covered by the EU-US Data Privacy Framework.",
+          "Apple Distribution International Ltd: sign-in with Apple if you choose it.",
+          "Functional Software, Inc. (Sentry, United States): crash reports, transfer covered by standard contractual clauses.",
+          "PostHog, Inc.: analytics, only with your consent, data hosted in the European Union.",
+          "650 Industries, Inc. (Expo, United States): delivery of app updates, transfer covered by standard contractual clauses.",
+          "Judicial authorities may obtain certain data upon request."
         ]
       },
       {
+        "id": "retention",
         "heading": "5. Retention periods",
         "paragraphs": [
-          "Account, reviews and votes: until you delete your account.",
+          "Account, reviews, votes, reports and hidden authors: until your account or the content concerned is deleted.",
           "Hashed IP addresses: 30 days.",
-          "[TO COMPLETE AND CHECK with a lawyer: retention period for author identification data required by the LCEN (decree no. 2021-1362), to reconcile with immediate account deletion.]",
-          "Error reports: according to our provider’s retention period, at most 90 days."
+          "Data identifying content authors (email address, account identifier, date and nature of each publication): one year from the deletion of the content or account, in accordance with French decree no. 2021-1362 of 20 October 2021, in a separate area accessible only to respond to a judicial request. [TO BE VALIDATED BY THE LAWYER: the app currently erases this data immediately when the account is deleted; technical compliance depends on this validation.]",
+          "Crash reports: 90 days at most.",
+          "Requests sent by email (exercise of rights, content notices): three years from the last exchange, to evidence how they were handled."
         ]
       },
       {
         "heading": "6. Your rights",
         "paragraphs": [
-          "You have the right to access, rectify, erase, restrict, object and port your data. Account deletion is available directly in the app. For other requests: {{contactEmail}}. You can lodge a complaint with the CNIL (www.cnil.fr)."
+          "You have the right of access, rectification, erasure, restriction, objection and portability, as well as the right to set instructions regarding your data after your death. Account deletion is available directly in the app. For other requests, write to {{contactEmail}} from your account’s email address; we reply within one month.",
+          "You can lodge a complaint with the CNIL, the French data protection authority (www.cnil.fr)."
         ]
       },
       {
-        "heading": "7. Security, cookies and trackers",
+        "id": "delete-account",
+        "heading": "7. Deleting your account",
         "paragraphs": [
-          "Connections are encrypted, passwords are hashed and data access is restricted by database-level security rules.",
-          "The website stores your sign-in session (strictly necessary), your language and your consent choice locally. Usage analytics work without cookies and only after you agree."
+          "In the app: open the “Account” tab, tap “Delete my account”, then “Delete permanently”. Deletion is immediate: your email address, reviews, votes, reports and hidden authors are erased, subject to data whose retention is required by law (section 5).",
+          "If you no longer have access to the app, write to {{contactEmail}} from your account’s email address asking for its deletion. It is carried out within 30 days and you receive a confirmation."
+        ]
+      },
+      {
+        "heading": "8. Security and on-device storage",
+        "paragraphs": [
+          "Connections are encrypted, passwords hashed and access to data restricted by database-level security rules.",
+          "The app stores on your device your sign-in session (strictly necessary), your language, your preferences and your consent choice. Analytics are only enabled after you agree and use no advertising identifier.",
+          "The information web pages use no cookies and no analytics."
+        ]
+      },
+      {
+        "heading": "9. Minors",
+        "paragraphs": [
+          "The Service is reserved for people aged 16 or over. If you become aware that a child under 16 has created an account, write to {{contactEmail}}: the account will be deleted."
+        ]
+      },
+      {
+        "heading": "10. Changes",
+        "paragraphs": [
+          "This policy may change. You will be informed in the app of any significant change."
         ]
       }
     ]
@@ -139,26 +196,29 @@
       {
         "heading": "Publisher",
         "paragraphs": [
-          "[TO COMPLETE: publisher name, individual or company]",
-          "[TO COMPLETE: legal form, share capital, registered address, SIREN/RCS number, phone, or, for a non-professional individual, a statement that contact details were provided to the host (LCEN, art. 6-III-2).]",
+          "[TO COMPLETE: first and last name], sole trader (entrepreneur individuel, EI)",
+          "Address: [TO COMPLETE: business or registered address]",
+          "Phone: [TO COMPLETE]",
+          "SIRET: [TO COMPLETE]. VAT not applicable, article 293 B of the French General Tax Code [TO CHECK: only under the VAT franchise scheme].",
           "Email: {{contactEmail}}"
         ]
       },
       {
         "heading": "Publication director",
-        "paragraphs": ["[TO COMPLETE: name of the publication director]"]
+        "paragraphs": ["[TO COMPLETE: first and last name], as publisher."]
       },
       {
         "heading": "Hosting",
         "paragraphs": [
-          "Data and authentication: Supabase Inc. [TO COMPLETE: postal address].",
-          "Website: [TO COMPLETE: EAS Hosting (650 Industries, Inc.) or Vercel Inc., with postal address]."
+          "Data and authentication: Supabase Pte. Ltd., 65 Chulia Street #38-02/03, OCBC Centre, Singapore 049513. Data stored in France (Paris) on Amazon Web Services infrastructure.",
+          "Information web pages: GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States.",
+          "The apps are distributed by Apple (App Store) and Google (Google Play)."
         ]
       },
       {
         "heading": "Reporting unlawful content",
         "paragraphs": [
-          "Use the “Report” button on each review, or write to {{abuseEmail}}. Single point of contact under the Digital Services Act (DSA) for authorities and users: {{abuseEmail}} (French, English)."
+          "Use the “Report this review” option in the “…” menu of each review, or write to {{abuseEmail}}. Single point of contact under the Digital Services Act (DSA), for authorities and users alike: {{abuseEmail}} (French, English)."
         ]
       }
     ]

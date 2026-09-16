@@ -32,17 +32,15 @@ describe('useSignInForm', () => {
     expect(signIn).not.toHaveBeenCalled();
   });
 
-  it('connecte puis régénère le jeton anti-robot', async () => {
+  it('connecte avec les identifiants saisis', async () => {
     const { result } = await renderForm();
     await act(async () => {
       result.current.setEmail('a@b.fr');
       result.current.setPassword('motdepasse');
-      result.current.onCaptchaToken('token');
     });
     await act(async () => result.current.submit());
 
-    await waitFor(() => expect(result.current.captchaKey).toBe(1));
-    expect(signIn).toHaveBeenCalledWith('a@b.fr', 'motdepasse', 'token');
+    await waitFor(() => expect(signIn).toHaveBeenCalledWith('a@b.fr', 'motdepasse'));
     expect(result.current.issue).toBeNull();
   });
 
@@ -54,8 +52,7 @@ describe('useSignInForm', () => {
     });
     await act(async () => result.current.submit());
 
-    await waitFor(() => expect(result.current.captchaKey).toBe(1));
-    expect(signUp).toHaveBeenCalledWith('a@b.fr', 'motdepasse', null);
+    await waitFor(() => expect(signUp).toHaveBeenCalledWith('a@b.fr', 'motdepasse'));
     expect(result.current.notice).toBeNull();
     expect(result.current.mode).toBe('signup');
   });

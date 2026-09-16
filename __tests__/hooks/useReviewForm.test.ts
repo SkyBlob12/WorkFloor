@@ -36,18 +36,10 @@ describe('useReviewForm', () => {
     expect(mutate).not.toHaveBeenCalled();
   });
 
-  it('attend le jeton anti-robot', async () => {
-    const { result } = await renderForm();
-    await fillValidReview(result);
-    await act(async () => result.current.submit());
-    expect(result.current.formError).toEqual({ type: 'captcha' });
-  });
-
   it('envoie l’avis puis expose le statut renvoyé', async () => {
     const { result } = await renderForm();
     await fillValidReview(result);
     await act(async () => {
-      result.current.onCaptchaToken('token');
       result.current.setSalaryText('42 000');
       result.current.update('salary_period', 'year');
     });
@@ -58,16 +50,11 @@ describe('useReviewForm', () => {
     expect(variables).toMatchObject({
       companyId: 'company-1',
       reviewId: null,
-      captchaToken: 'token',
       draft: { salary_amount: 42000, salary_period: 'year' },
     });
 
-    await act(async () => {
-      callbacks.onSuccess({ id: 'r1', status: 'pending' });
-      callbacks.onSettled();
-    });
+    await act(async () => callbacks.onSuccess({ id: 'r1', status: 'pending' }));
     expect(result.current.result).toBe('pending');
-    expect(result.current.captchaKey).toBe(1);
   });
 
   it('pré-remplit le formulaire en mode édition', async () => {

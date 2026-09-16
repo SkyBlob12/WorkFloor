@@ -9,7 +9,8 @@ import { TOP_RATED_MIN_REVIEWS } from '@constants/companies';
 import { spacing } from '@constants/theme';
 import type { CompanyExplorerState } from '@hooks/useCompanyExplorer';
 import { useSectorPhotos } from '@hooks/useSectorPhotos';
-import type { Company } from '@app-types/domain';
+import { nafSectionFromCode } from '@utils/naf';
+import type { Company, NafSection } from '@app-types/domain';
 
 import { CityChips } from './CityChips';
 import { FeaturedCompanyCard } from './FeaturedCompanyCard';
@@ -31,6 +32,7 @@ export function DiscoverSections({ explorer, onOpenCompany }: DiscoverSectionsPr
   const { t } = useTranslation('companies');
   const { sectors, cities, topRated, filters, items } = explorer;
   const sectorPhotos = useSectorPhotos();
+  const photoForSection = (section: NafSection | null): string | undefined => (section ? sectorPhotos[section] : undefined);
 
   return (
     <View style={styles.sections}>
@@ -61,7 +63,12 @@ export function DiscoverSections({ explorer, onOpenCompany }: DiscoverSectionsPr
           </ContentColumn>
           <HorizontalRail accessibilityLabel={t('home.topRated')}>
             {topRated.map((company) => (
-              <FeaturedCompanyCard key={company.id} company={company} onPress={onOpenCompany} />
+              <FeaturedCompanyCard
+                key={company.id}
+                company={company}
+                onPress={onOpenCompany}
+                photoUrl={photoForSection(nafSectionFromCode(company.naf_code))}
+              />
             ))}
           </HorizontalRail>
         </View>

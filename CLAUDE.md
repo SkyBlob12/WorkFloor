@@ -89,7 +89,7 @@ app/                     Routes expo-router (écrans fins, logique dans hooks/ e
 components/
   ui/                    Atomes réutilisables (Button, PressableScale, Sheet, Pill, Card, Text…)
   companies/ reviews/ account/ auth/ legal/   Composants par feature
-  navigation/ shell/ security/                Barre du haut, onglets, layout, Turnstile
+  navigation/ shell/                          Barre du haut, onglets, layout
 hooks/                   Hooks (requêtes TanStack, formulaires, actions)
 stores/                  Stores Zustand (session, consentement)
 services/                Appels Supabase / API, codes d'erreur
@@ -98,6 +98,7 @@ constants/               tokens.json, theme.ts, constantes métier
 types/                   Types globaux (domain.ts, i18next.d.ts)
 utils/                   Fonctions pures testées
 i18n/                    Configuration et traductions
+scripts/                 Scripts Node (build-legal-site.mjs : pages publiques des stores depuis legal.json, GitHub Pages)
 supabase/                migrations/ · preflight/ · rollbacks/ · functions/ · demo/ (données fictives) · maintenance/ (purge) : jamais via db push, lancés par `npm run db:*`
 __tests__/               Tests Jest (miroir de la structure)
 ```
@@ -207,17 +208,17 @@ Ordre : 1. React / React Native · 2. Expo et tierces · 3. Alias internes · 4.
 
 ## 🔐 Sécurité : règles absolues
 
-- `EXPO_PUBLIC_*` uniquement pour des valeurs conçues pour être publiques (URL + clé publishable Supabase, site key Turnstile, DSN Sentry, clé PostHog). Toute clé secrète (OpenAI, Turnstile secret, service role) vit dans les secrets des Edge Functions.
+- `EXPO_PUBLIC_*` uniquement pour des valeurs conçues pour être publiques (URL + clé publishable Supabase, DSN Sentry, clé PostHog). Toute clé secrète (OpenAI, service role) vit dans les secrets des Edge Functions.
 - Toute Edge Function vérifie l'utilisateur via `getUser()` avant toute opération. `verify_jwt = false` est déclaré dans `supabase/config.toml` (clés publishable non-JWT) : la vérification est faite dans le code.
 
 ### Invariants métier (ne jamais casser)
 
-- **Anonymat** : `reviews.user_id` ne sort jamais en lecture publique. Lecture publique uniquement via les vues `reviews_public` et `companies_with_stats` (volontairement sans `security_invoker`). Aucune date exacte exposée (mois seulement).
-- **Écritures sensibles via Edge Functions** : avis (`submit-review` : captcha, rate limit, modération), entreprises (`create-company` : vérification SIRENE, entreprises individuelles refusées). Aucune policy insert/update sur `reviews` ni `companies`.
+- **Anonymat** : `reviews.user_id` ne sort jamais en lecture publique. Lecture publique uniquement via les vues `reviews_public` et `companies_with_stats` (volontairement sans `security_invoker`). Aucune date exacte exposée (mois seulement). Aucun identifiant d'auteur lisible par `anon` / `authenticated`, même indirectement : `companies.created_by` et `user_blocks.blocked_user_id` sont exclus par droits de colonne (Supabase accorde ALL par défaut à chaque nouvelle table : toujours `revoke all` puis `grant` explicite).
+- **Écritures sensibles via Edge Functions** : avis (`submit-review` : rate limit, modération), entreprises (`create-company` : vérification SIRENE, entreprises individuelles refusées). Aucune policy insert/update sur `reviews` ni `companies`.
 - **Un avis par utilisateur par entreprise** : contrainte `reviews_one_per_user_per_company`.
 - Limites de longueur des avis à garder synchronisées en 3 endroits : `constants/reviews.ts`, `supabase/functions/submit-review/index.ts`, CHECK SQL.
 - **Exigences Apple UGC** : signalement, masquage d'auteur, acceptation des CGU à l'inscription (mention « En continuant… » de `AuthTermsNotice`, visible avant tout mode de connexion), suppression du compte dans l'app doivent rester fonctionnels.
-- **Authentification** : Apple, Google (`services/oauth.ts` mobile, `services/oauth.web.ts` web, retour sur `/auth-callback`) et email + mot de passe. **Aucun email de confirmation à l'inscription** (« Confirm email » désactivé côté Supabase) ; Apple reste le premier bouton affiché (exigence App Store dès qu'une connexion tierce existe).
+- **Authentification** : Apple (iOS uniquement, feuille native), Google (`services/oauth.ts` mobile, `services/oauth.web.ts` web, retour sur `/auth-callback`) et email + mot de passe. `constants/auth.ts` expose `VISIBLE_AUTH_PROVIDERS` (filtré par `Platform.OS`) pour n'afficher Apple que sur iOS ; Android et web n'ont que Google et email. **Aucun email de confirmation à l'inscription** (« Confirm email » désactivé côté Supabase) ; sur iOS, Apple reste le premier bouton affiché (exigence App Store dès qu'une connexion tierce existe).
 
 ---
 

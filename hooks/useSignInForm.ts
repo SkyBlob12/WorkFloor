@@ -17,8 +17,6 @@ export interface SignInFormState {
   setEmail: (value: string) => void;
   password: string;
   setPassword: (value: string) => void;
-  captchaKey: number;
-  onCaptchaToken: (token: string | null) => void;
   submit: () => void;
   submitting: boolean;
   /** Connexion Apple / Google. */
@@ -33,8 +31,6 @@ export function useSignInForm(initialMode: AuthMode): SignInFormState {
   const [mode, setMode] = useState<AuthMode>(initialMode);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-  const [captchaKey, setCaptchaKey] = useState(0);
   const [issue, setIssue] = useState<AuthIssue | null>(null);
   const [notice, setNotice] = useState<AuthNotice | null>(null);
   const provider = useProviderSignIn();
@@ -42,10 +38,10 @@ export function useSignInForm(initialMode: AuthMode): SignInFormState {
   const emailMutation = useMutation<AuthNotice | null, Error, AuthMode>({
     meta: { inlineError: true },
     mutationFn: async (currentMode) => {
-      if (currentMode === 'signin') await signIn(email, password, captchaToken);
-      else if (currentMode === 'signup') await signUp(email, password, captchaToken);
+      if (currentMode === 'signin') await signIn(email, password);
+      else if (currentMode === 'signup') await signUp(email, password);
       else {
-        await sendPasswordReset(email, captchaToken);
+        await sendPasswordReset(email);
         return 'resetSent';
       }
       return null;
@@ -72,13 +68,7 @@ export function useSignInForm(initialMode: AuthMode): SignInFormState {
     clearFeedback();
     setIssue(found);
     if (found) return;
-    emailMutation.mutate(mode, {
-      onSuccess: setNotice,
-      onSettled: () => {
-        setCaptchaToken(null);
-        setCaptchaKey((key) => key + 1);
-      },
-    });
+    emailMutation.mutate(mode, { onSuccess: setNotice });
   }, [mode, email, password, clearFeedback, emailMutation]);
 
   const continueWith = useCallback(
@@ -96,8 +86,6 @@ export function useSignInForm(initialMode: AuthMode): SignInFormState {
     setEmail,
     password,
     setPassword,
-    captchaKey,
-    onCaptchaToken: setCaptchaToken,
     submit,
     submitting: emailMutation.isPending,
     continueWith,

@@ -2,7 +2,6 @@ import { StyleSheet, View } from 'react-native';
 
 import { useTranslation } from 'react-i18next';
 
-import { Turnstile } from '@components/security/Turnstile';
 import { Button } from '@components/ui/Button';
 import { PressableScale } from '@components/ui/PressableScale';
 import { Text } from '@components/ui/Text';
@@ -54,7 +53,6 @@ export function EmailAuthFields({ form }: EmailAuthFieldsProps) {
           onSubmitEditing={form.submit}
         />
       )}
-      <Turnstile key={form.captchaKey} onToken={form.onCaptchaToken} />
       <Button label={t(`auth.submit.${mode}`)} loading={form.submitting} onPress={form.submit} />
       {secondaryLink ? (
         <PressableScale

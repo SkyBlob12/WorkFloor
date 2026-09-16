@@ -1,9 +1,8 @@
-// Création ou édition d'un avis : auth, captcha, rate limit, validation, modération, écriture.
+// Création ou édition d'un avis : auth, rate limit, validation, modération, écriture.
 // Les erreurs sont des codes stables (constants/serviceErrors.ts), traduits côté app.
 import { clientIp, corsHeaders, failure, hashIp, json } from '../_shared/http.ts';
 import { moderate } from '../_shared/moderation.ts';
 import { adminClient, consumeRateLimit, getUser } from '../_shared/supabase.ts';
-import { verifyTurnstile } from '../_shared/turnstile.ts';
 
 // À garder synchronisé avec constants/reviews.ts et les CHECK de la migration.
 const TEXT_LIMITS = {
@@ -104,8 +103,6 @@ Deno.serve(async (req) => {
   }
 
   const ip = clientIp(req);
-  if (!(await verifyTurnstile(body.captcha_token, ip))) return failure('CAPTCHA_FAILED', 403);
-
   const allowed = await consumeRateLimit(admin, {
     action: 'submit_review',
     userId: user.id,

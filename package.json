@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit",
     "export:web": "expo export --platform web",
     "deploy:web": "expo export --platform web && eas deploy --prod",
+    "legal:site": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-legal-site.mjs",
     "db:push": "supabase db push",
     "functions:deploy": "supabase functions deploy",
     "db:backup": "supabase db dump --linked --data-only -f supabase/backups/data.sql",
@@ -22,6 +23,7 @@
     "db:purge:preflight": "supabase db query --linked -f supabase/preflight/20260915000300_purge_all_data.sql",
     "db:purge": "supabase db query --linked -f supabase/maintenance/20260915000300_purge_all_data.sql",
     "db:sector-photos:preflight": "supabase db query --linked -f supabase/preflight/20260916000000_sector_photos.sql",
+    "db:restrict-author-columns:preflight": "supabase db query --linked -f supabase/preflight/20260916000100_restrict_author_columns.sql",
     "db:types": "supabase gen types typescript --linked --schema public > types/database.ts",
     "test": "jest",
     "test:coverage": "jest --coverage"
@@ -67,7 +69,6 @@
     "react-native-toast-message": "^2.5.2",
     "react-native-url-polyfill": "^4.0.0",
     "react-native-web": "~0.21.0",
-    "react-native-webview": "13.16.1",
     "react-native-worklets": "0.10.1",
     "zustand": "^5.0.15"
   },
@@ -75,6 +76,8 @@
     "@testing-library/react-native": "^14.0.1",
     "@types/jest": "29.5.14",
     "@types/react": "~19.2.2",
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~57.0.2",
     "jest": "~29.7.0",
     "jest-expo": "~57.0.5",
     "supabase": "^2.117.0",

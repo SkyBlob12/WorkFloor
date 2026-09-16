@@ -42,7 +42,6 @@
     "SERVER_ERROR": "Erreur serveur. Réessayez dans un instant.",
     "INVALID_INPUT": "Certaines informations sont invalides.",
     "NOT_AUTHENTICATED": "Connectez-vous pour continuer.",
-    "CAPTCHA_FAILED": "La vérification anti-robot a échoué. Réessayez.",
     "RATE_LIMITED_REVIEWS": "Trop de publications en peu de temps. Réessayez demain.",
     "RATE_LIMITED_COMPANIES": "Trop d’entreprises ajoutées aujourd’hui. Réessayez demain.",
     "PERSONAL_DATA": "Retirez les adresses email et numéros de téléphone : un avis ne doit contenir aucune donnée personnelle.",
@@ -72,7 +71,6 @@
     "AUTH_WEAK_PASSWORD": "Mot de passe trop faible.",
     "AUTH_RATE_LIMITED": "Trop de tentatives. Patientez quelques minutes.",
     "AUTH_EMAIL_RATE_LIMITED": "Trop d’emails envoyés. Patientez quelques minutes.",
-    "AUTH_CAPTCHA_FAILED": "La vérification anti-robot a échoué. Réessayez.",
     "AUTH_FAILED": "La connexion a échoué. Réessayez."
   },
   "setup": {
@@ -83,9 +81,6 @@
     "notRated": "Pas encore noté",
     "value": "Note {{value}} sur 5",
     "step": "{{label}} : {{value}} sur 5"
-  },
-  "captcha": {
-    "label": "Vérification anti-robot"
   },
   "form": {
     "counter": "{{current}} / {{max}}"

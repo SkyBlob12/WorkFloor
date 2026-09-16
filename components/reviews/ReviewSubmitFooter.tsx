@@ -2,7 +2,6 @@ import { StyleSheet, View } from 'react-native';
 
 import { Trans, useTranslation } from 'react-i18next';
 
-import { Turnstile } from '@components/security/Turnstile';
 import { Button } from '@components/ui/Button';
 import { LinkText } from '@components/ui/LinkText';
 import { Notice } from '@components/ui/Notice';
@@ -21,7 +20,6 @@ export function ReviewSubmitFooter({ form, errorText }: ReviewSubmitFooterProps)
   const { t } = useTranslation('reviews');
   return (
     <View style={styles.footer}>
-      <Turnstile key={form.captchaKey} onToken={form.onCaptchaToken} />
       {errorText ? <Notice tone="danger">{errorText}</Notice> : null}
       <Button label={form.isEdit ? t('form.submitEdit') : t('form.submitNew')} loading={form.submitting} onPress={form.submit} />
       <Text variant="caption">

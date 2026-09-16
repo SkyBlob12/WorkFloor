@@ -20,7 +20,8 @@ export async function blockReviewAuthor(reviewId: string): Promise<void> {
 }
 
 export async function countBlockedAuthors(): Promise<number> {
-  const { count, error } = await supabase.from('user_blocks').select('*', { count: 'exact', head: true });
+  // `blocked_user_id` n'est pas lisible (anonymat) : `select('*')` serait refusé.
+  const { count, error } = await supabase.from('user_blocks').select('blocker_id', { count: 'exact', head: true });
   if (error) throw new ServiceError('LOAD_FAILED');
   return count ?? 0;
 }

@@ -7,7 +7,8 @@
     "base": {
       "env": {
         "SENTRY_DISABLE_AUTO_UPLOAD": "true"
-      }
+      },
+      "channel": "base"
     },
     "development": {
       "extends": "base",
