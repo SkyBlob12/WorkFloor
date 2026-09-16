@@ -47,6 +47,9 @@ export const HOME_CAROUSEL_SIZE = 8;
 export const CITY_FACET_LIMIT = 8;
 export const MOST_REVIEWED_LIMIT = 10;
 
+/** Les photos de secteur changent rarement : une lecture par session suffit. */
+export const SECTOR_PHOTOS_STALE_MS = 24 * 60 * 60 * 1000;
+
 export const SEARCH_DEBOUNCE_MS = 300;
 export const SIRENE_DEBOUNCE_MS = 400;
 export const SIRENE_MIN_QUERY_LENGTH = 3;

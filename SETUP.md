@@ -44,6 +44,7 @@ Chaque migration a trois fichiers : `supabase/preflight/` (lecture seule), `supa
   (Alternative : coller les deux fichiers de `supabase/migrations/` dans le SQL Editor, dans l'ordre.)
 - [ ] Si la 2ᵉ migration (`retention_cron`) échoue : *Database → Extensions* → activer **pg_cron**, puis relancer.
 - [ ] Le **Security Advisor** signalera les vues `reviews_public` et `companies_with_stats` (« security definer view ») : **c'est voulu**, c'est ce qui masque l'auteur des avis. Ne pas « corriger ».
+- [ ] Migration `20260916000000_sector_photos` (photos des secteurs de l'accueil) : pré-vol `npm run db:sector-photos:preflight` (`ok = true` partout), puis `npx supabase db push`. Table en lecture seule pour l'app, photos StockSnap CC0 modifiables dans le *Table Editor*. Son rollback ne supprime que cette table.
 - En cas de besoin : `supabase/rollbacks/` annule tout (**supprime les données**, faire un export avant).
 
 ### 1.3 Authentification (dashboard → *Authentication*)

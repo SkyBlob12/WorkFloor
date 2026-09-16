@@ -33,7 +33,17 @@
     "filterCity": "Voir les entreprises de {{label}}",
     "results_one": "{{count}} entreprise",
     "results_other": "{{count}} entreprises",
-    "noMatch": "Aucune entreprise ne correspond à ces filtres."
+    "noMatch": "Aucune entreprise ne correspond à ces filtres.",
+    "hero": {
+      "cardTitle": "Avis anonyme",
+      "cardRole": "Ex-salarié · CDI",
+      "sticker": "Anonyme"
+    },
+    "share": {
+      "title": "Vous y avez travaillé ?",
+      "body": "Partagez votre expérience en quelques minutes. Votre identité reste secrète.",
+      "action": "Donner mon avis"
+    }
   },
   "sectorShort": {
     "A": "Agriculture",

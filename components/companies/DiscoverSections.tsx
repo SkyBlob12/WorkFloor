@@ -8,11 +8,13 @@ import { SectionHeader } from '@components/ui/SectionHeader';
 import { TOP_RATED_MIN_REVIEWS } from '@constants/companies';
 import { spacing } from '@constants/theme';
 import type { CompanyExplorerState } from '@hooks/useCompanyExplorer';
+import { useSectorPhotos } from '@hooks/useSectorPhotos';
 import type { Company } from '@app-types/domain';
 
 import { CityChips } from './CityChips';
 import { FeaturedCompanyCard } from './FeaturedCompanyCard';
 import { SectorCard } from './SectorCard';
+import { ShareReviewBanner } from './ShareReviewBanner';
 
 export interface DiscoverSectionsProps {
   explorer: CompanyExplorerState;
@@ -24,10 +26,11 @@ const styles = StyleSheet.create({
   section: { gap: spacing.md },
 });
 
-/** Accueil sans recherche : secteurs, mieux notées, villes, puis la liste des plus commentées. */
+/** Accueil sans recherche : secteurs, mieux notées, incitation à publier, villes, puis les plus commentées. */
 export function DiscoverSections({ explorer, onOpenCompany }: DiscoverSectionsProps) {
   const { t } = useTranslation('companies');
   const { sectors, cities, topRated, filters, items } = explorer;
+  const sectorPhotos = useSectorPhotos();
 
   return (
     <View style={styles.sections}>
@@ -44,6 +47,7 @@ export function DiscoverSections({ explorer, onOpenCompany }: DiscoverSectionsPr
                 count={count}
                 selected={filters.sector === value}
                 onPress={explorer.toggleSector}
+                photoUrl={sectorPhotos[value]}
               />
             ))}
           </HorizontalRail>
@@ -62,6 +66,10 @@ export function DiscoverSections({ explorer, onOpenCompany }: DiscoverSectionsPr
           </HorizontalRail>
         </View>
       ) : null}
+
+      <ContentColumn>
+        <ShareReviewBanner />
+      </ContentColumn>
 
       {cities.length > 0 ? (
         <ContentColumn style={styles.section}>

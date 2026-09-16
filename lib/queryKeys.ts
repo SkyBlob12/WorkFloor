@@ -4,6 +4,7 @@ import type { ReviewSort } from '@app-types/domain';
 export const queryKeys = {
   companySearch: (term: string) => ['companies', 'search', term] as const,
   companyDirectory: () => ['companies', 'directory'] as const,
+  sectorPhotos: () => ['sectors', 'photos'] as const,
   company: (id: string) => ['companies', 'detail', id] as const,
   sireneSearch: (term: string) => ['sirene', term] as const,
   companyReviews: (companyId: string, sort: ReviewSort) => ['reviews', companyId, sort] as const,

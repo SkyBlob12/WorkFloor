@@ -19,6 +19,8 @@ export type RatingCriterion = (typeof RATING_CRITERIA)[number];
 export type ReviewSort = (typeof REVIEW_SORTS)[number];
 export type NafSection = (typeof NAF_SECTIONS)[number];
 export type EmployeeRange = (typeof EMPLOYEE_RANGES)[number];
+/** URL de la photo d'illustration de chaque section NAF (table `sector_photos`), partielle si une ligne manque. */
+export type SectorPhotos = Partial<Record<NafSection, string>>;
 export type ServiceErrorCode = (typeof SERVICE_ERROR_CODES)[number];
 
 export type RatingField = `rating_${RatingCriterion}`;

@@ -33,7 +33,17 @@
     "filterCity": "See companies in {{label}}",
     "results_one": "{{count}} company",
     "results_other": "{{count}} companies",
-    "noMatch": "No company matches these filters."
+    "noMatch": "No company matches these filters.",
+    "hero": {
+      "cardTitle": "Anonymous review",
+      "cardRole": "Former employee · Permanent",
+      "sticker": "Anonymous"
+    },
+    "share": {
+      "title": "Worked there?",
+      "body": "Share your experience in a few minutes. Your identity stays secret.",
+      "action": "Write a review"
+    }
   },
   "sectorShort": {
     "A": "Agriculture",

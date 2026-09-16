@@ -21,6 +21,7 @@
     "db:demo:remove": "supabase db query --linked -f supabase/rollbacks/20260915000200_demo_data.sql",
     "db:purge:preflight": "supabase db query --linked -f supabase/preflight/20260915000300_purge_all_data.sql",
     "db:purge": "supabase db query --linked -f supabase/maintenance/20260915000300_purge_all_data.sql",
+    "db:sector-photos:preflight": "supabase db query --linked -f supabase/preflight/20260916000000_sector_photos.sql",
     "db:types": "supabase gen types typescript --linked --schema public > types/database.ts",
     "test": "jest",
     "test:coverage": "jest --coverage"

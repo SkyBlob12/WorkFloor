@@ -15,6 +15,10 @@ Tout ce qui demande **tes comptes, tes décisions ou ton argent**, dans l'ordre.
   3. `npm run db:demo:seed` : la dernière requête liste 9 fiches.
   4. Pour les retirer : `npm run db:demo:remove`.
 - [ ] Repartir d'une base vide (toutes les données, schéma conservé) : `npm run db:backup`, `npm run db:purge:preflight`, puis confirmer dans `supabase/maintenance/20260915000300_purge_all_data.sql` et `npm run db:purge`. **Irréversible.**
+- [ ] Photos des cartes « Explorer par secteur » (sinon les cartes gardent leur pictogramme) :
+  1. `npm run db:sector-photos:preflight` : toutes les lignes doivent avoir `ok = true`. Sinon, **m'envoyer le résultat**.
+  2. `npx supabase db push` (applique `20260916000000_sector_photos`).
+  3. Changer une photo : *Table Editor → sector_photos*, colonne `image_url` (URL en `https://`). Annuler : `supabase/rollbacks/20260916000000_sector_photos.sql`.
 - [ ] Revoir l'onboarding : onglet Compte → *Outils de développement* → « Lancer l'onboarding ».
 
 ## 2. Supabase : vérifier la configuration

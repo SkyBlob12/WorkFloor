@@ -52,7 +52,12 @@ export default function SearchScreen() {
         removeClippedSubviews
         ListHeaderComponent={
           <>
-            <SearchHeader query={explorer.query} onQueryChange={explorer.setQuery} totals={explorer.totals} />
+            <SearchHeader
+              query={explorer.query}
+              onQueryChange={explorer.setQuery}
+              totals={explorer.totals}
+              showScene={explorer.mode === 'discover'}
+            />
             {explorer.mode === 'discover' ? (
               <DiscoverSections explorer={explorer} onOpenCompany={openCompany} />
             ) : (
