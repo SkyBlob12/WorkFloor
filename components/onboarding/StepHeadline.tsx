@@ -7,7 +7,7 @@ import { spacing } from '@constants/theme';
 export interface StepHeadlineProps {
   /** Titre, généralement un `<Trans>` dont la balise `<accent>` colore un mot. */
   title: ReactNode;
-  subtitle: string;
+  subtitle?: string;
 }
 
 const styles = StyleSheet.create({
@@ -17,16 +17,18 @@ const styles = StyleSheet.create({
 /** Composant `accent` à passer à `<Trans components={ACCENT} />`. */
 export const ACCENT = { accent: <Text variant="hero" tone="primary" /> };
 
-/** Gros titre centré et sous-titre discret, sous l'illustration de l'étape. */
+/** Gros titre centré et sous-titre discret facultatif. */
 export function StepHeadline({ title, subtitle }: StepHeadlineProps) {
   return (
     <View style={styles.headline}>
       <Text variant="hero" align="center" accessibilityRole="header">
         {title}
       </Text>
-      <Text variant="body" tone="muted" align="center">
-        {subtitle}
-      </Text>
+      {subtitle ? (
+        <Text variant="body" tone="muted" align="center">
+          {subtitle}
+        </Text>
+      ) : null}
     </View>
   );
 }

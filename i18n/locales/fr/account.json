@@ -25,9 +25,7 @@
   },
   "preferences": {
     "title": "Préférences",
-    "language": "Langue",
-    "analytics": "Mesure d’audience",
-    "analyticsHint": "Statistiques de fréquentation, jamais reliées à votre compte."
+    "language": "Langue"
   },
   "actions": {
     "signOut": "Se déconnecter",
@@ -42,12 +40,6 @@
     "title": "Outils de développement",
     "description": "Visible uniquement en mode développement.",
     "onboarding": "Lancer l’onboarding"
-  },
-  "consent": {
-    "title": "Mesure d’audience",
-    "message": "Nous aimerions mesurer la fréquentation pour améliorer le service. Rien n’est relié à votre compte ni à vos avis. Vous pourrez changer d’avis depuis votre compte.",
-    "accept": "Accepter",
-    "refuse": "Refuser"
   },
   "auth": {
     "welcomeTitle": "Bienvenue",

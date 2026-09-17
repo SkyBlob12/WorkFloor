@@ -10,7 +10,7 @@ import { queryKeys } from '@lib/queryKeys';
 import { blockReviewAuthor } from '@services/moderation';
 import { deleteMyReview, setHelpfulVote, submitReview, type SubmitReviewInput } from '@services/reviews';
 import { applyHelpfulVote } from '@utils/reviewsCache';
-import type { ReviewsPage, ReviewStatus } from '@app-types/domain';
+import type { ReviewsPage, SubmitReviewResult } from '@app-types/domain';
 
 export interface HelpfulVoteVariables {
   reviewId: string;
@@ -43,7 +43,7 @@ export function useHelpfulVote(
   });
 }
 
-export function useSubmitReview(): UseMutationResult<{ id: string; status: ReviewStatus }, Error, SubmitReviewInput> {
+export function useSubmitReview(): UseMutationResult<SubmitReviewResult, Error, SubmitReviewInput> {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: submitReview,

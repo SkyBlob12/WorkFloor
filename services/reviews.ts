@@ -6,22 +6,24 @@ import type {
   ReviewDraft,
   ReviewSort,
   ReviewsPage,
-  ReviewStatus,
+  SubmitReviewResult,
 } from '@app-types/domain';
 
 import { ServiceError } from './errors';
 import { invokeFunction } from './functions';
 
-const OWN_REVIEW_COLUMNS = '*, company:companies(name)';
+const OWN_REVIEW_COLUMNS = '*, company:companies(name), site:company_sites!reviews_site_same_company(siret, city, postal_code)';
 const UNIQUE_VIOLATION = '23505';
 
 export async function listCompanyReviews(
   companyId: string,
   sort: ReviewSort,
+  city: string | null = null,
   offset = 0,
   limit = REVIEWS_PAGE_SIZE,
 ): Promise<ReviewsPage> {
   let query = supabase.from('reviews_public').select('*').eq('company_id', companyId);
+  if (city) query = query.eq('site_city', city);
   query =
     sort === 'helpful'
       ? query.order('helpful_count', { ascending: false }).order('published_month', { ascending: false })
@@ -56,13 +58,19 @@ export interface SubmitReviewInput {
   companyId: string;
   reviewId: string | null;
   draft: ReviewDraft;
+  /** Attestation sur l'honneur d'avoir travaillé dans l'entreprise, exigée par le serveur. */
+  attested: boolean;
+  /** SIRET du site où l'auteur a travaillé, vérifié dans SIRENE par le serveur. */
+  siteSiret: string | null;
 }
 
-export async function submitReview(input: SubmitReviewInput): Promise<{ id: string; status: ReviewStatus }> {
+export async function submitReview(input: SubmitReviewInput): Promise<SubmitReviewResult> {
   return invokeFunction('submit-review', {
     ...input.draft,
     company_id: input.companyId,
+    site_siret: input.siteSiret,
     review_id: input.reviewId,
+    attested: input.attested,
   });
 }
 

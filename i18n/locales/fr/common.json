@@ -56,6 +56,8 @@
     "SIRENE_UNAVAILABLE": "Le répertoire SIRENE ne répond pas. Réessayez plus tard.",
     "SIRENE_RATE_LIMITED": "Trop de recherches, patientez quelques secondes.",
     "SOLE_PROPRIETOR": "Les entreprises individuelles ne peuvent pas être ajoutées : elles correspondent à une personne physique.",
+    "INVALID_SITE": "Cet établissement n’appartient pas à cette entreprise.",
+    "SITE_NOT_FOUND": "Établissement introuvable dans le répertoire SIRENE.",
     "SEARCH_FAILED": "La recherche a échoué.",
     "LOAD_FAILED": "Impossible de charger ces informations.",
     "DELETE_FAILED": "La suppression a échoué.",
@@ -71,7 +73,8 @@
     "AUTH_WEAK_PASSWORD": "Mot de passe trop faible.",
     "AUTH_RATE_LIMITED": "Trop de tentatives. Patientez quelques minutes.",
     "AUTH_EMAIL_RATE_LIMITED": "Trop d’emails envoyés. Patientez quelques minutes.",
-    "AUTH_FAILED": "La connexion a échoué. Réessayez."
+    "AUTH_FAILED": "La connexion a échoué. Réessayez.",
+    "ATTESTATION_REQUIRED": "Cochez l’attestation : seules les personnes ayant travaillé dans l’entreprise peuvent donner leur avis."
   },
   "setup": {
     "title": "Supabase n’est pas configuré",

@@ -29,7 +29,6 @@ export default function OnboardingScreen() {
   const left = useRef(false);
   // Relancé depuis les outils de dev par un utilisateur déjà connecté : ne pas fermer immédiatement.
   const signedInAtStart = useRef(user !== null);
-  const { answers } = flow;
 
   const leave = useCallback(
     (openSignIn = false) => {
@@ -59,16 +58,14 @@ export default function OnboardingScreen() {
           flow.step === 'auth' ? null : (
             <>
               <Button variant="secondary" label={t('skip')} onPress={flow.skip} />
-              <Button label={t('continue')} disabled={!flow.canContinue} onPress={flow.next} style={styles.next} />
+              <Button label={t('continue')} onPress={flow.next} style={styles.next} />
             </>
           )
         }>
-        {flow.step === 'profile' ? <ProfileStep value={answers.profile} onChange={flow.setProfile} /> : null}
-        {flow.step === 'priorities' ? <PrioritiesStep value={answers.priorities} onToggle={flow.togglePriority} /> : null}
-        {flow.step === 'rating' ? (
-          <RatingStep profile={answers.profile} value={answers.demoRating} onChange={flow.setDemoRating} />
-        ) : null}
-        {flow.step === 'anonymity' ? <AnonymityStep anonymized={answers.anonymized} onAnonymize={flow.anonymize} /> : null}
+        {flow.step === 'profile' ? <ProfileStep /> : null}
+        {flow.step === 'priorities' ? <PrioritiesStep /> : null}
+        {flow.step === 'rating' ? <RatingStep /> : null}
+        {flow.step === 'anonymity' ? <AnonymityStep /> : null}
         {flow.step === 'auth' ? (
           <AuthStep
             providerPending={provider.pending}

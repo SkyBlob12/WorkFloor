@@ -14,6 +14,8 @@ export interface CityChipsProps {
   cities: Facet<string>[];
   selected: string | null;
   onSelect: (city: string) => void;
+  /** Libellé lu par le lecteur d'écran (par défaut : filtrer l'annuaire). */
+  accessibilityLabelFor?: (city: string) => string;
 }
 
 const useStyles = makeStyles((palette) => ({
@@ -30,7 +32,7 @@ const useStyles = makeStyles((palette) => ({
   selected: { backgroundColor: palette.primaryFill },
 }));
 
-export function CityChips({ cities, selected, onSelect }: CityChipsProps) {
+export function CityChips({ cities, selected, onSelect, accessibilityLabelFor }: CityChipsProps) {
   const { t } = useTranslation('companies');
   const palette = useThemeColors();
   const styles = useStyles();
@@ -43,7 +45,7 @@ export function CityChips({ cities, selected, onSelect }: CityChipsProps) {
             key={value}
             onPress={() => onSelect(value)}
             accessibilityRole="button"
-            accessibilityLabel={t('home.filterCity', { label: value })}
+            accessibilityLabel={accessibilityLabelFor ? accessibilityLabelFor(value) : t('home.filterCity', { label: value })}
             accessibilityState={{ selected: active }}
             style={[styles.chip, active && styles.selected]}>
             <Feather name="map-pin" size={iconSize.xs} color={active ? palette.onPrimary : palette.primary} />

@@ -28,7 +28,8 @@
     "published": "Publié",
     "pending": "En relecture",
     "hidden": "Masqué par la modération",
-    "removed": "Retiré"
+    "removed": "Retiré",
+    "scheduled": "Publication sous 24 h"
   },
   "card": {
     "dateEdited": "{{month}} · modifié",
@@ -78,6 +79,20 @@
     "contractLabel": "Type de contrat",
     "jobTitle": "Intitulé du poste (optionnel)",
     "jobTitleHint": "Restez générique si votre intitulé exact permet de vous identifier.",
+    "site": "Votre site (optionnel)",
+    "siteHint_one": "Choisissez l’établissement où vous avez travaillé. Sa ville n’apparaît sur les avis qu’à partir de {{count}} avis dans cette ville, pour préserver votre anonymat.",
+    "siteHint_other": "Choisissez l’établissement où vous avez travaillé. Sa ville n’apparaît sur les avis qu’à partir de {{count}} avis dans cette ville, pour préserver votre anonymat.",
+    "siteSearch": "Ville ou code postal",
+    "siteSearchPlaceholder": "Ex. Lyon, 69003 ou 69",
+    "siteSearchHint": "Pour une grande entreprise, le code postal donne les résultats les plus complets.",
+    "siteNoResult": "Aucun établissement trouvé à cet endroit.",
+    "siteMore_one": "{{count}} autre résultat : précisez le code postal.",
+    "siteMore_other": "{{count}} autres résultats : précisez le code postal.",
+    "sitePlace": "{{city}} ({{postalCode}})",
+    "siteSelect": "Choisir le site de {{place}}",
+    "siteHeadquarters": "Siège",
+    "siteClosed": "Fermé",
+    "siteChange": "Changer",
     "content": "Votre avis",
     "title": "Titre",
     "titlePlaceholder": "Résumez votre expérience en une phrase",
@@ -99,7 +114,9 @@
     "fixErrors": "Certains champs sont à corriger.",
     "termsNotice": "En publiant, vous acceptez les <link>règles de contenu</link>. Vous pourrez modifier ou supprimer votre avis à tout moment.",
     "authTitle": "Connectez-vous pour donner votre avis",
-    "authMessage": "Un compte limite les faux avis. Votre identité n’est jamais affichée."
+    "authMessage": "Un compte limite les faux avis. Votre identité n’est jamais affichée.",
+    "attestation": "J’atteste sur l’honneur travailler ou avoir travaillé chez {{name}}, et que cet avis décrit mon expérience personnelle. Un faux avis entraîne son retrait et peut engager ma responsabilité.",
+    "attestationLabel": "Attestation sur l’honneur"
   },
   "formError": {
     "required": "Champ obligatoire",
@@ -110,7 +127,8 @@
     "ratingRequired": "Donnez une note globale",
     "salaryInvalid": "Montant invalide",
     "salaryPeriodRequired": "Précisez la période",
-    "personalData": "Retirez les emails et numéros de téléphone"
+    "personalData": "Retirez les emails et numéros de téléphone",
+    "attestationRequired": "Cochez l’attestation pour publier"
   },
   "submitted": {
     "publishedTitleNew": "Merci, votre avis est publié",
@@ -118,7 +136,9 @@
     "publishedMessage": "Il est désormais visible sur la fiche, sans aucune information permettant de vous identifier.",
     "pendingTitle": "Avis en cours de relecture",
     "pendingMessage": "Certains passages doivent être vérifiés avant publication. Vous pouvez suivre son statut depuis votre compte.",
-    "back": "Retour à la fiche"
+    "back": "Retour à la fiche",
+    "scheduledTitle": "Merci, votre avis est enregistré",
+    "scheduledMessage": "Votre compte vient d’être créé : l’avis sera publié automatiquement dans les 24 heures, sans aucune information permettant de vous identifier."
   },
   "report": {
     "title": "Signaler un avis",

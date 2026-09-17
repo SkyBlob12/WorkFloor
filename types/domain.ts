@@ -2,6 +2,7 @@ import type { EMPLOYEE_RANGES, NAF_SECTIONS } from '@constants/companies';
 import type {
   CONTRACT_TYPES,
   EMPLOYMENT_STATUSES,
+  HOLD_REASONS,
   RATING_CRITERIA,
   REPORT_REASONS,
   REVIEW_SORTS,
@@ -14,6 +15,7 @@ export type EmploymentStatus = (typeof EMPLOYMENT_STATUSES)[number];
 export type ContractType = (typeof CONTRACT_TYPES)[number];
 export type SalaryPeriod = (typeof SALARY_PERIODS)[number];
 export type ReviewStatus = (typeof REVIEW_STATUSES)[number];
+export type HoldReason = (typeof HOLD_REASONS)[number];
 export type ReportReason = (typeof REPORT_REASONS)[number];
 export type RatingCriterion = (typeof RATING_CRITERIA)[number];
 export type ReviewSort = (typeof REVIEW_SORTS)[number];
@@ -43,6 +45,8 @@ export interface Company extends Record<AverageField, number | null> {
   review_count: number;
   avg_overall: number | null;
   recommend_pct: number | null;
+  /** Activité inhabituelle détectée : les avis récents sont exclus des moyennes le temps d'une vérification. */
+  under_review: boolean;
 }
 
 /** Contenu éditable d'un avis. */
@@ -69,6 +73,15 @@ export interface PublicReview extends ReviewDraft {
   is_edited: boolean;
   is_mine: boolean;
   voted_helpful: boolean;
+  /** Ville du site, null tant que la ville compte moins de SITE_CITY_MIN_REVIEWS avis (anonymat). */
+  site_city: string | null;
+}
+
+/** Site d'un avis relu par son auteur (table `company_sites`, RLS : sites de ses avis). */
+export interface ReviewSite {
+  siret: string;
+  city: string | null;
+  postal_code: string | null;
 }
 
 /** Avis de l'utilisateur connecté (table `reviews`, RLS : ses propres lignes). */
@@ -76,10 +89,14 @@ export interface OwnReview extends ReviewDraft {
   id: string;
   company_id: string;
   status: ReviewStatus;
+  hold_reason: HoldReason | null;
+  held_until: string | null;
   helpful_count: number;
   created_at: string;
   updated_at: string;
   company: { name: string } | null;
+  site_id: string | null;
+  site: ReviewSite | null;
 }
 
 /** Entreprise trouvée dans le répertoire SIRENE, normalisée. */
@@ -94,6 +111,33 @@ export interface SireneCompany {
   employeeRange: string | null;
   isActive: boolean;
   isSoleProprietor: boolean;
+}
+
+/** Établissement d'une entreprise trouvé dans SIRENE, normalisé. */
+export interface CompanySite {
+  siret: string;
+  city: string | null;
+  postalCode: string | null;
+  address: string | null;
+  isActive: boolean;
+  isHeadquarters: boolean;
+}
+
+/** Site choisi dans le formulaire d'avis. */
+export type SelectedSite = Pick<CompanySite, 'siret' | 'city' | 'postalCode'>;
+
+/** Ligne de `company_city_stats` : villes atteignant le seuil d'anonymat. */
+export interface CityStat {
+  city: string;
+  review_count: number;
+  avg_overall: number | null;
+}
+
+/** Réponse de l'Edge Function submit-review. */
+export interface SubmitReviewResult {
+  id: string;
+  status: ReviewStatus;
+  hold_reason: HoldReason | null;
 }
 
 export interface ReviewsPage {

@@ -24,6 +24,8 @@
     "db:purge": "supabase db query --linked -f supabase/maintenance/20260915000300_purge_all_data.sql",
     "db:sector-photos:preflight": "supabase db query --linked -f supabase/preflight/20260916000000_sector_photos.sql",
     "db:restrict-author-columns:preflight": "supabase db query --linked -f supabase/preflight/20260916000100_restrict_author_columns.sql",
+    "db:review-trust:preflight": "supabase db query --linked -f supabase/preflight/20260917000000_review_trust.sql",
+    "db:company-sites:preflight": "supabase db query --linked -f supabase/preflight/20260917000100_company_sites.sql",
     "db:types": "supabase gen types typescript --linked --schema public > types/database.ts",
     "test": "jest",
     "test:coverage": "jest --coverage"
@@ -56,8 +58,6 @@
     "expo-updates": "~57.0.22",
     "expo-web-browser": "~57.0.3",
     "i18next": "^26.4.2",
-    "posthog-js": "^1.433.5",
-    "posthog-react-native": "^4.74.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-i18next": "^17.0.14",

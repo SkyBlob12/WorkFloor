@@ -1,20 +1,16 @@
 import { useEffect, useRef } from 'react';
 import { Platform } from 'react-native';
 
-import { usePathname } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
 import { restorePreferredLocale } from '@/i18n';
-import { trackScreen } from '@lib/analytics';
 import { queryClient } from '@lib/queryClient';
 import { queryKeys } from '@lib/queryKeys';
 import { subscribeToAuth } from '@stores/authStore';
-import { useConsentStore } from '@stores/consentStore';
 import { useOnboardingStore } from '@stores/onboardingStore';
 
-/** Effets globaux de démarrage : session, langue, consentement, suivi d'écran (le splash est géré par `useLaunchSplash`). */
+/** Effets globaux de démarrage : session et langue (le splash est géré par `useLaunchSplash`). */
 export function useAppBootstrap(): void {
-  const pathname = usePathname();
   const { i18n } = useTranslation();
   const previousUserId = useRef<string | null | undefined>(undefined);
 
@@ -33,14 +29,9 @@ export function useAppBootstrap(): void {
   );
 
   useEffect(() => {
-    void useConsentStore.getState().hydrate();
     void useOnboardingStore.getState().hydrate();
     void restorePreferredLocale();
   }, []);
-
-  useEffect(() => {
-    trackScreen(pathname);
-  }, [pathname]);
 
   useEffect(() => {
     if (Platform.OS === 'web' && typeof document !== 'undefined' && i18n.resolvedLanguage) {

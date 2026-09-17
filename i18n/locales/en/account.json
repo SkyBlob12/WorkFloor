@@ -25,9 +25,7 @@
   },
   "preferences": {
     "title": "Preferences",
-    "language": "Language",
-    "analytics": "Usage analytics",
-    "analyticsHint": "Traffic statistics, never linked to your account."
+    "language": "Language"
   },
   "actions": {
     "signOut": "Sign out",
@@ -42,12 +40,6 @@
     "title": "Developer tools",
     "description": "Only visible in development mode.",
     "onboarding": "Launch onboarding"
-  },
-  "consent": {
-    "title": "Usage analytics",
-    "message": "We’d like to measure traffic to improve the service. Nothing is linked to your account or your reviews. You can change your mind from your account.",
-    "accept": "Accept",
-    "refuse": "Decline"
   },
   "auth": {
     "welcomeTitle": "Welcome",

@@ -28,7 +28,8 @@
     "published": "Published",
     "pending": "Under review",
     "hidden": "Hidden by moderators",
-    "removed": "Removed"
+    "removed": "Removed",
+    "scheduled": "Going live within 24 h"
   },
   "card": {
     "dateEdited": "{{month}} · edited",
@@ -78,6 +79,20 @@
     "contractLabel": "Contract type",
     "jobTitle": "Job title (optional)",
     "jobTitleHint": "Keep it generic if your exact title could identify you.",
+    "site": "Your site (optional)",
+    "siteHint_one": "Choose the location where you worked. Its city only appears on reviews once that city has {{count}} review, to protect your anonymity.",
+    "siteHint_other": "Choose the location where you worked. Its city only appears on reviews once that city has {{count}} reviews, to protect your anonymity.",
+    "siteSearch": "City or postal code",
+    "siteSearchPlaceholder": "E.g. Lyon, 69003 or 69",
+    "siteSearchHint": "For a large company, the postal code gives the most complete results.",
+    "siteNoResult": "No location found there.",
+    "siteMore_one": "{{count}} more result: add the postal code.",
+    "siteMore_other": "{{count}} more results: add the postal code.",
+    "sitePlace": "{{city}} ({{postalCode}})",
+    "siteSelect": "Choose the {{place}} location",
+    "siteHeadquarters": "Head office",
+    "siteClosed": "Closed",
+    "siteChange": "Change",
     "content": "Your review",
     "title": "Title",
     "titlePlaceholder": "Sum up your experience in one sentence",
@@ -99,7 +114,9 @@
     "fixErrors": "Some fields need fixing.",
     "termsNotice": "By publishing, you accept the <link>content rules</link>. You can edit or delete your review at any time.",
     "authTitle": "Sign in to write a review",
-    "authMessage": "An account limits fake reviews. Your identity is never shown."
+    "authMessage": "An account limits fake reviews. Your identity is never shown.",
+    "attestation": "I solemnly declare that I work or have worked at {{name}}, and that this review describes my own experience. A fake review will be removed and may make me liable.",
+    "attestationLabel": "Statement of honour"
   },
   "formError": {
     "required": "Required field",
@@ -110,7 +127,8 @@
     "ratingRequired": "Give an overall rating",
     "salaryInvalid": "Invalid amount",
     "salaryPeriodRequired": "Choose the period",
-    "personalData": "Remove emails and phone numbers"
+    "personalData": "Remove emails and phone numbers",
+    "attestationRequired": "Tick the statement to post"
   },
   "submitted": {
     "publishedTitleNew": "Thanks, your review is live",
@@ -118,7 +136,9 @@
     "publishedMessage": "It’s now visible on the company page, with nothing that could identify you.",
     "pendingTitle": "Review under moderation",
     "pendingMessage": "Some parts need checking before publication. You can follow its status from your account.",
-    "back": "Back to the company"
+    "back": "Back to the company",
+    "scheduledTitle": "Thanks, your review is saved",
+    "scheduledMessage": "Your account is brand new: the review will go live automatically within 24 hours, with nothing that could identify you."
   },
   "report": {
     "title": "Report a review",

@@ -89,7 +89,6 @@ job,employer,work,career,employee,rating,workplace,benefits,interview,hr,recruit
 | Adresse email | Oui | Oui | Fonctionnement de l'app (compte) |
 | Contenu utilisateur (avis) | Oui | Oui (en interne, jamais affiché) | Fonctionnement de l'app |
 | Données de diagnostic (Sentry) | Oui | Non | Diagnostic |
-| Données d'utilisation (PostHog, si consentement) | Oui | Non | Statistiques |
 
 Ne pas déclarer d'identifiant d'appareil : les notifications push ne sont pas branchées et leurs permissions Android sont bloquées (`android.blockedPermissions` dans `app.json`). L'adresse IP n'est conservée que hachée, 30 jours, pour l'anti-abus : la mentionner au juriste pour savoir s'il faut la déclarer (Google : « Appareil ou autres identifiants »).
 

@@ -55,3 +55,15 @@ export const SIRENE_DEBOUNCE_MS = 400;
 export const SIRENE_MIN_QUERY_LENGTH = 3;
 export const SEARCH_RESULTS_LIMIT = 20;
 export const SIRENE_SEARCH_URL = 'https://recherche-entreprises.api.gouv.fr/search';
+
+/** Recherche du site d'un avis parmi les établissements SIRENE de l'entreprise. */
+export const SITE_SEARCH_MIN_LENGTH = 2;
+/** Maximum accepté par l'API (`limite_matching_etablissements`). */
+export const SITE_SEARCH_API_LIMIT = 100;
+export const SITE_RESULTS_SHOWN = 8;
+/**
+ * Seuil d'anonymat : la ville d'un avis n'est affichée qu'à partir de ce nombre d'avis publiés
+ * dans la même ville. Appliqué en SQL (reviews_public, company_city_stats) : garder synchronisé
+ * avec la migration 20260917000100_company_sites.
+ */
+export const SITE_CITY_MIN_REVIEWS = 3;

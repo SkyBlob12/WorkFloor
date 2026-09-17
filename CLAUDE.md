@@ -91,9 +91,9 @@ components/
   companies/ reviews/ account/ auth/ legal/   Composants par feature
   navigation/ shell/                          Barre du haut, onglets, layout
 hooks/                   Hooks (requêtes TanStack, formulaires, actions)
-stores/                  Stores Zustand (session, consentement)
+stores/                  Stores Zustand (session, onboarding)
 services/                Appels Supabase / API, codes d'erreur
-lib/                     Infrastructure (client Supabase, queryClient, toasts, analytics, monitoring)
+lib/                     Infrastructure (client Supabase, queryClient, toasts, monitoring Sentry)
 constants/               tokens.json, theme.ts, constantes métier
 types/                   Types globaux (domain.ts, i18next.d.ts)
 utils/                   Fonctions pures testées
@@ -147,7 +147,7 @@ Mobile d'abord : vérifier chaque écran à 390 px de large. Les listes sont des
 
 ### Onboarding
 
-Premier lancement mobile uniquement (`useOnboardingGate`, jamais sur le web). Style « slides illustrées » : en haut une scène (`OnboardingStage`) où les éléments interactifs sont des cartes et pastilles flottantes inclinées (`FloatingCard`, `ChoiceCard`, `PriorityChip`, `Sticker`, inclinaisons `tilt` des tokens), en dessous un gros titre centré dont un mot est coloré (`StepHeadline` + balise `<accent>` dans la traduction), puis points de pagination et pilules « Passer » / « Suivant ». « Suivant » exige une interaction (`utils/onboarding.ts`, `canContinue`) ; « Passer » mène directement à l'étape de connexion. Les réponses restent locales (`stores/onboardingStore.ts`) : les priorités réordonnent les critères des fiches. Dernière étape : Apple, Google, email ou invité (lecture seule).
+Premier lancement mobile uniquement (`useOnboardingGate`, jamais sur le web). Style « slides illustrées », **sans aucune action demandée** : en haut une scène (`OnboardingStage`) où des cartes et pastilles flottantes inclinées servent d'illustration, jamais tappables (`FloatingCard`, `ChoiceCard`, `PriorityChip`, `Sticker`, inclinaisons `tilt` des tokens), en dessous un gros titre centré sans sous-titre dont un mot est coloré (`StepHeadline` + balise `<accent>` dans la traduction), puis points de pagination et pilules « Passer » / « Suivant ». « Suivant » est toujours actif ; « Passer » mène directement à l'étape de connexion. Les priorités éventuellement enregistrées par l'ancien onboarding (`stores/onboardingStore.ts`) réordonnent encore les critères des fiches. Dernière étape (`AuthStep`, scène `OnboardingStage` + `SampleReviewCard`) : Apple, Google, email ou invité (lecture seule).
 
 Splash : le splash natif n'affiche que la couleur de fond (il ne peut pas savoir si c'est le premier lancement, et Expo Go peut le retirer trop tôt). `LaunchSplash` couvre l'app dès son premier rendu (`useLaunchSplash`, `utils/launchSplash.ts`) : fond seul tant que l'état est inconnu, logo animé aux lancements suivants, et au premier lancement il s'efface directement sur l'onboarding (jamais de logo ni de page d'accueil visible). Jamais sur le web.
 
@@ -190,7 +190,7 @@ Ordre : 1. React / React Native · 2. Expo et tierces · 3. Alias internes · 4.
 - **Obligatoire** : `utils/`, `hooks/`, `services/`. **Pas de test** pour les composants UI purs, la config, les types.
 - Fichiers dans `__tests__/[dossier]/[fichier].test.ts`, miroir des sources.
 - Mock Supabase centralisé : `__tests__/mocks/supabase.ts` (`mockSupabaseResult`, `resetSupabaseMock`). Ne pas recréer de mock inline.
-- Setup global (AsyncStorage, expo-localization, toasts, analytics, i18n en français) : `__tests__/setup.ts`.
+- Setup global (AsyncStorage, expo-localization, toasts, i18n en français) : `__tests__/setup.ts`.
 - Hooks : `renderHook` et `act` de `@testing-library/react-native` (v14 : `await renderHook(...)`). Mocker les hooks de mutation plutôt que monter un QueryClient quand seule la logique du hook est testée.
 - Seuil de couverture 30 % sur `utils/`, `hooks/`, `constants/` (`npm run test:coverage`).
 
@@ -208,12 +208,12 @@ Ordre : 1. React / React Native · 2. Expo et tierces · 3. Alias internes · 4.
 
 ## 🔐 Sécurité : règles absolues
 
-- `EXPO_PUBLIC_*` uniquement pour des valeurs conçues pour être publiques (URL + clé publishable Supabase, DSN Sentry, clé PostHog). Toute clé secrète (OpenAI, service role) vit dans les secrets des Edge Functions.
+- `EXPO_PUBLIC_*` uniquement pour des valeurs conçues pour être publiques (URL + clé publishable Supabase, DSN Sentry). Aucun outil de mesure d'audience ni de publicité dans l'app : les statistiques viennent de Supabase (SQL), des consoles des stores et de Sentry. Toute clé secrète (OpenAI, service role) vit dans les secrets des Edge Functions.
 - Toute Edge Function vérifie l'utilisateur via `getUser()` avant toute opération. `verify_jwt = false` est déclaré dans `supabase/config.toml` (clés publishable non-JWT) : la vérification est faite dans le code.
 
 ### Invariants métier (ne jamais casser)
 
-- **Anonymat** : `reviews.user_id` ne sort jamais en lecture publique. Lecture publique uniquement via les vues `reviews_public` et `companies_with_stats` (volontairement sans `security_invoker`). Aucune date exacte exposée (mois seulement). Aucun identifiant d'auteur lisible par `anon` / `authenticated`, même indirectement : `companies.created_by` et `user_blocks.blocked_user_id` sont exclus par droits de colonne (Supabase accorde ALL par défaut à chaque nouvelle table : toujours `revoke all` puis `grant` explicite).
+- **Anonymat** : `reviews.user_id` ne sort jamais en lecture publique. Lecture publique uniquement via les vues `reviews_public` et `companies_with_stats` (volontairement sans `security_invoker`). Aucune date exacte exposée (mois seulement). Aucun identifiant d'auteur lisible par `anon` / `authenticated`, même indirectement : `companies.created_by` et `user_blocks.blocked_user_id` sont exclus par droits de colonne (Supabase accorde ALL par défaut à chaque nouvelle table : toujours `revoke all` puis `grant` explicite). **Sites** : une fiche reste une entité légale (SIREN) ; le site d'un avis (`reviews.site_id` → `company_sites`, SIRET vérifié par `submit-review`) n'est jamais lisible publiquement, seule sa ville sort via `reviews_public.site_city` et `company_city_stats`, à partir de 3 avis publiés dans la ville (`SITE_CITY_MIN_REVIEWS`, à garder synchronisé avec le SQL).
 - **Écritures sensibles via Edge Functions** : avis (`submit-review` : rate limit, modération), entreprises (`create-company` : vérification SIRENE, entreprises individuelles refusées). Aucune policy insert/update sur `reviews` ni `companies`.
 - **Un avis par utilisateur par entreprise** : contrainte `reviews_one_per_user_per_company`.
 - Limites de longueur des avis à garder synchronisées en 3 endroits : `constants/reviews.ts`, `supabase/functions/submit-review/index.ts`, CHECK SQL.

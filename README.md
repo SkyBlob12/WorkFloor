@@ -9,13 +9,13 @@ Avis anonymes de salariés sur leur entreprise, avec une seule base de code pour
 | Couche | Outil |
 | --- | --- |
 | App | Expo SDK 57 (React Native + react-native-web), Expo Router, NativeWind 4 |
-| Données | TanStack Query (serveur), Zustand (session, consentement) |
+| Données | TanStack Query (serveur), Zustand (session, onboarding) |
 | Langues | i18next (français de référence, anglais) |
 | Backend | Supabase : Postgres + RLS, Auth, Edge Functions (Deno) |
 | Données entreprises | API Recherche d'entreprises (répertoire SIRENE de l'INSEE) |
 | Anti-abus | Rate limiting SQL, modération OpenAI + mots interdits |
 | Interface | @gorhom/bottom-sheet, react-native-toast-message, Reanimated |
-| Observabilité | Sentry, PostHog (opt-in) |
+| Observabilité | Sentry (région UE) |
 | Build / distribution | EAS Build, Submit, Update, Hosting, Workflows |
 | Tests | Jest (jest-expo), Testing Library |
 
@@ -51,7 +51,7 @@ components/              ui/ (atomes), companies/, reviews/, account/, auth/, le
 hooks/                   Requêtes TanStack, formulaires, actions
 stores/                  Zustand
 services/                Appels Supabase et API, codes d'erreur
-lib/                     Client Supabase, queryClient, toasts, analytics, monitoring
+lib/                     Client Supabase, queryClient, toasts, monitoring
 constants/               tokens.json (design), theme.ts, constantes métier
 utils/                   Fonctions pures testées
 types/                   Types globaux

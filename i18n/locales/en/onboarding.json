@@ -6,7 +6,6 @@
   "skip": "Skip",
   "profile": {
     "title": "What <accent>brings</accent> you here?",
-    "subtitle": "We’ll tailor WorkFloor to your situation.",
     "options": {
       "jobSeeker": {
         "title": "I’m looking for a job",
@@ -20,43 +19,20 @@
         "title": "I’m just curious",
         "description": "See what really goes on inside companies"
       }
-    },
-    "a11yGroup": "Your situation"
+    }
   },
   "priorities": {
-    "title": "What <accent>matters</accent> to you",
-    "subtitle_one": "Pick up to {{count}} criterion: it will be highlighted on every company page.",
-    "subtitle_other": "Pick up to {{count}} criteria: they will be highlighted on every company page.",
-    "counter": "{{current}} / {{max}} selected"
+    "title": "What <accent>matters</accent> to you"
   },
   "rating": {
-    "title": {
-      "jobSeeker": "<accent>Rate</accent> your last job",
-      "employee": "<accent>Rate</accent> your employer",
-      "curious": "<accent>Rate</accent> a company"
-    },
-    "subtitle": "Just a try: tap a star, nothing is published.",
-    "label": "Trial rating",
-    "feedback": {
-      "low": "It happens. Your story can spare others the same.",
-      "mid": "Mixed: the details are what help others.",
-      "high": "Great! Tell others what works."
-    },
-    "sticker": "Try",
+    "title": "<accent>Rate</accent> a company",
     "overall": "Overall rating",
-    "target": {
-      "jobSeeker": "My last job",
-      "employee": "My employer",
-      "curious": "A company"
-    }
+    "target": "A company"
   },
   "anonymity": {
     "title": "Your identity stays <accent>secret</accent>",
-    "subtitle": "Tap the button to see what readers will see.",
-    "sampleAuthor": "Camille R., project manager",
     "sampleAnonymous": "Anonymous · Project manager",
     "sampleTitle": "Great team, but little room to grow",
-    "action": "Make this review anonymous",
     "points": {
       "name": "No name, no email shown",
       "date": "Only the month of publication",

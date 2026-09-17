@@ -46,6 +46,8 @@ Chaque migration a trois fichiers : `supabase/preflight/` (lecture seule), `supa
 - [ ] Le **Security Advisor** signalera les vues `reviews_public` et `companies_with_stats` (« security definer view ») : **c'est voulu**, c'est ce qui masque l'auteur des avis. Ne pas « corriger ».
 - [ ] Migration `20260916000000_sector_photos` (photos des secteurs de l'accueil) : pré-vol `npm run db:sector-photos:preflight` (`ok = true` partout), puis `npx supabase db push`. Table en lecture seule pour l'app, photos StockSnap CC0 modifiables dans le *Table Editor*. Son rollback ne supprime que cette table.
 - [ ] Migration `20260916000100_restrict_author_columns` (anonymat : `companies.created_by` et `user_blocks.blocked_user_id` illisibles via l'API) : pré-vol `npm run db:restrict-author-columns:preflight` (`ok = true` partout), puis `npx supabase db push`. Relancer le pré-vol ensuite : les deux dernières lignes doivent valoir `false`. Son rollback rouvre la faille.
+- [ ] Migration `20260917000000_review_trust` (faux avis : attestation, publication différée des comptes récents, surveillance des entreprises, moyennes pondérées) : pré-vol `npm run db:review-trust:preflight` (`ok = true` partout), puis `npx supabase db push`, **puis seulement** `npx supabase functions deploy submit-review` (la fonction écrit des colonnes créées par la migration). Vérifier ensuite que la tâche cron `release-held-reviews` apparaît dans *Integrations → Cron*. Rollback : redéployer d'abord l'ancienne `submit-review`, puis lancer le fichier de `supabase/rollbacks/` (publie les avis retenus pour compte récent, laisse en relecture ceux d'une activité inhabituelle).
+- [ ] Migration `20260917000100_company_sites` (site de l'avis pour les entreprises présentes dans plusieurs villes, filtre par ville sur la fiche) : pré-vol `npm run db:company-sites:preflight` (`ok = true` partout ; la ligne « droits sur reviews_public » vaut `false` avant la migration, elle la corrige), puis `npx supabase db push`, **puis seulement** `npx supabase functions deploy submit-review` (la fonction écrit `reviews.site_id` et `company_sites`). Relancer le pré-vol ensuite : tout doit valoir `true`. La nouvelle version de l'app lit `site_city` et `company_city_stats` : ne la publier qu'après la migration. Rollback : redéployer d'abord l'ancienne `submit-review`, puis lancer le fichier de `supabase/rollbacks/` (le site de chaque avis est perdu, les avis restent).
 - En cas de besoin : `supabase/rollbacks/` annule tout (**supprime les données**, faire un export avant).
 
 ### 1.3 Authentification (dashboard → *Authentication*)
@@ -91,6 +93,9 @@ Dans *Table Editor* :
 - `reports` filtré sur `status = open` : traiter puis passer à `actioned` ou `dismissed`.
 - `banned_terms` : enrichir la liste (`reject` = refusé, `review` = mis en relecture). Termes en minuscules et sans accents.
 - Un avis passe automatiquement en `pending` au 5ᵉ signalement (constante `auto_hide_threshold` dans la migration).
+- Avis `pending` avec `hold_reason = new_account` : rien à faire, ils sont publiés automatiquement 24 h après la création du compte de l'auteur (tâche cron toutes les 15 min).
+- `company_watches` filtré sur `resolved_at` vide : entreprises en **activité inhabituelle** (colonne `signals`). Leur note exclut les avis créés depuis `window_start` et chaque nouvel avis attend (`hold_reason = company_surge`). Relire les avis de l'entreprise créés depuis `window_start` (publiés et en attente, `moderation_flags.activity_signals` indique les indices), passer les faux à `removed`, puis renseigner `resolved_at` (et `resolution` : `cleared` ou `actioned`). Les avis encore retenus sont publiés au passage suivant de la tâche cron. À vérifier chaque jour : une entreprise surveillée reste gelée tant que personne ne clôt la surveillance.
+- Seuils de détection : `supabase/functions/_shared/trust.ts` (redéployer `submit-review` après modification).
 
 ### 1.6 MCP Supabase pour Claude Code (optionnel)
 
@@ -144,22 +149,16 @@ Première version sans nom de domaine : les emails partent d'un compte GMX gratu
 
 ---
 
-## Étape 5 : Sentry et PostHog (désactivés tant que les clés sont vides)
+## Étape 5 : Sentry et statistiques
 
-Les deux sont déjà branchés dans le code (`lib/monitoring.ts`, `lib/analytics.ts`) : il suffit de fournir les clés puis de refaire un build. Les textes juridiques annoncent un hébergement **dans l'UE** et aucune donnée personnelle : respecter les réglages ci-dessous.
+L'app ne contient **aucun outil de mesure d'audience** (PostHog retiré) : pas de bandeau de consentement. Les statistiques viennent de Supabase, des consoles des stores (installations, appareils actifs, rétention) et de Sentry (sessions, stabilité).
 
-**Sentry** (plantages, désactivé en développement)
-- [ ] sentry.io → créer l'organisation en choisissant la région de données **European Union** (non modifiable ensuite).
-- [ ] Créer un projet *React Native* → copier le **DSN** (*Settings → Projects → WorkFloor → Client Keys (DSN)*).
-- [ ] *Settings → Projects → WorkFloor → Security & Privacy* : activer **Prevent Storing of IP Addresses** et laisser **Data Scrubber** activé.
-- [ ] `.env` : `EXPO_PUBLIC_SENTRY_DSN=<dsn>`, puis EAS : `npx eas-cli env:create --environment preview --environment production --name EXPO_PUBLIC_SENTRY_DSN --value <dsn> --visibility plaintext`.
-- [ ] Optionnel, traces lisibles : dans `app.json`, remplacer `"@sentry/react-native"` par `["@sentry/react-native", { "organization": "<org>", "project": "<projet>" }]`, créer un token Sentry, `npx eas-cli env:create --name SENTRY_AUTH_TOKEN --visibility secret ...`, puis retirer `SENTRY_DISABLE_AUTO_UPLOAD` de `eas.json`.
-
-**PostHog** (utilisateurs actifs, écrans vus ; uniquement avec le consentement de l'utilisateur)
-- [ ] https://eu.posthog.com (EU Cloud) → créer le projet → *Settings → Project* : copier la **Project API key** (`phc_...`).
-- [ ] *Settings → Project* : activer **Discard client IP data**, et ne pas activer le *Session replay*.
-- [ ] `.env` : `EXPO_PUBLIC_POSTHOG_KEY=<clé>` (`EXPO_PUBLIC_POSTHOG_HOST` vaut déjà `https://eu.i.posthog.com`), puis EAS : `npx eas-cli env:create --environment preview --environment production --name EXPO_PUBLIC_POSTHOG_KEY --value <clé> --visibility plaintext`.
-- Le bandeau de consentement s'affiche automatiquement dès que la clé est définie : PostHog ne compte que les personnes qui acceptent. Pour des totaux exacts (comptes, avis), utiliser les requêtes SQL ci-dessous.
+**Sentry** (plantages, désactivé en développement, région UE)
+- [x] Organisation et projet `workfloor` créés en région UE, DSN dans `.env` et dans EAS (`preview`, `production`).
+- [ ] *Settings → Projects → workfloor → Security & Privacy* : activer **Prevent Storing of IP Addresses** et laisser **Data Scrubber** activé.
+- [x] Source maps configurées : plugin `@sentry/react-native` dans `app.json` (organisation et projet `workfloor`, `url` `https://de.sentry.io/`), `metro.config.js` (`getSentryExpoConfig`), `SENTRY_ALLOW_FAILURE` dans `eas.json` (un envoi raté ne casse pas le build).
+- [ ] Token pour l'envoi des source maps : Sentry → *Settings → Organization → Auth Tokens* → *Create New Token*, puis `npx eas-cli env:create --environment preview --environment production --name SENTRY_AUTH_TOKEN --value <token> --visibility secret`. Sans lui, les builds passent mais les traces d'erreur restent illisibles.
+- [ ] npm 12 bloque le script d'installation de `@sentry/cli` en local : `npm install-scripts approve @sentry/cli` puis `npm install` (utile seulement pour un envoi local ; les builds EAS ne sont pas concernés).
 
 **Statistiques exactes dans Supabase** (*SQL Editor*, lecture seule, à enregistrer comme snippets)
 ```sql

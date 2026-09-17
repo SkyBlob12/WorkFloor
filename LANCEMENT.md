@@ -74,7 +74,7 @@ Textes de `i18n/locales/fr/legal.json` et `i18n/locales/en/legal.json` **validé
 - [x] **Suppression du compte = suppression totale, aucune conservation** (décision du 16 septembre 2026). Le code le fait déjà (cascade SQL sur toutes les tables liées au compte) et les textes le disent. À savoir : le décret n° 2021-1362 prévoit une conservation d'un an pour les hébergeurs ; ce choix s'en écarte, en connaissance de cause.
 - [ ] S'assurer que l'hébergeur (Supabase) dispose bien de ton identité (compte, facturation), comme l'annoncent les mentions légales.
 - [ ] App Store Connect : déclarer le statut **non-commerçant** (DSA), cohérent avec une édition non professionnelle.
-- [ ] Brancher Sentry (région UE) et PostHog (EU Cloud), cités comme prestataires : [SETUP.md](SETUP.md) étape 5.
+- [x] Sentry branché (région UE) ; PostHog retiré de l'app et des textes. Reste le token des source maps : [SETUP.md](SETUP.md) étape 5.
 - [ ] Tenir un registre des traitements (modèle CNIL).
 - ⚠️ Ne jamais écrire d'information personnelle (adresse, SIRET, téléphone) dans ce dépôt : il est **public**, historique compris.
 
@@ -119,7 +119,7 @@ Textes de `i18n/locales/fr/legal.json` et `i18n/locales/en/legal.json` **validé
 
 - [ ] **Supprimer les données de démo** : `npm run db:demo:remove` (attendu : 0 et 0).
 - [ ] Publier quelques vrais avis toi-même ou avec des proches, sur de vraies entreprises (une app vide est un motif de rejet et fait fuir).
-- [ ] Sentry et PostHog (optionnels) : DSN et clé dans `.env` et EAS (SETUP étape 5).
+- [ ] Statistiques : requêtes SQL de [SETUP.md](SETUP.md) étape 5, App Store Connect *Analytics*, Play Console *Statistiques*, Sentry *Releases*.
 - [ ] Routine de modération : table `reviews` en `pending`, table `reports` en `open` (SETUP étape 1.5), et boîte `abuseEmail` relevée régulièrement.
 - [ ] ⚠️ Chaque push sur `main` publie une mise à jour OTA aux apps installées (`.eas/workflows/main.yml`), dès que le repo est relié à EAS.
 

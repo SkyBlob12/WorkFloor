@@ -1,6 +1,6 @@
 {
   "updatedLabel": "Dernière mise à jour : {{date}}",
-  "updatedAt": "16 septembre 2026",
+  "updatedAt": "17 septembre 2026",
   "notFound": "Document introuvable.",
   "site": {
     "tagline": "Avis anonymes de salariés sur leur entreprise : salaires, ambiance, management.",
@@ -44,6 +44,7 @@
         "paragraphs": [
           "Un avis doit relater votre expérience personnelle et réelle au sein de l’entreprise concernée, en restant factuel et mesuré. Un seul avis par entreprise est autorisé par compte ; vous pouvez le modifier ou le supprimer à tout moment.",
           "Sont interdits : les noms ou éléments permettant d’identifier une personne (collègue, manager, client) ; les accusations visant une personne ; les propos injurieux, diffamatoires, discriminatoires, haineux ou menaçants ; les données personnelles (email, téléphone, adresse) ; les informations confidentielles ou couvertes par le secret des affaires ; les faux avis (rédigés par l’entreprise, un concurrent, contre rémunération ou sans y avoir travaillé) ; la publicité ; tout contenu illicite.",
+          "Avant chaque publication, vous attestez sur l’honneur travailler ou avoir travaillé dans l’entreprise concernée et relater votre expérience personnelle. Un avis publié en violation de cette attestation est retiré et peut engager la responsabilité de son auteur.",
           "Les salaires que vous déclarez sont publiés sans lien avec votre identité. N’indiquez pas un montant si, combiné à votre poste, il permettrait de vous reconnaître."
         ]
       },
@@ -51,6 +52,7 @@
         "heading": "5. Modération et signalement",
         "paragraphs": [
           "{{appName}} agit en qualité d’hébergeur des avis publiés par ses utilisateurs (article 6 de la loi pour la confiance dans l’économie numérique et règlement (UE) 2022/2065 sur les services numériques). Les avis ne font pas l’objet d’un contrôle préalable systématique. Des filtres automatiques, dont un outil d’analyse de texte fourni par un prestataire, peuvent toutefois refuser un avis ou le mettre en relecture avant publication.",
+          "Pour limiter les faux avis, l’avis d’un compte créé depuis moins de 24 heures est publié automatiquement à l’issue de ce délai, et les avis écrits pendant les 7 premiers jours d’un compte comptent pour moitié dans les notes moyennes. Lorsqu’une entreprise reçoit un nombre inhabituel d’avis en peu de temps (volume, comptes récents, notes extrêmes, textes similaires), ses avis récents sont exclus de sa note et les nouveaux avis sont relus avant publication ; la fiche l’indique. Ces vérifications ne révèlent jamais l’identité des auteurs.",
           "Chaque avis peut être signalé depuis son menu « … », option « Signaler cet avis ». Toute personne peut également notifier un contenu illicite à {{abuseEmail}} en précisant le nom de l’entreprise, le contenu visé, les motifs pour lesquels il serait illicite et ses coordonnées. Les notifications sont examinées de façon diligente et objective ; les contenus manifestement illicites sont retirés promptement. Un avis ayant fait l’objet de nombreux signalements est masqué automatiquement en attendant son examen.",
           "Le statut de chaque avis (publié, en relecture, masqué, retiré) est visible par son auteur depuis son compte. L’auteur d’un avis retiré ou masqué peut en demander les motifs et contester la décision en écrivant à {{contactEmail}} ; la demande est réexaminée par une personne.",
           "En cas de manquements répétés ou graves à ces règles, le compte concerné peut être suspendu ou supprimé, après examen de la situation."
@@ -110,9 +112,8 @@
         "paragraphs": [
           "Compte : adresse email, mot de passe (stocké sous forme hachée, jamais en clair), dates de création et de dernière connexion. Si vous vous connectez avec Apple ou Google, nous recevons de ce fournisseur votre adresse email (éventuellement une adresse relais masquée par Apple) et un identifiant technique, jamais votre mot de passe.",
           "Contributions : avis (notes, textes, poste, type de contrat, salaire déclaré), votes « utile », signalements et auteurs masqués. Les avis sont publiés sans aucun identifiant ; le lien entre votre compte et vos avis est conservé en interne pour vous permettre de les modifier et pour appliquer la règle d’un avis par entreprise, jusqu’à la suppression de votre compte.",
-          "Données anti-abus : lors d’une publication, votre adresse IP est enregistrée sous forme hachée (non réversible) pour limiter les publications en rafale.",
+          "Données anti-abus : lors d’une publication, votre adresse IP est enregistrée sous forme hachée (non réversible) pour limiter les publications en rafale et détecter les campagnes de faux avis. La date de création de votre compte sert aux mêmes fins.",
           "Rapports d’erreurs : en cas de plantage, des informations techniques (modèle d’appareil, version du système et de l’application, trace de l’erreur) sont transmises à notre outil de diagnostic, sans votre adresse email.",
-          "Mesure d’audience : uniquement si vous l’acceptez, nous mesurons les écrans consultés et le type d’appareil. Ces statistiques ne sont jamais reliées à votre compte.",
           "Préférences : la langue, vos réponses au questionnaire de bienvenue et vos choix d’affichage restent stockés sur votre appareil et ne nous sont pas transmis.",
           "Nous ne collectons ni votre localisation, ni vos contacts, ni vos photos, et nous n’utilisons aucun identifiant publicitaire."
         ]
@@ -122,8 +123,7 @@
         "paragraphs": [
           "Fournir le Service (compte, publication, votes, signalements, réinitialisation du mot de passe) : exécution des conditions d’utilisation.",
           "Prévenir le spam et les abus, modérer les contenus, sécuriser le Service, diagnostiquer les erreurs : intérêt légitime.",
-          "Répondre aux réquisitions judiciaires portant sur les données existantes : obligation légale.",
-          "Mesure d’audience : consentement, retirable à tout moment depuis l’écran « Compte »."
+          "Répondre aux réquisitions judiciaires portant sur les données existantes : obligation légale."
         ]
       },
       {
@@ -138,7 +138,6 @@
           "GitHub, Inc. (États-Unis) : hébergement des pages web d’information (assistance et documents légaux), qui enregistre techniquement l’adresse IP de leurs visiteurs ; transfert encadré par le Data Privacy Framework UE-États-Unis.",
           "Apple Distribution International Ltd : connexion avec Apple si vous la choisissez.",
           "Functional Software, Inc. (Sentry) : rapports d’erreurs, données hébergées dans l’Union européenne (Allemagne).",
-          "PostHog, Inc. : mesure d’audience, uniquement avec votre accord, données hébergées dans l’Union européenne.",
           "650 Industries, Inc. (Expo, États-Unis) : distribution des mises à jour de l’application, transfert encadré par les clauses contractuelles types.",
           "Les autorités judiciaires peuvent obtenir communication de certaines données sur réquisition."
         ]
@@ -173,7 +172,7 @@
         "heading": "8. Sécurité et stockage sur l’appareil",
         "paragraphs": [
           "Les échanges sont chiffrés, les mots de passe hachés et l’accès aux données restreint par des règles de sécurité au niveau de la base.",
-          "L’application stocke sur votre appareil votre session de connexion (strictement nécessaire), votre langue, vos préférences et votre choix de consentement. La mesure d’audience n’est activée qu’après votre accord et n’utilise aucun identifiant publicitaire.",
+          "L’application stocke sur votre appareil votre session de connexion (strictement nécessaire), votre langue et vos préférences. Elle ne contient aucun outil de mesure d’audience ni de publicité, et n’utilise aucun identifiant publicitaire.",
           "Les pages web d’information n’utilisent ni cookie ni mesure d’audience."
         ]
       },

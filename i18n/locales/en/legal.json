@@ -1,6 +1,6 @@
 {
   "updatedLabel": "Last updated: {{date}}",
-  "updatedAt": "16 September 2026",
+  "updatedAt": "17 September 2026",
   "notFound": "Document not found.",
   "site": {
     "tagline": "Anonymous employee reviews of companies: salaries, culture, management.",
@@ -44,6 +44,7 @@
         "paragraphs": [
           "A review must describe your own, genuine experience at the company concerned, and remain factual and measured. Each account may post one review per company; you can edit or delete it at any time.",
           "The following are prohibited: names or details that could identify a person (colleague, manager, client); accusations against a person; abusive, defamatory, discriminatory, hateful or threatening content; personal data (email, phone number, address); confidential information or trade secrets; fake reviews (written by the company, a competitor, in exchange for payment or without having worked there); advertising; any unlawful content.",
+          "Before each publication, you solemnly declare that you work or have worked at the company concerned and that you are describing your own experience. A review published in breach of this statement is removed and may make its author liable.",
           "The salaries you declare are published without any link to your identity. Do not enter an amount if, combined with your job title, it could make you recognisable."
         ]
       },
@@ -51,6 +52,7 @@
         "heading": "5. Moderation and reporting",
         "paragraphs": [
           "{{appName}} acts as a hosting provider for the reviews published by its users (article 6 of the French law on confidence in the digital economy and Regulation (EU) 2022/2065 on digital services). Reviews are not systematically checked before publication. However, automated filters, including a text analysis tool supplied by a service provider, may reject a review or hold it for review before publication.",
+          "To limit fake reviews, a review from an account created less than 24 hours ago goes live automatically once that period ends, and reviews written during an account’s first 7 days count for half in average ratings. When a company receives an unusual number of reviews in a short time (volume, new accounts, extreme ratings, similar texts), its recent reviews are left out of its rating and new reviews are checked before publication; the company page says so. These checks never reveal who the authors are.",
           "Every review can be reported from its “…” menu, “Report this review” option. Anyone can also notify unlawful content to {{abuseEmail}}, stating the company name, the content concerned, the reasons why it is unlawful and their contact details. Notices are handled diligently and objectively; manifestly unlawful content is removed promptly. A review that receives many reports is hidden automatically pending review.",
           "The status of each review (published, under review, hidden, removed) is visible to its author from their account. The author of a removed or hidden review can ask for the reasons and challenge the decision by writing to {{contactEmail}}; the request is reviewed by a person.",
           "In case of repeated or serious breaches of these rules, the account concerned may be suspended or deleted, after the situation has been examined."
@@ -110,9 +112,8 @@
         "paragraphs": [
           "Account: email address, password (stored hashed, never in plain text), creation and last sign-in dates. If you sign in with Apple or Google, we receive your email address from that provider (possibly a relay address hidden by Apple) and a technical identifier, never your password.",
           "Contributions: reviews (ratings, texts, job title, contract type, declared salary), “helpful” votes, reports and hidden authors. Reviews are published without any identifier; the link between your account and your reviews is kept internally so you can edit them and to enforce the one-review-per-company rule, until your account is deleted.",
-          "Anti-abuse data: when you publish, your IP address is recorded in hashed (irreversible) form to limit bursts of submissions.",
+          "Anti-abuse data: when you publish, your IP address is recorded in hashed (irreversible) form to limit bursts of submissions and detect fake review campaigns. The creation date of your account is used for the same purposes.",
           "Crash reports: when the app crashes, technical information (device model, system and app version, error trace) is sent to our diagnostics tool, without your email address.",
-          "Analytics: only if you agree, we measure the screens viewed and the device type. These statistics are never linked to your account.",
           "Preferences: your language, your answers to the welcome questionnaire and your display choices stay on your device and are not sent to us.",
           "We do not collect your location, contacts or photos, and we do not use any advertising identifier."
         ]
@@ -122,8 +123,7 @@
         "paragraphs": [
           "Providing the Service (account, publishing, votes, reports, password reset): performance of the terms of use.",
           "Preventing spam and abuse, moderating content, securing the Service, diagnosing errors: legitimate interest.",
-          "Responding to judicial requests concerning existing data: legal obligation.",
-          "Analytics: consent, which you can withdraw at any time from the “Account” screen."
+          "Responding to judicial requests concerning existing data: legal obligation."
         ]
       },
       {
@@ -138,7 +138,6 @@
           "GitHub, Inc. (United States): hosting of the information web pages (support and legal documents), which technically logs their visitors’ IP addresses; transfer covered by the EU-US Data Privacy Framework.",
           "Apple Distribution International Ltd: sign-in with Apple if you choose it.",
           "Functional Software, Inc. (Sentry): crash reports, data hosted in the European Union (Germany).",
-          "PostHog, Inc.: analytics, only with your consent, data hosted in the European Union.",
           "650 Industries, Inc. (Expo, United States): delivery of app updates, transfer covered by standard contractual clauses.",
           "Judicial authorities may obtain certain data upon request."
         ]
@@ -173,7 +172,7 @@
         "heading": "8. Security and on-device storage",
         "paragraphs": [
           "Connections are encrypted, passwords hashed and access to data restricted by database-level security rules.",
-          "The app stores on your device your sign-in session (strictly necessary), your language, your preferences and your consent choice. Analytics are only enabled after you agree and use no advertising identifier.",
+          "The app stores on your device your sign-in session (strictly necessary), your language and your preferences. It contains no analytics or advertising tools and uses no advertising identifier.",
           "The information web pages use no cookies and no analytics."
         ]
       },

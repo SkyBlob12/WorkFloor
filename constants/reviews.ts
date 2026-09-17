@@ -16,6 +16,9 @@ export const SALARY_PERIODS = ['year', 'month', 'hour'] as const;
 
 export const REVIEW_STATUSES = ['published', 'pending', 'hidden', 'removed'] as const;
 
+/** Raison d'une publication différée (`reviews.hold_reason`), nulle pour une relecture humaine. */
+export const HOLD_REASONS = ['new_account', 'company_surge'] as const;
+
 export const REPORT_REASONS = [
   'defamation',
   'personal_data',

@@ -11,11 +11,13 @@ import { useErrorMessage } from '@hooks/useErrorMessage';
 import { useReviewForm, type ReviewFormError } from '@hooks/useReviewForm';
 import type { Company, OwnReview } from '@app-types/domain';
 
+import { ReviewAttestation } from './ReviewAttestation';
 import { ReviewContentSection } from './ReviewContentSection';
 import { ReviewCriteriaSection } from './ReviewCriteriaSection';
 import { ReviewOverallSection } from './ReviewOverallSection';
 import { ReviewPositionSection } from './ReviewPositionSection';
 import { ReviewSalarySection } from './ReviewSalarySection';
+import { ReviewSiteSection } from './ReviewSiteSection';
 import { ReviewSubmitFooter } from './ReviewSubmitFooter';
 import { ReviewSubmitted } from './ReviewSubmitted';
 
@@ -35,7 +37,14 @@ export function ReviewForm({ company, initialReview }: ReviewFormProps) {
   const form = useReviewForm({ companyId: company.id, initialReview });
 
   if (form.result) {
-    return <ReviewSubmitted status={form.result} isEdit={form.isEdit} companyId={company.id} />;
+    return (
+      <ReviewSubmitted
+        status={form.result.status}
+        holdReason={form.result.hold_reason}
+        isEdit={form.isEdit}
+        companyId={company.id}
+      />
+    );
   }
 
   const title = form.isEdit ? t('form.titleEdit') : t('form.titleNew');
@@ -57,9 +66,11 @@ export function ReviewForm({ company, initialReview }: ReviewFormProps) {
         <Notice title={t('form.charterTitle')}>{t('form.charterMessage')}</Notice>
         <ReviewOverallSection form={form} />
         <ReviewPositionSection form={form} />
+        {company.siren ? <ReviewSiteSection form={form} company={{ name: company.name, siren: company.siren }} /> : null}
         <ReviewContentSection form={form} />
         <ReviewCriteriaSection form={form} />
         <ReviewSalarySection form={form} />
+        <ReviewAttestation form={form} companyName={company.name} />
         <ReviewSubmitFooter form={form} errorText={form.formError ? describeError(form.formError) : null} />
       </View>
     </Screen>

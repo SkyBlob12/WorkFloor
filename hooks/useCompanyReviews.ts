@@ -15,10 +15,10 @@ export interface CompanyReviewsResult {
   fetchNextPage: () => void;
 }
 
-export function useCompanyReviews(companyId: string, sort: ReviewSort): CompanyReviewsResult {
+export function useCompanyReviews(companyId: string, sort: ReviewSort, city: string | null): CompanyReviewsResult {
   const query = useInfiniteQuery({
-    queryKey: queryKeys.companyReviews(companyId, sort),
-    queryFn: ({ pageParam }) => listCompanyReviews(companyId, sort, pageParam),
+    queryKey: queryKeys.companyReviews(companyId, sort, city),
+    queryFn: ({ pageParam }) => listCompanyReviews(companyId, sort, city, pageParam),
     initialPageParam: 0,
     getNextPageParam: (lastPage) => lastPage.nextOffset,
     enabled: isSupabaseConfigured && Boolean(companyId),

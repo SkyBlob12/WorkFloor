@@ -32,6 +32,7 @@ function company(overrides: Partial<Company>): Company {
     avg_management: null,
     avg_work_life: null,
     recommend_pct: null,
+    under_review: false,
     ...overrides,
   };
 }

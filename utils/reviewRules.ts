@@ -12,7 +12,8 @@ export type ReviewFormErrorKey =
   | 'ratingRequired'
   | 'salaryInvalid'
   | 'salaryPeriodRequired'
-  | 'personalData';
+  | 'personalData'
+  | 'attestationRequired';
 
 export interface ErrorDescriptor {
   key: ReviewFormErrorKey;

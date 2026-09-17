@@ -14,12 +14,5 @@ jest.mock('@lib/toast', () => ({
   hideToast: jest.fn(),
 }));
 
-jest.mock('@lib/analytics', () => ({
-  enableAnalytics: jest.fn(),
-  disableAnalytics: jest.fn(),
-  trackScreen: jest.fn(),
-  track: jest.fn(),
-}));
-
 // eslint-disable-next-line import/first
 import '@/i18n';

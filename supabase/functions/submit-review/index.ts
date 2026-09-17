@@ -1,8 +1,13 @@
-// Création ou édition d'un avis : auth, rate limit, validation, modération, écriture.
+// Création ou édition d'un avis : auth, attestation, rate limit, validation, modération,
+// site vérifié dans SIRENE, détection des campagnes, écriture.
 // Les erreurs sont des codes stables (constants/serviceErrors.ts), traduits côté app.
+import { resolveSite } from '../_shared/companySites.ts';
+import { loadActivityStats, openCompanyWatch } from '../_shared/companyWatch.ts';
 import { clientIp, corsHeaders, failure, hashIp, json } from '../_shared/http.ts';
 import { moderate } from '../_shared/moderation.ts';
+import { parseSiteInput } from '../_shared/siteRules.ts';
 import { adminClient, consumeRateLimit, getUser } from '../_shared/supabase.ts';
+import { accountAgeHours, assessCompanyActivity, decideHold, trustWeight } from '../_shared/trust.ts';
 
 // À garder synchronisé avec constants/reviews.ts et les CHECK de la migration.
 const TEXT_LIMITS = {
@@ -96,11 +101,18 @@ Deno.serve(async (req) => {
     return failure('INVALID_INPUT', 400);
   }
 
+  // Attestation sur l'honneur (CGU, article 4) : exigée à chaque envoi, horodatée.
+  if (body.attested !== true) return failure('ATTESTATION_REQUIRED', 422);
+
   const parsed = parse(body);
   if (!parsed.ok) {
     console.warn('submit-review invalid field', parsed.reason);
     return failure('INVALID_INPUT', 400);
   }
+  // Site facultatif. Clé absente (app antérieure) : le site existant d'un avis édité est conservé.
+  const siteProvided = Object.hasOwn(body, 'site_siret');
+  const siteInput = parseSiteInput(body.site_siret);
+  if (!siteInput.ok) return failure('INVALID_SITE', 400);
 
   const ip = clientIp(req);
   const allowed = await consumeRateLimit(admin, {
@@ -119,12 +131,14 @@ Deno.serve(async (req) => {
     [fields.title, fields.job_title, fields.pros, fields.cons, fields.benefits].filter(Boolean).join('\n\n'),
   );
   if (moderation.decision === 'reject') return failure(moderation.code, 422);
-  const moderatedStatus = moderation.decision === 'review' ? 'pending' : 'published';
+
+  const now = new Date();
+  const attestedAt = now.toISOString();
 
   if (parsed.reviewId) {
     const { data: existing, error: readError } = await admin
       .from('reviews')
-      .select('id, status')
+      .select('id, company_id, status')
       .eq('id', parsed.reviewId)
       .eq('user_id', user.id)
       .maybeSingle();
@@ -132,14 +146,29 @@ Deno.serve(async (req) => {
     if (!existing) return failure('REVIEW_NOT_FOUND', 404);
     if (existing.status === 'hidden' || existing.status === 'removed') return failure('REVIEW_LOCKED', 403);
 
+    const site = siteProvided ? await resolveSite(admin, existing.company_id, siteInput.siret) : null;
+    if (site && !site.ok) return failure(site.code, site.status);
+
     // Un avis mis en attente (signalements, relecture) ne se republie pas tout seul en l'éditant.
-    const status = existing.status === 'published' ? moderatedStatus : existing.status;
-    const { error } = await admin
+    // Une édition qui déclenche la modération passe en relecture humaine, même si l'avis
+    // était seulement retenu (compte récent, entreprise surveillée).
+    const needsReview = moderation.decision === 'review';
+    const status = existing.status === 'published' ? (needsReview ? 'pending' : 'published') : existing.status;
+    const { data: updated, error } = await admin
       .from('reviews')
-      .update({ ...fields, status, moderation_flags: moderation.flags })
-      .eq('id', existing.id);
+      .update({
+        ...fields,
+        ...(site?.ok ? { site_id: site.siteId } : {}),
+        status,
+        moderation_flags: moderation.flags,
+        attested_at: attestedAt,
+        ...(needsReview ? { hold_reason: null, held_until: null } : {}),
+      })
+      .eq('id', existing.id)
+      .select('id, status, hold_reason')
+      .single();
     if (error) return failure('SERVER_ERROR', 500);
-    return json({ id: existing.id, status });
+    return json(updated);
   }
 
   const { data: company } = await admin
@@ -150,16 +179,44 @@ Deno.serve(async (req) => {
     .maybeSingle();
   if (!company) return failure('COMPANY_NOT_FOUND', 404);
 
+  const site = await resolveSite(admin, parsed.companyId, siteInput.siret);
+  if (!site.ok) return failure(site.code, site.status);
+
+  const ageHours = accountAgeHours(user.created_at, now);
+  const stats = await loadActivityStats(admin, {
+    companyId: parsed.companyId,
+    userId: user.id,
+    text: `${fields.pros} ${fields.cons}`,
+  });
+  const activity = stats
+    ? assessCompanyActivity(stats, { ratingOverall: fields.rating_overall as number, accountAgeHours: ageHours })
+    : { surge: false, signals: [] };
+  if (activity.surge && !stats?.active_watch) await openCompanyWatch(admin, parsed.companyId, activity.signals);
+
+  const hold = decideHold({
+    moderation: moderation.decision,
+    surge: activity.surge,
+    accountCreatedAt: user.created_at,
+    now,
+  });
+  const moderationFlags =
+    activity.signals.length > 0 ? { ...(moderation.flags ?? {}), activity_signals: activity.signals } : moderation.flags;
+
   const { data, error } = await admin
     .from('reviews')
     .insert({
       ...fields,
       company_id: parsed.companyId,
+      site_id: site.siteId,
       user_id: user.id,
-      status: moderatedStatus,
-      moderation_flags: moderation.flags,
+      status: hold.status,
+      hold_reason: hold.holdReason,
+      held_until: hold.heldUntil,
+      trust_weight: trustWeight(ageHours),
+      attested_at: attestedAt,
+      moderation_flags: moderationFlags,
     })
-    .select('id, status')
+    .select('id, status, hold_reason')
     .single();
 
   if (error?.code === '23505') return failure('ALREADY_REVIEWED', 409);

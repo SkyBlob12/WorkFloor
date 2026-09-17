@@ -11,7 +11,6 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { AppErrorFallback } from '@components/shell/AppErrorFallback';
 import { AppStack } from '@components/shell/AppStack';
-import { ConsentBanner } from '@components/shell/ConsentBanner';
 import { LaunchSplash } from '@components/shell/LaunchSplash';
 import { ToastHost } from '@components/ui/ToastHost';
 import { navigationThemes } from '@constants/theme';
@@ -35,7 +34,6 @@ export default function RootLayout() {
             <BottomSheetModalProvider>
               <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />
               <AppStack />
-              <ConsentBanner />
               <ToastHost />
               <LaunchSplash />
             </BottomSheetModalProvider>

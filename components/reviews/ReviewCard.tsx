@@ -39,6 +39,7 @@ function ReviewCardComponent({ review, onToggleHelpful, onMore }: ReviewCardProp
     t(`employmentStatus.${review.employment_status}`),
     review.contract_type ? t(`contractType.${review.contract_type}`) : null,
     review.job_title,
+    review.site_city,
   ]
     .filter(Boolean)
     .join(' · ');

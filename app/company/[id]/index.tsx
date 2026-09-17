@@ -15,6 +15,7 @@ import { ActionSheet } from '@components/ui/ActionSheet';
 import { ContentColumn } from '@components/ui/ContentColumn';
 import { LoadingState } from '@components/ui/LoadingState';
 import { useCompany } from '@hooks/useCompany';
+import { useCompanyCityStats } from '@hooks/useCompanyCityStats';
 import { useCompanyReviews } from '@hooks/useCompanyReviews';
 import { useLayout } from '@hooks/useLayout';
 import { useMyReview } from '@hooks/useMyReview';
@@ -36,9 +37,11 @@ export default function CompanyScreen() {
   const requireAuth = useRequireAuth();
   const { isWide } = useLayout();
   const [sort, setSort] = useState<ReviewSort>('recent');
+  const [city, setCity] = useState<string | null>(null);
   const company = useCompany(id);
   const myReview = useMyReview(id);
-  const reviews = useCompanyReviews(id, sort);
+  const cities = useCompanyCityStats(id);
+  const reviews = useCompanyReviews(id, sort, city);
   const actions = useReviewActions(id);
 
   const visibleReviews = useMemo(
@@ -64,7 +67,14 @@ export default function CompanyScreen() {
         <ContentColumn style={[styles.header, isWide ? styles.headerWide : styles.headerNarrow]}>
           <CompanyHeader company={data} />
           {isWide ? null : summary}
-          <ReviewsListHeader count={data.review_count} sort={sort} onSortChange={setSort} />
+          <ReviewsListHeader
+            count={data.review_count}
+            sort={sort}
+            onSortChange={setSort}
+            cities={cities.data ?? []}
+            city={city}
+            onCityChange={setCity}
+          />
         </ContentColumn>
       }
       isLoading={reviews.isLoading}

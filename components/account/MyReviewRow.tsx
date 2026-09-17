@@ -9,6 +9,7 @@ import { PressableScale } from '@components/ui/PressableScale';
 import { StarRating } from '@components/ui/StarRating';
 import { Text } from '@components/ui/Text';
 import { iconSize, spacing } from '@constants/theme';
+import { reviewStatusKey } from '@utils/reviewStatus';
 import type { OwnReview } from '@app-types/domain';
 
 export interface MyReviewRowProps {
@@ -38,7 +39,7 @@ function MyReviewRowComponent({ review }: MyReviewRowProps) {
         <View style={styles.meta}>
           <StarRating value={review.rating_overall} size={iconSize.sm} />
           <Text variant="caption" tone={review.status === 'published' ? 'muted' : 'warning'}>
-            {t(`reviews:status.${review.status}`)}
+            {t(`reviews:status.${reviewStatusKey(review)}`)}
           </Text>
         </View>
       </PressableScale>

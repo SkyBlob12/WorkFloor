@@ -7,7 +7,11 @@ export const queryKeys = {
   sectorPhotos: () => ['sectors', 'photos'] as const,
   company: (id: string) => ['companies', 'detail', id] as const,
   sireneSearch: (term: string) => ['sirene', term] as const,
-  companyReviews: (companyId: string, sort: ReviewSort) => ['reviews', companyId, sort] as const,
+  siteSearch: (siren: string, term: string) => ['sirene', 'sites', siren, term] as const,
+  /** Sous la fiche : invalidée avec elle après un avis. */
+  companyCityStats: (id: string) => ['companies', 'detail', id, 'cities'] as const,
+  companyReviews: (companyId: string, sort: ReviewSort, city: string | null) =>
+    ['reviews', companyId, sort, city ?? 'all'] as const,
   companyReviewsAll: (companyId: string) => ['reviews', companyId] as const,
   me: () => ['me'] as const,
   myReview: (companyId: string) => ['me', 'review', companyId] as const,

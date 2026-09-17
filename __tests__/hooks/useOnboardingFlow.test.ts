@@ -6,36 +6,36 @@ import { useOnboardingStore } from '@stores/onboardingStore';
 describe('useOnboardingFlow', () => {
   beforeEach(() => useOnboardingStore.setState({ completed: false, profile: null, priorities: [] }));
 
-  it('bloque le passage à l’étape suivante tant que l’utilisateur n’a pas répondu', async () => {
+  it('passe à l’étape suivante sans interaction', async () => {
     const { result } = await renderHook(() => useOnboardingFlow());
-    await act(async () => result.current.next());
-    expect(result.current.step).toBe('profile');
-
-    await act(async () => result.current.setProfile('jobSeeker'));
     await act(async () => result.current.next());
     expect(result.current.step).toBe('priorities');
   });
 
-  it('parcourt toutes les étapes puis enregistre les réponses', async () => {
+  it('parcourt toutes les étapes, revient en arrière puis termine', async () => {
     const { result } = await renderHook(() => useOnboardingFlow());
-    await act(async () => result.current.setProfile('employee'));
-    await act(async () => result.current.next());
-    await act(async () => result.current.togglePriority('salary'));
-    await act(async () => result.current.next());
-    await act(async () => result.current.setDemoRating(4));
-    await act(async () => result.current.next());
-    await act(async () => result.current.anonymize());
-    await act(async () => result.current.next());
-
+    for (let index = 1; index < result.current.stepCount; index += 1) {
+      await act(async () => result.current.next());
+    }
     expect(result.current.step).toBe('auth');
+    await act(async () => result.current.next());
+    expect(result.current.step).toBe('auth');
+
     await act(async () => result.current.back());
     expect(result.current.step).toBe('anonymity');
 
     await act(async () => result.current.finish());
-    expect(useOnboardingStore.getState()).toMatchObject({ completed: true, profile: 'employee', priorities: ['salary'] });
+    expect(useOnboardingStore.getState().completed).toBe(true);
   });
 
-  it('passe directement à la connexion sans répondre aux étapes', async () => {
+  it('conserve les priorités déjà enregistrées en terminant', async () => {
+    useOnboardingStore.setState({ priorities: ['salary'] });
+    const { result } = await renderHook(() => useOnboardingFlow());
+    await act(async () => result.current.finish());
+    expect(useOnboardingStore.getState()).toMatchObject({ completed: true, priorities: ['salary'] });
+  });
+
+  it('passe directement à la connexion', async () => {
     const { result } = await renderHook(() => useOnboardingFlow());
     await act(async () => result.current.skip());
     expect(result.current.step).toBe('auth');

@@ -56,6 +56,8 @@
     "SIRENE_UNAVAILABLE": "The SIRENE registry isn’t responding. Try again later.",
     "SIRENE_RATE_LIMITED": "Too many searches, please wait a few seconds.",
     "SOLE_PROPRIETOR": "Sole proprietorships can’t be added: they correspond to an individual person.",
+    "INVALID_SITE": "This location doesn’t belong to this company.",
+    "SITE_NOT_FOUND": "Location not found in the SIRENE registry.",
     "SEARCH_FAILED": "The search failed.",
     "LOAD_FAILED": "Couldn’t load this information.",
     "DELETE_FAILED": "Deletion failed.",
@@ -71,7 +73,8 @@
     "AUTH_WEAK_PASSWORD": "Password too weak.",
     "AUTH_RATE_LIMITED": "Too many attempts. Please wait a few minutes.",
     "AUTH_EMAIL_RATE_LIMITED": "Too many emails sent. Please wait a few minutes.",
-    "AUTH_FAILED": "Sign-in failed. Please try again."
+    "AUTH_FAILED": "Sign-in failed. Please try again.",
+    "ATTESTATION_REQUIRED": "Tick the statement: only people who have worked at the company can post a review."
   },
   "setup": {
     "title": "Supabase isn’t configured",

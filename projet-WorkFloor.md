@@ -121,7 +121,7 @@ Application permettant aux utilisateurs de laisser des avis anonymes sur des ent
 
 ### Observabilité
 - **Sentry** (plan gratuit), crash reporting, quasi indispensable dès la mise en prod pour ne pas être aveugle sur les bugs remontés par les utilisateurs
-- **PostHog** (plan gratuit), analytics basique pour suivre l'usage réel (pages vues, rétention, funnel d'inscription)
+- Statistiques de base sans SDK de mesure d'audience : requêtes SQL Supabase (comptes, avis), consoles App Store Connect et Play Console (installations, rétention), Sentry (stabilité). PostHog a été retiré
 
 ### CI/CD et mises à jour
 - **EAS Update**, pousse des correctifs JS instantanément sur les apps déjà installées, sans repasser par la review des stores (très utile pour corriger vite juste après le lancement)
@@ -145,7 +145,7 @@ Application permettant aux utilisateurs de laisser des avis anonymes sur des ent
 5. Implémentation auth + RLS pour l'anonymat
 6. Intégration API SIRENE pour peupler/vérifier les fiches entreprises
 7. Formulaire de dépôt d'avis + modération + fonctions d'édition/suppression de son propre avis
-8. Mise en place Sentry + PostHog
+8. Mise en place Sentry
 9. Rédaction politique de confidentialité + CGU (RGPD, droit à l'effacement)
 10. Achat du nom de domaine et déploiement de la version web (Vercel/Netlify/Cloudflare Pages ou EAS Hosting)
 11. Créer les comptes développeur Apple et Google Play

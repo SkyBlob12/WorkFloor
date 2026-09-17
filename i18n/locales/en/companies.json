@@ -112,10 +112,16 @@
     "noReviewsHint": "Worked here? Your review will help future candidates.",
     "loadMore": "Show more reviews",
     "sortLabel": "Sort reviews",
+    "filterCity": "See reviews from {{city}}",
+    "cityRating_one": "{{city}}: {{rating}}/5 from {{count}} review",
+    "cityRating_other": "{{city}}: {{rating}}/5 from {{count}} reviews",
     "sort": {
       "recent": "Most recent",
       "helpful": "Most helpful"
-    }
+    },
+    "ratingOnHold": "Rating being checked.",
+    "underReviewTitle": "Unusual activity",
+    "underReviewMessage": "This company received many reviews in a short time. The most recent ones are left out of the rating while we check them."
   },
   "sector": {
     "A": "Agriculture, forestry and fishing",

@@ -7,17 +7,18 @@ import { Button } from '@components/ui/Button';
 import { Notice } from '@components/ui/Notice';
 import { Screen } from '@components/ui/Screen';
 import { spacing } from '@constants/theme';
-import type { ReviewStatus } from '@app-types/domain';
+import type { HoldReason, ReviewStatus } from '@app-types/domain';
 
 export interface ReviewSubmittedProps {
   status: ReviewStatus;
+  holdReason: HoldReason | null;
   isEdit: boolean;
   companyId: string;
 }
 
 const styles = StyleSheet.create({ stack: { gap: spacing.md } });
 
-export function ReviewSubmitted({ status, isEdit, companyId }: ReviewSubmittedProps) {
+export function ReviewSubmitted({ status, holdReason, isEdit, companyId }: ReviewSubmittedProps) {
   const { t } = useTranslation('reviews');
   const router = useRouter();
   return (
@@ -26,6 +27,10 @@ export function ReviewSubmitted({ status, isEdit, companyId }: ReviewSubmittedPr
         {status === 'published' ? (
           <Notice tone="success" title={isEdit ? t('submitted.publishedTitleEdit') : t('submitted.publishedTitleNew')}>
             {t('submitted.publishedMessage')}
+          </Notice>
+        ) : holdReason === 'new_account' ? (
+          <Notice tone="info" title={t('submitted.scheduledTitle')}>
+            {t('submitted.scheduledMessage')}
           </Notice>
         ) : (
           <Notice tone="warning" title={t('submitted.pendingTitle')}>

@@ -8,7 +8,7 @@ import type { PublicReview, ReviewsPage } from '@app-types/domain';
 import { createQueryWrapper } from '../helpers/queryWrapper';
 import { mockSupabaseResult, resetSupabaseMock } from '../mocks/supabase';
 
-const key = queryKeys.companyReviews('company-1', 'recent');
+const key = queryKeys.companyReviews('company-1', 'recent', null);
 
 function seed(): InfiniteData<ReviewsPage> {
   const review = { id: 'r1', voted_helpful: false, helpful_count: 1 } as PublicReview;

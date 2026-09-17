@@ -112,10 +112,16 @@
     "noReviewsHint": "Vous avez travaillé ici ? Votre avis aidera les prochains candidats.",
     "loadMore": "Voir plus d’avis",
     "sortLabel": "Trier les avis",
+    "filterCity": "Voir les avis de {{city}}",
+    "cityRating_one": "{{city}} : {{rating}}/5 sur {{count}} avis",
+    "cityRating_other": "{{city}} : {{rating}}/5 sur {{count}} avis",
     "sort": {
       "recent": "Plus récents",
       "helpful": "Plus utiles"
-    }
+    },
+    "ratingOnHold": "Note en cours de vérification.",
+    "underReviewTitle": "Activité inhabituelle",
+    "underReviewMessage": "Cette entreprise a reçu beaucoup d’avis en peu de temps. Les plus récents ne comptent pas dans la note le temps de les vérifier."
   },
   "sector": {
     "A": "Agriculture, sylviculture et pêche",

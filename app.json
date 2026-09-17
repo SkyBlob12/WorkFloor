@@ -53,7 +53,14 @@
           }
         }
       ],
-      "@sentry/react-native",
+      [
+        "@sentry/react-native",
+        {
+          "organization": "workfloor",
+          "project": "workfloor",
+          "url": "https://de.sentry.io/"
+        }
+      ],
       "expo-localization",
       "expo-apple-authentication"
     ],
