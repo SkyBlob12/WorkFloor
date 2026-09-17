@@ -47,6 +47,14 @@ export function topRated(companies: readonly Company[], minReviews: number, limi
     .slice(0, limit);
 }
 
+/** Moins bonne note moyenne, avec le même minimum d'avis que `topRated`. */
+export function worstRated(companies: readonly Company[], minReviews: number, limit: number): Company[] {
+  return companies
+    .filter((company) => company.avg_overall !== null && company.review_count >= minReviews)
+    .sort((a, b) => (a.avg_overall ?? 0) - (b.avg_overall ?? 0) || b.review_count - a.review_count)
+    .slice(0, limit);
+}
+
 export function mostReviewed(companies: readonly Company[], limit: number): Company[] {
   return [...companies]
     .sort((a, b) => b.review_count - a.review_count || a.name.localeCompare(b.name))

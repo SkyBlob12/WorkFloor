@@ -115,7 +115,7 @@
     "termsNotice": "En publiant, vous acceptez les <link>règles de contenu</link>. Vous pourrez modifier ou supprimer votre avis à tout moment.",
     "authTitle": "Connectez-vous pour donner votre avis",
     "authMessage": "Un compte limite les faux avis. Votre identité n’est jamais affichée.",
-    "attestation": "J’atteste sur l’honneur travailler ou avoir travaillé chez {{name}}, et que cet avis décrit mon expérience personnelle. Un faux avis entraîne son retrait et peut engager ma responsabilité.",
+    "attestation": "J’atteste sur l’honneur travailler ou avoir travaillé chez {{name}}, et que cet avis décrit mon expérience personnelle. Un faux avis entraîne son retrait et peut entraîner des sanctions.",
     "attestationLabel": "Attestation sur l’honneur"
   },
   "formError": {

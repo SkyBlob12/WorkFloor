@@ -26,6 +26,7 @@
     "db:restrict-author-columns:preflight": "supabase db query --linked -f supabase/preflight/20260916000100_restrict_author_columns.sql",
     "db:review-trust:preflight": "supabase db query --linked -f supabase/preflight/20260917000000_review_trust.sql",
     "db:company-sites:preflight": "supabase db query --linked -f supabase/preflight/20260917000100_company_sites.sql",
+    "db:moderation:preflight": "supabase db query --linked -f supabase/preflight/20260917000200_moderation_console.sql",
     "db:types": "supabase gen types typescript --linked --schema public > types/database.ts",
     "test": "jest",
     "test:coverage": "jest --coverage"

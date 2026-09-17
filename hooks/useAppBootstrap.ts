@@ -8,8 +8,9 @@ import { queryClient } from '@lib/queryClient';
 import { queryKeys } from '@lib/queryKeys';
 import { subscribeToAuth } from '@stores/authStore';
 import { useOnboardingStore } from '@stores/onboardingStore';
+import { useThemeStore } from '@stores/themeStore';
 
-/** Effets globaux de démarrage : session et langue (le splash est géré par `useLaunchSplash`). */
+/** Effets globaux de démarrage : session, langue et apparence (le splash est géré par `useLaunchSplash`). */
 export function useAppBootstrap(): void {
   const { i18n } = useTranslation();
   const previousUserId = useRef<string | null | undefined>(undefined);
@@ -31,6 +32,7 @@ export function useAppBootstrap(): void {
   useEffect(() => {
     void useOnboardingStore.getState().hydrate();
     void restorePreferredLocale();
+    void useThemeStore.getState().hydrate();
   }, []);
 
   useEffect(() => {

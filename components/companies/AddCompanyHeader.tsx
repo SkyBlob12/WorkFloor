@@ -41,7 +41,7 @@ export function AddCompanyHeader({ query, onQueryChange, term, loading }: AddCom
           {t('add.intro')}
         </Text>
       </View>
-      <SearchInput value={query} onChangeText={onQueryChange} placeholder={t('add.placeholder')} autoFocus />
+      <SearchInput value={query} onChangeText={onQueryChange} placeholder={t('add.placeholder')} />
       {tooShort ? <Text variant="caption">{t('add.minLength', { count: SIRENE_MIN_QUERY_LENGTH })}</Text> : null}
       {loading && !tooShort ? <ActivityIndicator color={palette.primary} /> : null}
       {user ? null : <AuthRequired title={t('add.authTitle')} message={t('add.authMessage')} />}

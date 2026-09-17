@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { FlatList, type ListRenderItemInfo } from 'react-native';
 
-import { useRouter } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 
 import { PageHead } from '@components/shell/PageHead';
@@ -38,6 +38,12 @@ export function AddCompanyContent({ initialQuery }: AddCompanyContentProps) {
   const contentStyle = useScreenContentStyle(true);
   const searchable = term.length >= SIRENE_MIN_QUERY_LENGTH;
   const creatingSiren = createCompany.isPending ? createCompany.variables : null;
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => setQuery('');
+    }, []),
+  );
 
   const select = useCallback(
     (company: SireneCompany) => {

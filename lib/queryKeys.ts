@@ -17,4 +17,6 @@ export const queryKeys = {
   myReview: (companyId: string) => ['me', 'review', companyId] as const,
   myReviews: () => ['me', 'reviews'] as const,
   blockedAuthors: () => ['me', 'blocked-authors'] as const,
+  isModerator: () => ['me', 'moderator'] as const,
+  moderationQueue: () => ['me', 'moderation-queue'] as const,
 };

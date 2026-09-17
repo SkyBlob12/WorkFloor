@@ -8,7 +8,8 @@
   },
   "signedIn": {
     "title": "Signed in",
-    "connectedAs": "Private address: never shown or linked to your reviews."
+    "connectedAs": "Private address: never shown or linked to your reviews.",
+    "memberSince": "Member since {{month}}"
   },
   "myReviews": {
     "title": "My reviews",
@@ -21,7 +22,8 @@
     "title": "Hidden authors",
     "count_one": "You’ve hidden reviews from {{count}} author.",
     "count_other": "You’ve hidden reviews from {{count}} authors.",
-    "unblockAll": "Show all again"
+    "unblockAll": "Show all again",
+    "none": "No hidden authors."
   },
   "preferences": {
     "title": "Preferences",
@@ -95,6 +97,87 @@
       "tooShort_one": "At least {{count}} character.",
       "tooShort_other": "At least {{count}} characters.",
       "mismatch": "The two passwords don’t match."
+    }
+  },
+  "profile": {
+    "provider": {
+      "email": "Email",
+      "google": "Google",
+      "apple": "Apple"
+    },
+    "providerLabel": "Sign-in: {{provider}}",
+    "stats": {
+      "label": "Your activity",
+      "published_one": "review posted",
+      "published_other": "reviews posted",
+      "pending_one": "pending",
+      "pending_other": "pending",
+      "helpful_one": "helpful vote received",
+      "helpful_other": "helpful votes received"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "groups": {
+      "account": "Account and privacy",
+      "help": "Help and information",
+      "session": "Session",
+      "moderation": "Moderation"
+    },
+    "appearance": {
+      "label": "Appearance",
+      "system": "Automatic",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "password": {
+      "label": "Change password",
+      "description": "We’ll email you a link to choose a new one.",
+      "sent": "Link sent to {{email}}."
+    },
+    "contact": {
+      "label": "Contact us",
+      "unavailable": "No email app available. Write to us at {{email}}."
+    },
+    "version": "{{appName}} · version {{version}}"
+  },
+  "moderation": {
+    "title": "Moderation",
+    "entry": {
+      "label": "Moderation",
+      "description": "Reviews awaiting review and open reports"
+    },
+    "forbiddenTitle": "Restricted access",
+    "forbiddenMessage": "This screen is reserved for the moderation team.",
+    "count_one": "{{count}} review to handle, oldest first.",
+    "count_other": "{{count}} reviews to handle, oldest first.",
+    "emptyTitle": "Nothing to handle",
+    "emptyMessage": "No reviews awaiting review and no open reports.",
+    "receivedIn": "Written in {{month}}",
+    "jobTitle": "Position: {{jobTitle}}",
+    "reports_one": "{{count}} open report",
+    "reports_other": "{{count}} open reports",
+    "flags": {
+      "title": "Held by automatic moderation",
+      "bannedTerms": "Watched words: {{terms}}",
+      "ai": "Detected categories: {{categories}}",
+      "aiUnavailable": "Automatic analysis unavailable at submission",
+      "activity": "Unusual activity: {{signals}}"
+    },
+    "decision": {
+      "keep": "Publish",
+      "hide": "Hide",
+      "remove": "Remove"
+    },
+    "decisionHint": {
+      "keep": "Publishes the review and dismisses its reports",
+      "hide": "Hides the review from the public, its author sees it as hidden",
+      "remove": "Removes the review and closes its reports"
+    },
+    "done": {
+      "keep": "Review published",
+      "hide": "Review hidden",
+      "remove": "Review removed"
     }
   }
 }

@@ -7,6 +7,7 @@ import {
   NO_FILTERS,
   sectorFacets,
   topRated,
+  worstRated,
 } from '@utils/companyDirectory';
 import type { Company } from '@app-types/domain';
 
@@ -61,6 +62,10 @@ describe('classements', () => {
   it('trie les plus commentées sans modifier la liste d’origine', () => {
     expect(mostReviewed(all, 3).map((item) => item.name)).toEqual(['Lumen', 'Nordline', 'Pixel']);
     expect(all[0]).toBe(pollen);
+  });
+
+  it('exige un minimum d’avis pour les moins bien notées', () => {
+    expect(worstRated(all, 2, 5).map((item) => item.name)).toEqual(['Nordline', 'Lumen']);
   });
 });
 

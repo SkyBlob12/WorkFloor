@@ -3,6 +3,7 @@ import type {
   CONTRACT_TYPES,
   EMPLOYMENT_STATUSES,
   HOLD_REASONS,
+  MODERATION_DECISIONS,
   RATING_CRITERIA,
   REPORT_REASONS,
   REVIEW_SORTS,
@@ -17,6 +18,7 @@ export type SalaryPeriod = (typeof SALARY_PERIODS)[number];
 export type ReviewStatus = (typeof REVIEW_STATUSES)[number];
 export type HoldReason = (typeof HOLD_REASONS)[number];
 export type ReportReason = (typeof REPORT_REASONS)[number];
+export type ModerationDecision = (typeof MODERATION_DECISIONS)[number];
 export type RatingCriterion = (typeof RATING_CRITERIA)[number];
 export type ReviewSort = (typeof REVIEW_SORTS)[number];
 export type NafSection = (typeof NAF_SECTIONS)[number];
@@ -143,4 +145,31 @@ export interface SubmitReviewResult {
 export interface ReviewsPage {
   reviews: PublicReview[];
   nextOffset: number | null;
+}
+
+/** Signalement ouvert, sans identité de l'auteur du signalement. */
+export interface ModerationReport {
+  id: string;
+  reason: ReportReason;
+  details: string | null;
+  created_at: string;
+}
+
+/** Ligne de la fonction `moderation_queue` (modérateurs seulement, jamais d'identifiant d'auteur). */
+export interface ModerationItem {
+  review_id: string;
+  company_id: string;
+  company_name: string;
+  status: ReviewStatus;
+  hold_reason: HoldReason | null;
+  rating_overall: number;
+  title: string;
+  pros: string;
+  cons: string;
+  benefits: string | null;
+  job_title: string | null;
+  moderation_flags: Record<string, unknown> | null;
+  report_count: number;
+  created_at: string;
+  reports: ModerationReport[];
 }

@@ -33,6 +33,9 @@ export const REPORT_REASONS = [
 /** Critères notés. Colonnes SQL : `rating_<critère>` (avis) et `avg_<critère>` (moyennes). */
 export const RATING_CRITERIA = ['culture', 'salary', 'benefits', 'management', 'work_life'] as const;
 
+/** Décision de modération (fonction SQL `moderate_review`). */
+export const MODERATION_DECISIONS = ['keep', 'hide', 'remove'] as const;
+
 export const REVIEW_SORTS = ['recent', 'helpful'] as const;
 
 // À garder synchronisé avec supabase/functions/submit-review et les CHECK SQL.

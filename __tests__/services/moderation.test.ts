@@ -1,7 +1,13 @@
 import { mockSupabaseResult, resetSupabaseMock, supabase } from '../mocks/supabase';
 
 import { toAuthError } from '@services/account';
-import { countBlockedAuthors, reportReview } from '@services/moderation';
+import {
+  checkIsModerator,
+  countBlockedAuthors,
+  listModerationQueue,
+  moderateReview,
+  reportReview,
+} from '@services/moderation';
 
 describe('services de modération', () => {
   beforeEach(() => resetSupabaseMock());
@@ -31,6 +37,37 @@ describe('services de modération', () => {
     await countBlockedAuthors();
     const builder = supabase.from.mock.results[0].value as { select: jest.Mock };
     expect(builder.select).toHaveBeenCalledWith('blocker_id', { count: 'exact', head: true });
+  });
+});
+
+describe('services de l’écran de modération', () => {
+  beforeEach(() => resetSupabaseMock());
+
+  it('ne reconnaît un modérateur que sur une réponse true', async () => {
+    mockSupabaseResult({ data: true });
+    await expect(checkIsModerator()).resolves.toBe(true);
+    mockSupabaseResult({ data: null, error: { code: '42501' } });
+    await expect(checkIsModerator()).resolves.toBe(false);
+  });
+
+  it('lit la file et traduit un refus en FORBIDDEN', async () => {
+    mockSupabaseResult({ data: [{ review_id: 'r1' }] });
+    await expect(listModerationQueue()).resolves.toEqual([{ review_id: 'r1' }]);
+    mockSupabaseResult({ error: { code: '42501' } });
+    await expect(listModerationQueue()).rejects.toMatchObject({ code: 'FORBIDDEN' });
+    mockSupabaseResult({ error: { code: '500' } });
+    await expect(listModerationQueue()).rejects.toMatchObject({ code: 'LOAD_FAILED' });
+  });
+
+  it('envoie la décision et traduit les erreurs', async () => {
+    await moderateReview('r1', 'hide');
+    expect(supabase.rpc).toHaveBeenCalledWith('moderate_review', { p_review_id: 'r1', p_decision: 'hide' });
+    mockSupabaseResult({ error: { code: 'P0002' } });
+    await expect(moderateReview('r1', 'keep')).rejects.toMatchObject({ code: 'REVIEW_NOT_FOUND' });
+    mockSupabaseResult({ error: { code: '42501' } });
+    await expect(moderateReview('r1', 'keep')).rejects.toMatchObject({ code: 'FORBIDDEN' });
+    mockSupabaseResult({ error: { code: '22023' } });
+    await expect(moderateReview('r1', 'remove')).rejects.toMatchObject({ code: 'MODERATION_FAILED' });
   });
 });
 

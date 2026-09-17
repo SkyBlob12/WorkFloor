@@ -14,7 +14,6 @@ export interface SearchInputProps {
   value: string;
   onChangeText: (value: string) => void;
   placeholder: string;
-  autoFocus?: boolean;
 }
 
 const useStyles = makeStyles((palette) => ({
@@ -34,7 +33,7 @@ const useStyles = makeStyles((palette) => ({
   input: { ...typography.body, flex: 1, height: '100%', color: palette.text },
 }));
 
-export function SearchInput({ value, onChangeText, placeholder, autoFocus }: SearchInputProps) {
+export function SearchInput({ value, onChangeText, placeholder }: SearchInputProps) {
   const { t } = useTranslation('common');
   const palette = useThemeColors();
   const styles = useStyles();
@@ -49,7 +48,6 @@ export function SearchInput({ value, onChangeText, placeholder, autoFocus }: Sea
         placeholderTextColor={palette.textMuted}
         accessibilityLabel={placeholder}
         autoCorrect={false}
-        autoFocus={autoFocus}
         returnKeyType="search"
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}

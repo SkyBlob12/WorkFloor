@@ -65,6 +65,8 @@
     "REPORT_FAILED": "The report failed. Please try again.",
     "ALREADY_REPORTED": "You’ve already reported this review.",
     "BLOCK_FAILED": "Couldn’t hide this author.",
+    "FORBIDDEN": "Access denied.",
+    "MODERATION_FAILED": "The decision couldn’t be saved. Please try again.",
     "UNBLOCK_FAILED": "Couldn’t show hidden authors again.",
     "ACCOUNT_DELETE_FAILED": "Account deletion failed. Try again or contact us.",
     "AUTH_INVALID_CREDENTIALS": "Wrong email or password.",

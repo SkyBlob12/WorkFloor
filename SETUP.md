@@ -86,9 +86,13 @@ L'app propose trois façons de se connecter, sans email de confirmation : **Appl
 
 > ⚠️ Plus aucun email n'est envoyé à l'inscription. Seul « Mot de passe oublié » en envoie : tant que l'étape 4 (SMTP) n'est pas faite, Supabase n'envoie qu'aux **membres de l'équipe du projet**, 2 emails par heure.
 
-### 1.5 Modération au quotidien (pas d'écran admin pour l'instant)
+### 1.5 Modération au quotidien
 
-Dans *Table Editor* :
+**Dans l'app** (Compte → Modération, visible seulement pour les comptes de la table `moderators`) : avis en relecture humaine et avis signalés, du plus ancien au plus récent, avec les motifs, les détails et les indices de la modération automatique. Trois décisions, annulables 3 s : **Publier** (signalements rejetés, compteur remis à zéro), **Masquer** (`hidden`) ou **Retirer** (`removed`), signalements clôts dans les deux cas.
+- [ ] Appliquer `20260917000200_moderation_console` après `npm run db:moderation:preflight` (toutes les lignes `ok = true`).
+- Ajouter un modérateur : `insert into public.moderators (user_id) values ('<uuid>');` dans le SQL Editor. Le retirer : `delete` sur la même ligne.
+
+**Dans *Table Editor*** (surveillances d'entreprises et cas particuliers) :
 - `reviews` filtré sur `status = pending` : relire, passer à `published`, `hidden` ou `removed`. La colonne `moderation_flags` indique pourquoi l'avis a été retenu.
 - `reports` filtré sur `status = open` : traiter puis passer à `actioned` ou `dismissed`.
 - `banned_terms` : enrichir la liste (`reject` = refusé, `review` = mis en relecture). Termes en minuscules et sans accents.

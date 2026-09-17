@@ -6,6 +6,7 @@ import {
   MOST_REVIEWED_LIMIT,
   SEARCH_DEBOUNCE_MS,
   TOP_RATED_MIN_REVIEWS,
+  WORST_RATED_MIN_REVIEWS,
 } from '@constants/companies';
 import {
   cityFacets,
@@ -16,6 +17,7 @@ import {
   NO_FILTERS,
   sectorFacets,
   topRated,
+  worstRated,
   type CompanyFilters,
   type DirectoryTotals,
   type Facet,
@@ -39,6 +41,7 @@ export interface CompanyExplorerState {
   sectors: Facet<NafSection>[];
   cities: Facet<string>[];
   topRated: Company[];
+  worstRated: Company[];
   totals: DirectoryTotals;
   items: Company[];
   loading: boolean;
@@ -62,6 +65,7 @@ export function useCompanyExplorer(): CompanyExplorerState {
       sectors: sectorFacets(companies),
       cities: cityFacets(companies, CITY_FACET_LIMIT),
       topRated: topRated(companies, TOP_RATED_MIN_REVIEWS, HOME_CAROUSEL_SIZE),
+      worstRated: worstRated(companies, WORST_RATED_MIN_REVIEWS, HOME_CAROUSEL_SIZE),
       totals: directoryTotals(companies),
     }),
     [companies],

@@ -8,7 +8,8 @@
   },
   "signedIn": {
     "title": "Connecté",
-    "connectedAs": "Adresse privée : jamais affichée ni associée à vos avis."
+    "connectedAs": "Adresse privée : jamais affichée ni associée à vos avis.",
+    "memberSince": "Membre depuis {{month}}"
   },
   "myReviews": {
     "title": "Mes avis",
@@ -21,7 +22,8 @@
     "title": "Auteurs masqués",
     "count_one": "Vous avez masqué les avis de {{count}} auteur.",
     "count_other": "Vous avez masqué les avis de {{count}} auteurs.",
-    "unblockAll": "Tout réafficher"
+    "unblockAll": "Tout réafficher",
+    "none": "Aucun auteur masqué."
   },
   "preferences": {
     "title": "Préférences",
@@ -95,6 +97,87 @@
       "tooShort_one": "{{count}} caractère minimum.",
       "tooShort_other": "{{count}} caractères minimum.",
       "mismatch": "Les deux mots de passe ne correspondent pas."
+    }
+  },
+  "profile": {
+    "provider": {
+      "email": "Email",
+      "google": "Google",
+      "apple": "Apple"
+    },
+    "providerLabel": "Connexion : {{provider}}",
+    "stats": {
+      "label": "Votre activité",
+      "published_one": "avis publié",
+      "published_other": "avis publiés",
+      "pending_one": "en attente",
+      "pending_other": "en attente",
+      "helpful_one": "vote utile reçu",
+      "helpful_other": "votes utiles reçus"
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "groups": {
+      "account": "Compte et confidentialité",
+      "help": "Aide et informations",
+      "session": "Session",
+      "moderation": "Modération"
+    },
+    "appearance": {
+      "label": "Apparence",
+      "system": "Automatique",
+      "light": "Clair",
+      "dark": "Sombre"
+    },
+    "password": {
+      "label": "Changer le mot de passe",
+      "description": "Un lien vous est envoyé par email pour en choisir un nouveau.",
+      "sent": "Lien envoyé à {{email}}."
+    },
+    "contact": {
+      "label": "Nous contacter",
+      "unavailable": "Aucune application email disponible. Écrivez-nous à {{email}}."
+    },
+    "version": "{{appName}} · version {{version}}"
+  },
+  "moderation": {
+    "title": "Modération",
+    "entry": {
+      "label": "Modération",
+      "description": "Avis en relecture et signalements ouverts"
+    },
+    "forbiddenTitle": "Accès réservé",
+    "forbiddenMessage": "Cet écran est réservé à l’équipe de modération.",
+    "count_one": "{{count}} avis à traiter, du plus ancien au plus récent.",
+    "count_other": "{{count}} avis à traiter, du plus ancien au plus récent.",
+    "emptyTitle": "Rien à traiter",
+    "emptyMessage": "Aucun avis en relecture ni signalement ouvert.",
+    "receivedIn": "Écrit en {{month}}",
+    "jobTitle": "Poste : {{jobTitle}}",
+    "reports_one": "{{count}} signalement ouvert",
+    "reports_other": "{{count}} signalements ouverts",
+    "flags": {
+      "title": "Retenu par la modération automatique",
+      "bannedTerms": "Mots surveillés : {{terms}}",
+      "ai": "Catégories détectées : {{categories}}",
+      "aiUnavailable": "Analyse automatique indisponible à l’envoi",
+      "activity": "Activité inhabituelle : {{signals}}"
+    },
+    "decision": {
+      "keep": "Publier",
+      "hide": "Masquer",
+      "remove": "Retirer"
+    },
+    "decisionHint": {
+      "keep": "Publie l’avis et rejette ses signalements",
+      "hide": "Masque l’avis au public, son auteur le voit masqué",
+      "remove": "Retire l’avis et clôt ses signalements"
+    },
+    "done": {
+      "keep": "Avis publié",
+      "hide": "Avis masqué",
+      "remove": "Avis retiré"
     }
   }
 }

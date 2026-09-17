@@ -29,6 +29,7 @@ describe('useCompanyExplorer', () => {
     expect(result.current.mode).toBe('discover');
     expect(result.current.sectors[0]).toEqual({ value: 'J', count: 2 });
     expect(result.current.topRated.map((item) => item.name)).toEqual(['Pixel', 'Lumen', 'Nordline']);
+    expect(result.current.worstRated.map((item) => item.name)).toEqual(['Nordline', 'Lumen', 'Pixel']);
     expect(result.current.totals).toEqual({ companies: 3, reviews: 14 });
     expect(result.current.items[0].name).toBe('Lumen');
     expect(useCompanySearch).toHaveBeenLastCalledWith('', false);

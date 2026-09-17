@@ -88,7 +88,7 @@ app/                     Routes expo-router (écrans fins, logique dans hooks/ e
   company/[id]/          Fiche entreprise · formulaire d'avis
 components/
   ui/                    Atomes réutilisables (Button, PressableScale, Sheet, Pill, Card, Text…)
-  companies/ reviews/ account/ auth/ legal/   Composants par feature
+  companies/ reviews/ account/ auth/ legal/ moderation/   Composants par feature
   navigation/ shell/                          Barre du haut, onglets, layout
 hooks/                   Hooks (requêtes TanStack, formulaires, actions)
 stores/                  Stores Zustand (session, onboarding)
@@ -143,7 +143,7 @@ Mobile d'abord : vérifier chaque écran à 390 px de large. Les listes sont des
 
 ### Composants UI existants (à réutiliser)
 
-`Text`, `Button`, `IconButton`, `PressableScale`, `TextField`, `SearchInput`, `Checkbox`, `ChoiceChips`, `SegmentedControl`, `StarRating`, `StarInput`, `RatingBar`, `RatingBadge`, `Avatar`, `Notice`, `Pill`, `Card`, `Divider`, `ContentColumn`, `Screen`, `ListSeparator`, `LoadingState`, `EmptyState`, `FormSection`, `LinkText`, `Sheet`, `ActionSheet`, `ConfirmSheet`, `ToastHost`, `SelectableCard`, `GlassSurface`, `SectionHeader`, `HorizontalRail`.
+`Text`, `Button`, `IconButton`, `PressableScale`, `TextField`, `SearchInput`, `Checkbox`, `ChoiceChips`, `SegmentedControl`, `StarRating`, `StarInput`, `RatingBar`, `RatingBadge`, `Avatar`, `Notice`, `Pill`, `Card`, `Divider`, `ContentColumn`, `Screen`, `ListSeparator`, `LoadingState`, `EmptyState`, `FormSection`, `LinkText`, `Sheet`, `ActionSheet`, `ConfirmSheet`, `ToastHost`, `SelectableCard`, `GlassSurface`, `SectionHeader`, `HorizontalRail`, `SettingsGroup`, `SettingsRow`.
 
 ### Onboarding
 

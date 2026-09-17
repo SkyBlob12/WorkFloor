@@ -4,6 +4,7 @@ import type {
   OwnReview,
   PublicReview,
   ReviewDraft,
+  ReviewSite,
   ReviewSort,
   ReviewsPage,
   SubmitReviewResult,
@@ -12,7 +13,10 @@ import type {
 import { ServiceError } from './errors';
 import { invokeFunction } from './functions';
 
-const OWN_REVIEW_COLUMNS = '*, company:companies(name), site:company_sites!reviews_site_same_company(siret, city, postal_code)';
+const OWN_REVIEW_COLUMNS = '*, company:companies(name)';
+// Lecture séparée : une jointure sur la clé composite (site_id, company_id) exigerait le droit
+// sur company_sites.company_id, volontairement non accordé.
+const SITE_COLUMNS = 'id, siret, city, postal_code';
 const UNIQUE_VIOLATION = '23505';
 
 export async function listCompanyReviews(
@@ -35,6 +39,18 @@ export async function listCompanyReviews(
   return { reviews, nextOffset: reviews.length === limit ? offset + limit : null };
 }
 
+type OwnReviewRow = Omit<OwnReview, 'site'>;
+
+/** Ajoute à chaque avis son site (RLS : sites des propres avis de l'utilisateur). */
+async function attachSites(rows: OwnReviewRow[]): Promise<OwnReview[]> {
+  const ids = [...new Set(rows.map((row) => row.site_id).filter((id): id is string => Boolean(id)))];
+  if (ids.length === 0) return rows.map((row) => ({ ...row, site: null }));
+  const { data, error } = await supabase.from('company_sites').select(SITE_COLUMNS).in('id', ids);
+  if (error) throw new ServiceError('LOAD_FAILED');
+  const sites = new Map(((data ?? []) as (ReviewSite & { id: string })[]).map(({ id, ...site }) => [id, site]));
+  return rows.map((row) => ({ ...row, site: (row.site_id && sites.get(row.site_id)) || null }));
+}
+
 export async function getMyReviewForCompany(companyId: string): Promise<OwnReview | null> {
   const { data, error } = await supabase
     .from('reviews')
@@ -42,7 +58,9 @@ export async function getMyReviewForCompany(companyId: string): Promise<OwnRevie
     .eq('company_id', companyId)
     .maybeSingle();
   if (error) throw new ServiceError('LOAD_FAILED');
-  return data as OwnReview | null;
+  if (!data) return null;
+  const [review] = await attachSites([data as OwnReviewRow]);
+  return review;
 }
 
 export async function listMyReviews(): Promise<OwnReview[]> {
@@ -51,7 +69,7 @@ export async function listMyReviews(): Promise<OwnReview[]> {
     .select(OWN_REVIEW_COLUMNS)
     .order('created_at', { ascending: false });
   if (error) throw new ServiceError('LOAD_FAILED');
-  return (data ?? []) as OwnReview[];
+  return attachSites((data ?? []) as OwnReviewRow[]);
 }
 
 export interface SubmitReviewInput {

@@ -65,6 +65,8 @@
     "REPORT_FAILED": "Le signalement a échoué. Réessayez.",
     "ALREADY_REPORTED": "Vous avez déjà signalé cet avis.",
     "BLOCK_FAILED": "Impossible de masquer cet auteur.",
+    "FORBIDDEN": "Accès refusé.",
+    "MODERATION_FAILED": "La décision n’a pas pu être enregistrée. Réessayez.",
     "UNBLOCK_FAILED": "Impossible de réafficher les auteurs masqués.",
     "ACCOUNT_DELETE_FAILED": "La suppression du compte a échoué. Réessayez ou contactez-nous.",
     "AUTH_INVALID_CREDENTIALS": "Email ou mot de passe incorrect.",

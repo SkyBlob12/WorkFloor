@@ -2,10 +2,8 @@ import { StyleSheet, View } from 'react-native';
 
 import { useTranslation } from 'react-i18next';
 
-import { AccountActions } from '@components/account/AccountActions';
 import { DevTools } from '@components/account/DevTools';
-import { LegalLinks } from '@components/account/LegalLinks';
-import { PreferencesSection } from '@components/account/PreferencesSection';
+import { SettingsSection } from '@components/account/SettingsSection';
 import { SignedInPanel } from '@components/account/SignedInPanel';
 import { SignedOutPanel } from '@components/account/SignedOutPanel';
 import { PageHead } from '@components/shell/PageHead';
@@ -29,11 +27,9 @@ export default function AccountScreen() {
         <Text variant="display" accessibilityRole="header" style={styles.title}>
           {t('pageTitle')}
         </Text>
-        {user ? <SignedInPanel email={user.email ?? ''} /> : <SignedOutPanel />}
-        <PreferencesSection />
-        {user ? <AccountActions /> : null}
+        {user ? <SignedInPanel user={user} /> : <SignedOutPanel />}
+        <SettingsSection user={user} />
         {__DEV__ ? <DevTools /> : null}
-        <LegalLinks />
       </View>
     </Screen>
   );

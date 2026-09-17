@@ -43,9 +43,10 @@ export const SECTOR_ICONS: Record<(typeof NAF_SECTIONS)[number], IconName> = {
  */
 export const DIRECTORY_LIMIT = 500;
 export const TOP_RATED_MIN_REVIEWS = 2;
+export const WORST_RATED_MIN_REVIEWS = 2;
 export const HOME_CAROUSEL_SIZE = 8;
 export const CITY_FACET_LIMIT = 8;
-export const MOST_REVIEWED_LIMIT = 10;
+export const MOST_REVIEWED_LIMIT = 5;
 
 /** Les photos de secteur changent rarement : une lecture par session suffit. */
 export const SECTOR_PHOTOS_STALE_MS = 24 * 60 * 60 * 1000;

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { ContentColumn } from '@components/ui/ContentColumn';
 import { HorizontalRail } from '@components/ui/HorizontalRail';
 import { SectionHeader } from '@components/ui/SectionHeader';
-import { TOP_RATED_MIN_REVIEWS } from '@constants/companies';
+import { TOP_RATED_MIN_REVIEWS, WORST_RATED_MIN_REVIEWS } from '@constants/companies';
 import { spacing } from '@constants/theme';
 import type { CompanyExplorerState } from '@hooks/useCompanyExplorer';
 import { useSectorPhotos } from '@hooks/useSectorPhotos';
@@ -27,10 +27,10 @@ const styles = StyleSheet.create({
   section: { gap: spacing.md },
 });
 
-/** Accueil sans recherche : secteurs, mieux notées, incitation à publier, villes, puis les plus commentées. */
+/** Accueil sans recherche : secteurs, mieux notées, moins bien notées, incitation à publier, villes, puis les plus commentées. */
 export function DiscoverSections({ explorer, onOpenCompany }: DiscoverSectionsProps) {
   const { t } = useTranslation('companies');
-  const { sectors, cities, topRated, filters, items } = explorer;
+  const { sectors, cities, topRated, worstRated, filters, items } = explorer;
   const sectorPhotos = useSectorPhotos();
   const photoForSection = (section: NafSection | null): string | undefined => (section ? sectorPhotos[section] : undefined);
 
@@ -63,6 +63,24 @@ export function DiscoverSections({ explorer, onOpenCompany }: DiscoverSectionsPr
           </ContentColumn>
           <HorizontalRail accessibilityLabel={t('home.topRated')}>
             {topRated.map((company) => (
+              <FeaturedCompanyCard
+                key={company.id}
+                company={company}
+                onPress={onOpenCompany}
+                photoUrl={photoForSection(nafSectionFromCode(company.naf_code))}
+              />
+            ))}
+          </HorizontalRail>
+        </View>
+      ) : null}
+
+      {worstRated.length > 0 ? (
+        <View style={styles.section}>
+          <ContentColumn>
+            <SectionHeader title={t('home.worstRated')} caption={t('home.worstRatedHint', { count: WORST_RATED_MIN_REVIEWS })} />
+          </ContentColumn>
+          <HorizontalRail accessibilityLabel={t('home.worstRated')}>
+            {worstRated.map((company) => (
               <FeaturedCompanyCard
                 key={company.id}
                 company={company}

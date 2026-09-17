@@ -49,6 +49,8 @@ export function AppStack() {
         <Stack.Screen name="auth-callback" options={{ headerShown: false }} />
         <Stack.Screen name="onboarding" options={{ headerShown: false, gestureEnabled: false, animation: 'fade' }} />
         <Stack.Screen name="legal/[doc]" options={{ title: '' }} />
+        {/* L'écran affiche déjà son titre. */}
+        <Stack.Screen name="moderation" options={{ title: '' }} />
       </Stack>
     </>
   );

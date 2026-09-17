@@ -15,7 +15,7 @@ export function mockSupabaseResult(result: MockResult): void {
   nextResult = { data: null, error: null, count: null, ...result };
 }
 
-const CHAINABLE = ['select', 'eq', 'order', 'range', 'limit','insert', 'update', 'upsert', 'delete', 'maybeSingle', 'single'];
+const CHAINABLE = ['select', 'eq', 'in', 'order', 'range', 'limit','insert', 'update', 'upsert', 'delete', 'maybeSingle', 'single'];
 
 function createQueryBuilder(): Record<string, unknown> {
   const builder: Record<string, unknown> = {};
