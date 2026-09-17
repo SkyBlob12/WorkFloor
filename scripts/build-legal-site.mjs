@@ -110,7 +110,7 @@ function layoutHtml({ code, t, file, title, body }) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${escapeHtml(`${title} · ${APP.name}`)}</title>
 <meta name="description" content="${escapeHtml(t.site.tagline)}">
-${alternates}
+${APP.googleSiteVerification ? `<meta name="google-site-verification" content="${escapeHtml(APP.googleSiteVerification)}">\n` : ''}${alternates}
 <style>${CSS}</style>
 </head>
 <body>

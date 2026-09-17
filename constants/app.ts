@@ -9,4 +9,6 @@ export const APP = {
   abuseEmail: 'workfloor@tutamail.com',
   /** Pages publiques (assistance, documents légaux) exigées par les stores : GitHub Pages. */
   publicSiteUrl: 'https://skyblob12.github.io/WorkFloor',
+  /** Jeton de la balise meta Google Search Console (propriété du site, exigée par la validation du branding OAuth). Public par nature. */
+  googleSiteVerification: '',
 } as const;
