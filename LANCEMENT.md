@@ -28,7 +28,8 @@ Tout ce qui demande **tes comptes, tes décisions ou ton argent**, dans l'ordre.
 ## 3. Connexion Google et Apple
 
 - [x] Providers Google et Apple configurés et testés sur le dev build.
-- [ ] Google Cloud : passer l'écran de consentement OAuth en **In production** avant la sortie (sinon seuls les comptes de test peuvent se connecter). Sans domaine, laisser vides les champs « domaine autorisé » et « page d'accueil » ou y mettre l'URL de la page de confidentialité (étape 5).
+- [x] Google Cloud : écran de consentement OAuth **En production** (17 septembre 2026). Branding renseigné avec les pages GitHub Pages de l'étape 5 et le domaine autorisé `skyblob12.github.io`.
+- ℹ️ La bannière « Votre application doit être validée » reste affichée et **doit être ignorée** : la validation de la marque n'est exigée que pour afficher un nom et un logo sur l'écran Google, et elle est **impossible** ici (Google refuse un suffixe mutualisé comme `github.io` comme domaine enregistré à ton nom, même avec une propriété confirmée dans Search Console). Conséquence acceptée : la fenêtre Google annonce `jcxragsifxcifxryoqvq.supabase.co` au lieu de `WorkFloor`. Ne jamais cliquer sur « Revenir au mode test » : la connexion Google se limiterait aussitôt aux comptes de test. Le jeton de vérification Search Console vit dans `constants/app.ts` (`googleSiteVerification`), la balise est posée sur les pages publiques.
 - [ ] 📅 Rappel dans 6 mois : régénérer la Secret Key Apple dans Supabase (sinon la connexion Apple tombe en panne).
 
 ## 4. Emails (GMX)

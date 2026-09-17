@@ -14,6 +14,8 @@ Tout est à relire. Les limites de caractères sont celles des stores.
 | URL confidentialité | `https://skyblob12.github.io/WorkFloor/privacy.html` (en-US : `/en/privacy.html`) |
 | URL support (Apple) | `https://skyblob12.github.io/WorkFloor/` (en-US : `/en/`) |
 | URL suppression de compte (Google) | `https://skyblob12.github.io/WorkFloor/delete-account.html` |
+| URL marketing (App Store, optionnelle) | aucune (laisser vide : pas de site dédié) |
+| Copyright (App Store) | `2026 Clément Andrieu` |
 | Email de contact | `workfloor@tutamail.com` |
 | Site web | aucun (première version mobile uniquement ; les pages ci-dessus sont générées par `npm run legal:site`, voir [LANCEMENT.md](../LANCEMENT.md) étape 5) |
 
@@ -21,7 +23,7 @@ Tout est à relire. Les limites de caractères sont celles des stores.
 
 ## Texte promotionnel App Store (170 car.)
 
-Ambiance, salaires, management : lisez ce que les salariés disent vraiment de leur entreprise, et partagez votre expérience en toute discrétion.
+Ambiance, salaire, management : lisez ce que les salariés disent vraiment de leur entreprise, et partagez votre expérience sans jamais donner votre nom. *(152 car.)*
 
 *(Seul champ modifiable sans repasser par la review Apple. À rafraîchir 3-4 fois par an avec un angle saisonnier : rentrée de septembre, entretiens annuels de janvier-mars, négociation salariale. Le texte n'est pas indexé par la recherche, mais influence le taux de clic donc indirectement le classement.)*
 
@@ -31,24 +33,39 @@ Avis anonymes sur les entreprises : salaires, ambiance, avantages, emploi. *(74 
 
 ## Description longue
 
-WorkFloor est l'application d'avis d'entreprise anonymes : salaires, ambiance de travail, avantages et notes d'employeurs partagés par des salariés et anciens salariés.
+*(App Store : champ « Description », 4 000 car. max, 1 781 utilisés. Play Store : même texte en description complète.)*
 
-Avant de postuler, de négocier ou de rester : sachez ce qui se passe vraiment derrière le bureau.
+Ambiance, salaire, management : découvrez ce que les salariés disent vraiment d'une entreprise avant de postuler, de négocier ou de rester.
 
-WorkFloor rassemble des avis de salariés et d'anciens salariés sur leur entreprise. Notes détaillées, salaires, avantages, points positifs et points à améliorer : tout est lisible librement, sans créer de compte.
+WorkFloor rassemble les avis anonymes de salariés et d'anciens salariés sur leur employeur. Tout se lit librement, sans créer de compte.
 
-• Recherchez une entreprise par son nom ou son SIREN
-• Consultez la note globale et le détail : ambiance, salaire, avantages, management, équilibre vie pro / perso
-• Découvrez les salaires déclarés et le pourcentage de salariés qui recommandent l'entreprise
-• Publiez votre avis anonymement : votre nom et votre email ne sont jamais affichés
-• Modifiez ou supprimez votre avis quand vous le souhaitez
-• Votez pour les avis les plus utiles
+CE QUE VOUS Y TROUVEZ
+• La note globale d'une entreprise et son détail : ambiance, salaire, avantages, management, équilibre vie pro / perso
+• Les salaires déclarés, avec le poste et le type de contrat
+• La part de salariés qui recommandent leur entreprise
+• Les points positifs et les points à améliorer, dans les mots des salariés
+• La recherche par nom d'entreprise ou par SIREN, et l'exploration par secteur et par ville
+• Les avis les plus utiles, remontés par les votes des lecteurs
 
-Des fiches fiables
-Les entreprises sont ajoutées à partir du répertoire officiel SIRENE de l'INSEE : pas de doublons, pas de fiches fictives.
+VOTRE AVIS, SANS VOTRE NOM
+• Ni votre nom ni votre adresse email ne sont affichés
+• Seul le mois de publication apparaît, jamais la date exacte
+• L'entreprise ne peut pas savoir qui a écrit
+• Vous modifiez ou supprimez votre avis quand vous le voulez
+• Un seul avis par entreprise, pour que les notes restent fidèles
 
-Des règles claires
-On parle de l'entreprise, pas des personnes. Chaque avis peut être signalé, et vous pouvez masquer les avis d'un auteur. Les contenus illicites sont retirés.
+DES FICHES FIABLES
+Les entreprises sont créées à partir du répertoire officiel SIRENE de l'INSEE : le nom, le SIREN et le secteur sont vérifiés. Pas de fiche fictive, pas de doublon.
+
+DES RÈGLES CLAIRES
+On parle de l'entreprise, pas des personnes. Chaque avis est relu avant publication, peut être signalé en deux touchers, et vous pouvez masquer tous les avis d'un auteur. Les contenus illicites sont retirés.
+
+SANS PUBLICITÉ
+Application gratuite, sans abonnement, sans publicité et sans traceur publicitaire.
+
+La consultation est libre. Un compte (Apple, Google ou email) n'est demandé que pour publier un avis, voter ou signaler.
+
+Questions, signalement d'un contenu : workfloor@tutamail.com
 
 ## Mots-clés App Store (100 car., séparés par des virgules, sans espaces)
 
