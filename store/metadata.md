@@ -131,7 +131,7 @@ Fournir un compte de démonstration (email + mot de passe) avec au moins un avis
 - iPhone 6,9" (1320 × 2868) : accueil/recherche, fiche entreprise, avis détaillé, formulaire, compte
 - Android téléphone (min. 1080 × 1920) : mêmes écrans
 - iPad : non requis (`supportsTablet: false`)
-- Image de présentation Play Store : 1024 × 500
+- Image de présentation Play Store (1024 × 500) : **faite**, `store/assets/play-feature-graphic-1024x500.png`. Régénérable par `python store/feature-graphic.py` (Pillow requis, polices Segoe UI de Windows). PNG sans transparence, texte tenu à plus de 60 px des bords : Google recadre l'image selon les emplacements et superpose un bouton lecture au centre si une vidéo promo est ajoutée.
 
 Les captures ne sont pas indexées pour la recherche mais pèsent le plus sur le taux d'installation une fois la fiche vue (donc sur le classement indirectement, via le taux de conversion). Ajouter une légende courte en surimpression sur chaque capture, dans l'ordre qui reprend la proposition de valeur avant les fonctionnalités secondaires :
 1. « Les salaires et l'ambiance, avant de signer » (accueil/recherche)
